@@ -192,10 +192,92 @@ footer .fine{margin-top:40px;padding-top:20px;border-top:1px solid rgba(243,234,
   footer .f-grid{grid-template-columns:1fr}
   .section-head{flex-direction:column;align-items:flex-start;gap:8px}
 }
+
+/* ================= NIGHT CITY THEME ================= */
+:root{--sky-text:#fff6ec;--sky-soft:rgba(255,246,236,.74);--pink:#ff3d7f;--orange:#ff8a3d;--gold:#ffc94d;--violet:#7b2ff7;--cyan:#22d3ee;--p:0}
+body{background:#0d0a26}
+.sky{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.sky .dusk,.sky .night{position:absolute;inset:0}
+.sky .dusk{background:linear-gradient(180deg,#24185a 0%,#6b2a8f 28%,#d23f80 52%,#ff7d5a 72%,#ffbf66 100%)}
+.sky .night{background:linear-gradient(180deg,#04051a 0%,#0c1140 42%,#2a1a5e 78%,#5b2a7c 100%);opacity:var(--p)}
+.stars{position:absolute;inset:0 0 40% 0;opacity:calc(.15 + var(--p)*.85)}
+.stars i{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;animation:twinkle 3.5s ease-in-out infinite}
+@keyframes twinkle{50%{opacity:.15}}
+.orb{position:absolute;right:11%;top:calc(34% - var(--p)*22%);width:74px;height:74px;border-radius:50%;
+  background:radial-gradient(circle at 36% 34%,#fffbe8,#ffe3a0 55%,#ffb35c);box-shadow:0 0 70px 26px rgba(255,190,120,.38)}
+.city{position:fixed;left:0;right:0;bottom:0;height:48vh;min-height:280px;z-index:0;pointer-events:none}
+.city svg{position:absolute;left:-5%;width:110%;bottom:0;height:100%}
+.city .far{transform:translate3d(calc(var(--p) * -1.2%),calc((1 - var(--p)) * 18px),0)}
+.city .mid{transform:translate3d(calc(var(--p) * -2.4%),calc((1 - var(--p)) * 34px),0)}
+.city .near{transform:translate3d(calc(var(--p) * -4%),calc((1 - var(--p)) * 56px),0)}
+.win{fill:#ffd36e}.win.tw{animation:winblink 6s steps(1) infinite}
+@keyframes winblink{0%,100%{opacity:1}50%{opacity:.12}}
+.hero,main,footer,.ticker{position:relative;z-index:1}
+.bar{z-index:50}
+.hero{background:transparent}
+.hero::before{background:linear-gradient(180deg,rgba(10,7,32,.72),rgba(10,7,32,.35) 75%,rgba(10,7,32,0))}
+.topbar,.eyebrow{color:var(--gold)}
+.hero h1 em{background:linear-gradient(90deg,var(--gold),var(--orange),var(--pink),var(--gold));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 8s linear infinite;padding-right:.06em}
+@keyframes shine{to{background-position:300% 0}}
+.hero p.lede{color:rgba(255,246,236,.9)}
+.door{box-shadow:0 18px 44px -16px rgba(0,0,0,.55)}
+.door.eat{background:linear-gradient(150deg,#ff9a3d,#ff3d7f 58%,#b5179e)}
+.door.drink{background:linear-gradient(150deg,#22d3ee,#4361ee 55%,#7b2ff7)}
+.door svg.deco{opacity:.28}
+/* ticker */
+.ticker-wrap{position:relative;z-index:1;overflow:hidden;padding:14px 0}
+.ticker{overflow:hidden;color:#1a0f2e;padding:12px 0;margin:6px -12px 0;transform:rotate(-1.4deg);
+  background:linear-gradient(90deg,#ff3d7f,#ff8a3d,#ffc94d,#22d3ee,#7b2ff7,#ff3d7f);background-size:200% 100%;animation:shine 16s linear infinite;box-shadow:0 10px 30px -10px rgba(0,0,0,.5)}
+.ticker .track{display:flex;width:max-content;animation:scrollx 45s linear infinite}
+.ticker span{display:inline-flex;align-items:center;gap:14px;padding-right:14px;font-family:"Cormorant Garamond",serif;font-size:25px;font-style:italic;font-weight:600;white-space:nowrap}
+.ticker svg{width:16px;height:16px}
+@keyframes scrollx{to{transform:translateX(-50%)}}
+/* text that sits on the sky */
+.section-head h2,.group-title h3{color:var(--sky-text)}
+.section-head p,.results-meta,.group-title .count{color:var(--sky-soft)}
+.group-title .line{background:linear-gradient(90deg,rgba(255,246,236,.35),transparent)}
+.results-meta button,.empty,.empty h3{color:var(--sky-text)}
+/* mood picks */
+.pick{background:linear-gradient(150deg,var(--g1),var(--g2));border:0;color:#fff;box-shadow:0 14px 30px -14px rgba(0,0,0,.55)}
+.pick p{color:rgba(255,255,255,.88)}
+.pick .ico{background:rgba(255,255,255,.22);color:#fff}
+.pick:hover{transform:translateY(-4px) scale(1.02)}
+.pick.active{outline:3px solid #fff;outline-offset:3px}
+/* filter bar */
+.bar{background:rgba(13,10,38,.74);border-bottom:1px solid rgba(255,255,255,.1)}
+.seg{background:rgba(255,255,255,.1)}
+.seg button{color:var(--sky-soft)}
+.seg button[aria-pressed="true"]{background:linear-gradient(90deg,var(--pink),var(--orange));color:#fff}
+.search input,.sort,.price-group button,.chip{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);color:var(--sky-text)}
+.search input::placeholder{color:var(--sky-soft)}.search svg{color:var(--sky-soft)}
+.sort option{color:#111}
+.chip:hover{border-color:var(--gold)}
+.chip[aria-pressed="true"]{background:var(--pink);border-color:var(--pink)}
+.price-group button[aria-pressed="true"]{background:var(--gold);color:#1a0f2e;border-color:var(--gold)}
+/* cards */
+.card{border:0}
+.card:hover{box-shadow:0 24px 50px -22px var(--accent)}
+.photo{background:linear-gradient(140deg,var(--accent),var(--accent2,#1a0f2e))}
+.photo::before{opacity:.12}
+.photo .art{position:absolute;right:5%;bottom:6%;width:50%;max-width:190px;color:#fff;filter:drop-shadow(0 8px 16px rgba(0,0,0,.25));transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.card:hover .photo .art{transform:rotate(-5deg) scale(1.06)}
+.photo .ph small{font-size:12px;opacity:.95;font-weight:600}
+.kind{color:color-mix(in srgb,var(--accent) 70%,#000)}
+:root[data-theme="dark"] .kind{color:color-mix(in srgb,var(--accent) 65%,#fff)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .kind{color:color-mix(in srgb,var(--accent) 65%,#fff)}}
+.tag-extra{color:var(--pink);border-color:var(--pink)}
+footer{margin-top:40px;padding-top:150px;background:linear-gradient(180deg,rgba(8,6,26,0),rgba(8,6,26,.45) 40%,rgba(8,6,26,.72))}
+footer p,footer .legend{text-shadow:0 1px 8px rgba(0,0,0,.8)}
+footer h5{background:linear-gradient(90deg,var(--gold),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.to-top{background:linear-gradient(135deg,var(--pink),var(--orange));color:#fff}
+@media (max-width:640px){.orb{width:50px;height:50px;right:7%;top:calc(13% - var(--p)*6%)}.ticker span{font-size:21px}}
+
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
+<div class="sky" aria-hidden="true"><div class="dusk"></div><div class="night"></div><div class="stars" id="stars"></div><div class="orb"></div></div>
+<div class="city" id="city" aria-hidden="true"></div>
 
 <header class="hero">
   <div class="wrap">
@@ -230,6 +312,8 @@ footer .fine{margin-top:40px;padding-top:20px;border-top:1px solid rgba(243,234,
     </div>
   </div>
 </header>
+
+<div class="ticker-wrap" aria-hidden="true"><div class="ticker"><div class="track"><span>Handmade pasta <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Martinis <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Rooftop sunsets <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Omakase <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Espresso <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Tacos &amp; mezcal <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Natural wine <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Jazz cellars <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Steak frites <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Late nights <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Handmade pasta <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Martinis <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Rooftop sunsets <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Omakase <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Espresso <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Tacos &amp; mezcal <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Natural wine <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Jazz cellars <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Steak frites <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Late nights <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span></div></div></div>
 
 <main>
   <div class="wrap">
@@ -301,19 +385,19 @@ footer .fine{margin-top:40px;padding-top:20px;border-top:1px solid rgba(243,234,
 /* ===================== DATA ===================== */
 // g = group (eat|drink), c = category id, p = price 1-4, w = walk minutes, x = concierge addition
 const CATS = {
-  american:{label:"American",g:"eat",color:"#9b3d24"},
-  italian:{label:"Italian",g:"eat",color:"#a5532c"},
-  french:{label:"French",g:"eat",color:"#7a3a4f"},
-  asian:{label:"Japanese & Asian",g:"eat",color:"#b4452e"},
-  mexican:{label:"Mexican & Latin",g:"eat",color:"#b06a1f"},
-  spanish:{label:"Spanish",g:"eat",color:"#a33b2b"},
-  global:{label:"Global",g:"eat",color:"#5d6b2f"},
-  steak:{label:"Steakhouse",g:"eat",color:"#6b2a20"},
-  fine:{label:"Fine Dining",g:"eat",color:"#8a6a32"},
-  cocktails:{label:"Cocktails",g:"drink",color:"#2f4b5c"},
-  wine:{label:"Wine",g:"drink",color:"#6d2943"},
-  rooftop:{label:"Rooftops",g:"drink",color:"#3b5f7a"},
-  coffee:{label:"Coffee",g:"drink",color:"#6b4a33"}
+  american:{label:"American",g:"eat",color:"#ff5a5f",c2:"#b5179e"},
+  italian:{label:"Italian",g:"eat",color:"#ff8a3d",c2:"#e63946"},
+  french:{label:"French",g:"eat",color:"#c45bff",c2:"#4361ee"},
+  asian:{label:"Japanese & Asian",g:"eat",color:"#ff3d7f",c2:"#7b2ff7"},
+  mexican:{label:"Mexican & Latin",g:"eat",color:"#ffb000",c2:"#ff3d7f"},
+  spanish:{label:"Spanish",g:"eat",color:"#ff5e3a",c2:"#ffb000"},
+  global:{label:"Global",g:"eat",color:"#2ec4b6",c2:"#4361ee"},
+  steak:{label:"Steakhouse",g:"eat",color:"#e63946",c2:"#5c0b2b"},
+  fine:{label:"Fine Dining",g:"eat",color:"#d9a441",c2:"#4a2a7a"},
+  cocktails:{label:"Cocktails",g:"drink",color:"#4361ee",c2:"#22d3ee"},
+  wine:{label:"Wine",g:"drink",color:"#9d4edd",c2:"#ff3d7f"},
+  rooftop:{label:"Rooftops",g:"drink",color:"#00b4d8",c2:"#7b2ff7"},
+  coffee:{label:"Coffee",g:"drink",color:"#c47a45",c2:"#4a2412"}
 };
 
 const PLACES = [
@@ -494,7 +578,7 @@ function renderStats(){
   $("#stats").innerHTML=`<div><b>${eat}</b><span>Restaurants</span></div><div><b>${drink}</b><span>Bars &amp; cafés</span></div><div><b>${cuisines}</b><span>Cuisines</span></div>`;
 }
 function renderPicks(){
-  $("#picksGrid").innerHTML=PICKS.map(p=>`<button class="pick${state.pick===p.id?" active":""}" data-pick="${p.id}" aria-pressed="${state.pick===p.id}">
+  $("#picksGrid").innerHTML=PICKS.map((p,i)=>`<button class="pick${state.pick===p.id?" active":""}" style="--g1:${PICK_COLORS[i][0]};--g2:${PICK_COLORS[i][1]}" data-pick="${p.id}" aria-pressed="${state.pick===p.id}">
     <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${p.icon}</svg></div>
     <h3>${p.title}</h3><p>${p.desc}</p></button>`).join("");
 }
@@ -518,9 +602,9 @@ function card(p,i){
     ?`<a class="go" href="${web}" target="_blank" rel="noopener">Website ${ICON.arrow}</a>`
     :`<a class="go" href="${findUrl(p)}" target="_blank" rel="noopener">Find online ${ICON.arrow}</a>`;
   const webRow=web?`<div>${ICON.globe}<span>${esc(web.replace(/^https?:\/\/(www\.)?/,"").replace(/\/$/,""))}</span></div>`:"";
-  return `<article class="card" style="--accent:${cat.color};animation-delay:${Math.min(i,12)*30}ms">
+  return `<article class="card" style="--accent:${cat.color};--accent2:${cat.c2};animation-delay:${Math.min(i,12)*30}ms">
     <div class="photo">
-      <div class="ph" aria-hidden="true"><span class="mono">${esc(initial)}</span><small>${esc(p.k)}</small></div>
+      <div class="ph" aria-hidden="true">${ART[p.c]}<small>${esc(p.k)}</small></div>
       <img src="${p.img||"images/"+slug(p.n)+".jpg"}" alt="${esc(p.n)}" loading="lazy" onerror="this.remove()">
       <div class="badges"><span class="pill">${ICON.walk}${walkTxt(p.w)}</span><span class="pill price" aria-label="Price level ${p.p} of 4">${priceHtml(p.p)}</span></div>
       <button class="save" data-save="${esc(p.n)}" aria-pressed="${saved}" aria-label="${saved?"Remove from":"Save to"} my list">${saved?ICON.heart:ICON.heartO}</button>
@@ -597,6 +681,68 @@ const savedTheme=store.get("corner-theme",null);if(savedTheme)root.dataset.theme
 themeBtn.addEventListener("click",()=>{root.dataset.theme=isDark()?"light":"dark";store.set("corner-theme",root.dataset.theme);syncTheme()});
 syncTheme();
 
+
+/* ===================== ILLUSTRATIONS ===================== */
+const PICK_COLORS=[["#ff8a3d","#ff3d7f"],["#ff3d7f","#9d4edd"],["#c47a45","#ff8a3d"],["#22d3ee","#7b2ff7"],["#4361ee","#22d3ee"],["#9d4edd","#ff3d7f"],["#ffb000","#ff5e3a"],["#2ec4b6","#4361ee"]];
+const art=d=>'<svg class="art" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">'+d+'</svg>';
+const ART={
+  american:art('<path d="M18 46Q50 8 82 46Z" fill="rgba(255,255,255,.18)"/><path d="M38 30l2-2M50 24l2-1M62 30l1-2M45 37l2-1M58 38l2-1"/><path d="M14 54q6-6 12 0t12 0 12 0 12 0 12 0 12 0"/><rect x="16" y="58" width="68" height="11" rx="5" fill="rgba(0,0,0,.18)"/><path d="M18 74h64q0 11-11 11H29q-11 0-11-11z" fill="rgba(255,255,255,.18)"/>'),
+  italian:art('<ellipse cx="44" cy="74" rx="34" ry="11" fill="rgba(255,255,255,.15)"/><path d="M22 70q22-16 44 0M27 63q17-12 34 0M32 56q12-8 24 0M37 50q7-4 14 0"/><circle cx="34" cy="64" r="3" fill="currentColor"/><circle cx="56" cy="60" r="3" fill="currentColor"/><path d="M78 12v18M84 12v18M90 12v18M78 30q6 7 12 0M84 34v54"/>'),
+  french:art('<path d="M10 64Q50 18 90 64Q76 58 66 66Q50 50 34 66Q24 58 10 64Z" fill="rgba(255,255,255,.18)"/><path d="M34 66Q40 44 50 36M66 66Q60 44 50 36M22 60q8-12 18-18M78 60q-8-12-18-18"/><path d="M30 84h40"/>'),
+  asian:art('<path d="M18 72q0-10 14-10h36q14 0 14 10q0 9-11 9H29q-11 0-11-9z" fill="rgba(255,255,255,.18)"/><path d="M16 62q32-24 68-4q-32 7-68 4z" fill="rgba(0,0,0,.15)"/><path d="M40 54l-4 8M52 51l-4 9M64 53l-4 8"/><path d="M20 30L88 14M22 39L90 25"/>'),
+  mexican:art('<path d="M12 74A38 38 0 0 1 88 74Z" fill="rgba(255,255,255,.18)"/><path d="M20 58q6-9 12 0q6-9 12 0q6-9 12 0q6-9 12 0q6-9 12 0"/><circle cx="34" cy="50" r="3" fill="currentColor"/><circle cx="52" cy="46" r="3" fill="currentColor"/><circle cx="68" cy="50" r="3" fill="currentColor"/><path d="M76 20q8 4 6 14M68 16q8 2 8 10"/>'),
+  spanish:art('<ellipse cx="50" cy="60" rx="36" ry="18" fill="rgba(255,255,255,.16)"/><path d="M14 60H4M86 60h10"/><path d="M32 58q6-9 13 0M54 66q6-9 13 0"/><circle cx="40" cy="68" r="4"/><circle cx="62" cy="54" r="4"/><path d="M48 50a7 7 0 0 1 14 0z" fill="currentColor"/><path d="M30 20q4 6 0 12M44 16q4 6 0 12M58 20q4 6 0 12"/>'),
+  global:art('<circle cx="50" cy="50" r="32" fill="rgba(255,255,255,.12)"/><ellipse cx="50" cy="50" rx="14" ry="32"/><path d="M18 50h64M22 34h56M22 66h56"/><path d="M84 14l4 8M90 12l-4 10"/>'),
+  steak:art('<path d="M16 52q4-22 32-20q26 2 34 16q8 15-9 25q-21 12-42 4q-19-8-15-25z" fill="rgba(255,255,255,.18)"/><circle cx="60" cy="50" r="7"/><path d="M28 50q8-6 16 2M36 64q10-4 18 2"/><path d="M80 12l12 12-24 24"/>'),
+  fine:art('<path d="M16 68a34 34 0 0 1 68 0z" fill="rgba(255,255,255,.18)"/><path d="M8 74h84"/><circle cx="50" cy="30" r="4" fill="currentColor"/><path d="M28 54q6-14 18-18"/><path d="M84 12v10M79 17h10M14 20v8M10 24h8"/>'),
+  cocktails:art('<path d="M20 20h60L50 54Z" fill="rgba(255,255,255,.18)"/><path d="M26 28h48"/><path d="M50 54v26M36 82h28"/><circle cx="44" cy="36" r="5" fill="currentColor"/><path d="M36 14l14 28"/><path d="M80 34v8M76 38h8M18 52v6M15 55h6"/>'),
+  wine:art('<path d="M30 14h28q3 28-14 34q-17-6-14-34z" fill="rgba(255,255,255,.12)"/><path d="M31 28h26" /><path d="M32 30q12 6 24 0v-2H32z" fill="currentColor"/><path d="M44 48v30M32 80h24"/><path d="M74 34V18h8v16q7 5 7 13v35H67V47q0-8 7-13z" fill="rgba(255,255,255,.18)"/><path d="M67 58h22"/>'),
+  rooftop:art('<path d="M8 86V60h12V48h10v12h8V32l6-10 6 10v54M58 86V52h12v-8h10v42" fill="rgba(255,255,255,.14)"/><path d="M4 86h92"/><path d="M8 20q22 12 44 0t44 0"/><circle cx="19" cy="25" r="2" fill="currentColor"/><circle cx="41" cy="25" r="2" fill="currentColor"/><circle cx="63" cy="25" r="2" fill="currentColor"/><circle cx="85" cy="25" r="2" fill="currentColor"/><path d="M84 40a8 8 0 1 1-8-10a6 6 0 0 0 8 10z" fill="currentColor"/>'),
+  coffee:art('<path d="M20 44h50v16a25 25 0 0 1-50 0z" fill="rgba(255,255,255,.18)"/><path d="M70 48a10 10 0 0 1 0 19"/><path d="M12 88h66"/><path d="M34 16q-6 8 0 15M46 12q-6 8 0 15M58 16q-6 8 0 15"/><path d="M34 54q11 6 22 0"/>')
+};
+
+/* ===================== SKYLINE ===================== */
+function rng(seed){return()=>(seed=(seed*16807)%2147483647)/2147483647}
+function skylineLayer(cls,o){
+  const r=rng(o.seed),body=[],wins=[];let x=-30;
+  while(x<1630){
+    const w=o.wmin+r()*(o.wmax-o.wmin),h=o.hmin+r()*(o.hmax-o.hmin),y=400-h;
+    if(o.skip&&x+w>o.skip[0]&&x<o.skip[1]){x+=w+o.gap;continue}
+    body.push(`M${x.toFixed(0)} 400V${y.toFixed(0)}h${w.toFixed(0)}V400z`);
+    const roll=r();
+    if(roll<o.tower){const tx=x+w*.25;body.push(`M${tx+2} ${y}v-8h2v8zM${tx+12} ${y}v-8h2v8zM${tx} ${y-8}v-12h16v12zM${tx-1} ${y-20}l9-7 9 7z`)}
+    else if(roll<o.tower+.15){body.push(`M${(x+w/2-1).toFixed(0)} ${y}v-${(10+r()*22).toFixed(0)}h2V${y}z`)}
+    else if(roll<o.tower+.3){body.push(`M${x+4} ${y}v-10h${(w-8).toFixed(0)}v10z`)}
+    if(o.lit){for(let wy=y+10;wy<388;wy+=13)for(let wx=x+6;wx<x+w-7;wx+=10)if(r()<o.lit)
+      wins.push(`<rect class="win${r()<.12?" tw":""}" x="${wx.toFixed(0)}" y="${wy.toFixed(0)}" width="4" height="6" style="animation-delay:${(r()*6).toFixed(1)}s"/>`)}
+    x+=w+o.gap;
+  }
+  return `<svg class="${cls}" viewBox="0 0 1600 400" preserveAspectRatio="xMidYMax slice"><path fill="${o.fill}" d="${body.join("")}${o.extra||""}"/>${o.cut?`<path fill="${o.fill}" fill-rule="evenodd" d="${o.cut}"/>`:""}${o.decor||""}${wins.join("")}</svg>`;
+}
+function buildCity(){
+  const empire="M722 400V205h76V400zM732 205V165h56V205zM744 165V125h32V165zM753 125V98h14V125zM757 98V72h6V98zM759 72V22h2V72z";
+  const chrysler="M1004 400V178h48V400zM1006 178a22 22 0 0 1 44 0zM1012 162a16 16 0 0 1 32 0zM1017 147a11 11 0 0 1 22 0zM1021 135a7 7 0 0 1 14 0zM1026 130l2-78 2 78z";
+  const wtc="M330 400V330L352 112H396L418 330V400zM373 112V28h2V112z";
+  const slim="M590 400V96h20V400zM1240 400V140h26V400z";
+  const crown='<g fill="#ffd36e" opacity=".9"><path d="M1016 176l4-8 4 8zM1026 176l4-8 4 8zM1036 176l4-8 4 8zM1021 160l3-6 3 6zM1029 160l3-6 3 6zM1037 160l3-6 3 6zM1025 146l3-5 3 5zM1031 146l3-5 3 5z"/></g><circle cx="760" cy="22" r="3" fill="#ff5a5f"/><circle cx="374" cy="28" r="3" fill="#ff5a5f"/>';
+  const arch="M1150 400V262h128V400zM1180 400V330a34 34 0 0 1 68 0V400zM1142 262V248h144V262z";
+  const trees="M1100 400a24 22 0 0 1 48 0zM1118 400a30 30 0 0 1 2-44a22 22 0 0 1 30 10a20 20 0 0 1 4 34zM1282 400a26 26 0 0 1 4-40a22 22 0 0 1 34 8a20 20 0 0 1 2 32z";
+  document.getElementById("city").innerHTML=
+    skylineLayer("far",{seed:11,wmin:40,wmax:90,hmin:110,hmax:230,gap:2,tower:.05,fill:"rgba(70,36,120,.55)"})+
+    skylineLayer("mid",{seed:29,wmin:44,wmax:96,hmin:80,hmax:190,gap:4,tower:.12,lit:.12,fill:"#22174d",extra:empire+chrysler+wtc+slim,decor:crown})+
+    skylineLayer("near",{seed:53,wmin:50,wmax:120,hmin:40,hmax:120,gap:0,tower:.35,lit:.2,fill:"#0d0a26",skip:[1095,1335],extra:trees,cut:arch});
+  const stars=document.getElementById("stars"),r=rng(7);let h="";
+  for(let i=0;i<90;i++)h+=`<i style="left:${(r()*100).toFixed(2)}%;top:${(r()*100).toFixed(2)}%;animation-delay:${(r()*3.5).toFixed(2)}s;transform:scale(${(.5+r()*1.2).toFixed(2)})"></i>`;
+  stars.innerHTML=h;
+}
+buildCity();
+let ticking=false;
+function onScroll(){
+  if(ticking)return;ticking=true;
+  requestAnimationFrame(()=>{const max=Math.max(1,document.documentElement.scrollHeight-innerHeight);
+    document.documentElement.style.setProperty("--p",Math.min(1,scrollY/max).toFixed(3));ticking=false});
+}
+addEventListener("scroll",onScroll,{passive:true});addEventListener("resize",onScroll);onScroll();
 renderStats();render();
 </script>
 </body>
