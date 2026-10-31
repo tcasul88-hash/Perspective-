@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Around the Corner · The Marlton Guide</title>
-<meta name="description" content="A guest guide to the best places to eat and drink around The Marlton Hotel in Greenwich Village: restaurants by cuisine, cocktail bars, wine bars, rooftops and coffee.">
+<title>Around the Corner · Greenwich Village Guide</title>
+<meta name="description" content="A guide to the best places to eat and drink in Greenwich Village: restaurants by cuisine, cocktail bars, wine bars, rooftops and coffee.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
@@ -202,15 +202,15 @@ footer .fine{margin-top:40px;padding-top:20px;border-top:1px solid rgba(243,234,
     <div class="topbar">
       <div class="mark">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>
-        The Marlton · Greenwich Village
+        Greenwich Village · NYC
       </div>
       <button class="theme-btn" id="themeBtn" aria-label="Toggle light or dark theme">Dark</button>
     </div>
     <div class="hero-body">
       <div>
-        <div class="eyebrow">A guest guide · 5 West 8th Street</div>
+        <div class="eyebrow">A local guide · Eat &amp; drink</div>
         <h1>Around<br>the <em>Corner</em></h1>
-        <p class="lede">Our favorite tables, bars, rooftops and coffee counters, all within an easy stroll of the lobby. Filter by mood, cuisine or distance, and tap for walking directions.</p>
+        <p class="lede">Favorite tables, bars, rooftops and coffee counters, all within an easy stroll of Washington Square. Filter by mood, cuisine or distance, and tap for walking directions.</p>
         <div class="hero-stats" id="stats"></div>
       </div>
       <div class="doors">
@@ -280,18 +280,18 @@ footer .fine{margin-top:40px;padding-top:20px;border-top:1px solid rgba(243,234,
   <div class="wrap">
     <div class="f-grid">
       <div>
-        <h5>Need a reservation<br>or a recommendation?</h5>
-        <p style="margin-top:14px;max-width:420px">Our front desk is happy to call ahead, book a table, or point you somewhere that suits your night.</p>
+        <h5>Want a personal<br>recommendation?</h5>
+        <p style="margin-top:14px;max-width:420px">Tell me what kind of night you have in mind, and I will point you somewhere that suits it.</p>
       </div>
       <div class="legend">
         <div><span class="pill" style="background:rgba(243,234,217,.08)">$</span> Under $20 per person</div>
         <div><span class="pill" style="background:rgba(243,234,217,.08)">$$</span> Casual, moderate</div>
         <div><span class="pill" style="background:rgba(243,234,217,.08)">$$$</span> Special night out</div>
         <div><span class="pill" style="background:rgba(243,234,217,.08)">$$$$</span> Splurge</div>
-        <div><span class="pill tag-extra">Concierge pick</span> Added to round out drinks, rooftops &amp; coffee</div>
+        <div><span class="pill tag-extra">Local pick</span> Added to round out drinks, rooftops &amp; coffee</div>
       </div>
     </div>
-    <p class="fine">Walk times are approximate from the hotel. Hours, menus and seasonal rooftops change, so please check with the venue or the front desk before heading out.</p>
+    <p class="fine">Walk times are approximate from West 8th Street and Fifth Avenue. Hours, menus and seasonal rooftops change, so please check with the venue before heading out.</p>
   </div>
 </footer>
 
@@ -340,7 +340,7 @@ const PLACES = [
   {n:"Amélie Wine Bar & Bistro",c:"french",k:"French · Wine bar",a:"22 W 8th St",p:2,w:1,d:"A cozy French wine bar with small plates, right next door.",t:["casual","near","drinks"],also:["wine"]},
   {n:"Le Baratin",c:"french",k:"French",a:"26 Greenwich Ave",p:2,w:5,d:"An easygoing French bistro for a relaxed dinner.",t:["casual"]},
   // Japanese & Asian
-  {n:"Kazumi Omakase",c:"asian",k:"Sushi",a:"31 W 8th St",p:2,w:2,d:"An intimate sushi counter serving a chef's choice omakase, steps from the lobby.",t:["date","near","book"]},
+  {n:"Kazumi Omakase",c:"asian",k:"Sushi",a:"31 W 8th St",p:2,w:2,d:"An intimate sushi counter serving a chef's choice omakase, steps off Fifth Avenue.",t:["date","near","book"]},
   {n:"Omakase Room by Maaser",c:"asian",k:"Japanese",a:"321 Bleecker St",p:2,w:9,d:"A small omakase counter with a personal, chef-led experience.",t:["date","book"]},
   {n:"Blue Ribbon Sushi",c:"asian",k:"Japanese",a:"119 Sullivan St",p:2,w:13,d:"A downtown sushi institution, known for pristine fish and late hours.",t:["casual"]},
   {n:"Rasa",c:"asian",k:"Malaysian",a:"25 W 8th St",p:2,w:1,d:"Modern Malaysian cooking with bold flavors, right on 8th Street.",t:["casual","near"]},
@@ -391,11 +391,11 @@ const PLACES = [
 ];
 
 const PICKS = [
-  {id:"near",title:"Steps away",desc:"Two minutes or less from the lobby.",icon:'<path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>',fn:p=>p.w<=2},
+  {id:"near",title:"Steps away",desc:"Two minutes or less from 8th Street and Fifth.",icon:'<path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>',fn:p=>p.w<=2},
   {id:"date",title:"Date night",desc:"Candlelight, romance and great wine.",icon:'<path d="M12 20s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.6-7 10-7 10z"/>',fn:p=>p.t.includes("date")},
   {id:"morning",title:"Morning coffee",desc:"The best cup nearby.",icon:'<path d="M4 9h13v5a5 5 0 01-5 5H9a5 5 0 01-5-5zM17 10h1.5a2.5 2.5 0 010 5H17M8 3v3M12 3v3"/>',fn:p=>p.c==="coffee"},
   {id:"views",title:"Rooftop views",desc:"Drinks with a skyline.",icon:'<path d="M3 21h18M5 21V11l4-3v13M13 21V5l6 3v13"/>',fn:p=>p.c==="rooftop"},
-  {id:"drinks",title:"Cocktail hour",desc:"Bars our team actually goes to.",icon:'<path d="M5 4h14l-7 8zM12 12v8M8 20h8"/>',fn:p=>p.c==="cocktails"||(p.also||[]).includes("cocktails")},
+  {id:"drinks",title:"Cocktail hour",desc:"Bars worth the trip.",icon:'<path d="M5 4h14l-7 8zM12 12v8M8 20h8"/>',fn:p=>p.c==="cocktails"||(p.also||[]).includes("cocktails")},
   {id:"wine",title:"A glass of wine",desc:"Wine bars and serious lists.",icon:'<path d="M8 3h8l-.5 6a3.5 3.5 0 01-7 0zM12 13v8M9 21h6"/>',fn:p=>p.c==="wine"||(p.also||[]).includes("wine")},
   {id:"groups",title:"Fun with a group",desc:"Lively rooms and shareable food.",icon:'<circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20a6 6 0 0112 0M15 20a4.5 4.5 0 016-4"/>',fn:p=>p.t.includes("groups")},
   {id:"book",title:"Worth booking",desc:"Special spots that fill up fast.",icon:'<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/>',fn:p=>p.t.includes("book")}
@@ -406,7 +406,7 @@ const store = {
   get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},
   set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
 };
-const state = {mode:"all",cat:null,pick:null,prices:new Set(),q:"",sort:"walk",saved:new Set(store.get("marlton-saved",[]))};
+const state = {mode:"all",cat:null,pick:null,prices:new Set(),q:"",sort:"walk",saved:new Set(store.get("corner-saved",[]))};
 
 const $ = s=>document.querySelector(s);
 const esc = s=>s.replace(/[&<>"]/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]));
@@ -416,8 +416,7 @@ const ICON = {
   heartO:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 20s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.6-7 10-7 10z"/></svg>',
   arrow:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>'
 };
-const ORIGIN = "The Marlton Hotel, 5 W 8th St, New York, NY 10011";
-const dirUrl = p=>"https://www.google.com/maps/dir/?api=1&travelmode=walking&origin="+encodeURIComponent(ORIGIN)+"&destination="+encodeURIComponent(p.n+", "+p.a+", New York, NY");
+const dirUrl = p=>"https://www.google.com/maps/dir/?api=1&travelmode=walking&destination="+encodeURIComponent(p.n+", "+p.a+", New York, NY");
 const priceHtml = n=>"<b>"+"$".repeat(n)+"</b><i>"+"$".repeat(4-n)+"</i>";
 const walkTxt = w=>w>20?"Short cab":w+" min walk";
 const findUrl = p=>"https://www.google.com/search?q="+encodeURIComponent(p.n+" "+p.a+" New York");
@@ -529,7 +528,7 @@ function card(p,i){
     <div class="body">
       <div class="kind">${esc(p.k)}</div><h4>${esc(p.n)}</h4>
       <p class="blurb">${esc(p.d)}</p>
-      ${p.x?'<div class="meta"><span class="pill tag-extra">Concierge pick</span></div>':""}
+      ${p.x?'<div class="meta"><span class="pill tag-extra">Local pick</span></div>':""}
       <div class="info">
         <div>${ICON.pin}<span>${esc(p.a)}, New York, NY</span></div>
         ${webRow}
@@ -578,7 +577,7 @@ document.addEventListener("click",e=>{
   else if(t.dataset.cat!==undefined){state.cat=t.dataset.cat||null;render();}
   else if(t.dataset.pick){state.pick=state.pick===t.dataset.pick?null:t.dataset.pick;state.mode="all";state.cat=null;render();if(state.pick)jump();}
   else if(t.dataset.price){const v=+t.dataset.price;state.prices.has(v)?state.prices.delete(v):state.prices.add(v);render();}
-  else if(t.dataset.save){const n=t.dataset.save;state.saved.has(n)?state.saved.delete(n):state.saved.add(n);store.set("marlton-saved",[...state.saved]);render();}
+  else if(t.dataset.save){const n=t.dataset.save;state.saved.has(n)?state.saved.delete(n):state.saved.add(n);store.set("corner-saved",[...state.saved]);render();}
   else if(t.id==="reset"){Object.assign(state,{mode:"all",cat:null,pick:null,q:"",sort:state.sort});state.prices.clear();$("#q").value="";render();}
 });
 $("#q").addEventListener("input",e=>{state.q=e.target.value;renderResults();renderChips();
@@ -594,8 +593,8 @@ toTop.addEventListener("click",()=>scrollTo({top:0,behavior:"smooth"}));
 const root=document.documentElement,themeBtn=$("#themeBtn");
 function isDark(){const t=root.dataset.theme;return t?t==="dark":matchMedia("(prefers-color-scheme: dark)").matches}
 function syncTheme(){themeBtn.textContent=isDark()?"Light":"Dark"}
-const savedTheme=store.get("marlton-theme",null);if(savedTheme)root.dataset.theme=savedTheme;
-themeBtn.addEventListener("click",()=>{root.dataset.theme=isDark()?"light":"dark";store.set("marlton-theme",root.dataset.theme);syncTheme()});
+const savedTheme=store.get("corner-theme",null);if(savedTheme)root.dataset.theme=savedTheme;
+themeBtn.addEventListener("click",()=>{root.dataset.theme=isDark()?"light":"dark";store.set("corner-theme",root.dataset.theme);syncTheme()});
 syncTheme();
 
 renderStats();render();
