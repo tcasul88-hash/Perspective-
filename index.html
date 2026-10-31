@@ -272,6 +272,13 @@ footer h5{background:linear-gradient(90deg,var(--gold),var(--pink));-webkit-back
 .to-top{background:linear-gradient(135deg,var(--pink),var(--orange));color:#fff}
 @media (max-width:640px){.orb{width:50px;height:50px;right:7%;top:calc(13% - var(--p)*6%)}.ticker span{font-size:21px}}
 
+.top-actions{display:flex;gap:8px;align-items:center}
+.lang{position:relative;display:inline-flex;align-items:center}
+.lang svg{position:absolute;left:11px;width:15px;height:15px;color:var(--gold);pointer-events:none}
+.lang select{appearance:none;-webkit-appearance:none;font:inherit;font-size:12px;letter-spacing:.06em;color:var(--cream);background:rgba(255,255,255,.06);border:1px solid rgba(243,234,217,.25);border-radius:999px;padding:7px 14px 7px 32px;cursor:pointer}
+.lang select:hover,.lang select:focus{border-color:var(--gold);outline:none}
+.lang select option{color:#111;background:#fff}
+@media (max-width:640px){.hero-stats{flex-wrap:nowrap;gap:14px}.hero-stats div{flex:1;min-width:0;padding-left:10px}.hero-stats span{font-size:10.5px;letter-spacing:.08em;display:block;line-height:1.3;margin-top:4px}.topbar{gap:10px}.topbar .mark{font-size:11px;letter-spacing:.1em}.lang select{max-width:122px;text-overflow:ellipsis}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
@@ -286,41 +293,41 @@ footer h5{background:linear-gradient(90deg,var(--gold),var(--pink));-webkit-back
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>
         Greenwich Village · NYC
       </div>
-      <button class="theme-btn" id="themeBtn" aria-label="Toggle light or dark theme">Dark</button>
+      <div class="top-actions"><label class="lang"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg><select id="lang" aria-label="Language"></select></label><button class="theme-btn" id="themeBtn" aria-label="Toggle light or dark theme">Dark</button></div>
     </div>
     <div class="hero-body">
       <div>
-        <div class="eyebrow">A local guide · Eat &amp; drink</div>
+        <div class="eyebrow" data-i18n="eyebrow">A local guide · Eat &amp; drink</div>
         <h1>Around<br>the <em>Corner</em></h1>
-        <p class="lede">Favorite tables, bars, rooftops and coffee counters, all within an easy stroll of Washington Square. Filter by mood, cuisine or distance, and tap for walking directions.</p>
+        <p class="lede" data-i18n="lede">Favorite tables, bars, rooftops and coffee counters, all within an easy stroll of Washington Square. Filter by mood, cuisine or distance, and tap for walking directions.</p>
         <div class="hero-stats" id="stats"></div>
       </div>
       <div class="doors">
         <button class="door eat" data-door="eat">
           <svg class="deco" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1"><path d="M7 2v20M4 2v6a3 3 0 006 0V2M17 2c-2 0-3 3-3 7s1 5 3 5v8"/></svg>
-          <small>Restaurants</small>
-          <div><strong>Eat</strong><div class="sub">Italian, French, sushi, tacos, steak &amp; more</div>
-          <span class="arrow">Explore <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+          <small data-i18n="door_eat_small">Restaurants</small>
+          <div><strong data-i18n="door_eat">Eat</strong><div class="sub" data-i18n="door_eat_sub">Italian, French, sushi, tacos, steak &amp; more</div>
+          <span class="arrow"><span data-i18n="explore">Explore</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
         </button>
         <button class="door drink" data-door="drink">
           <svg class="deco" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1"><path d="M4 3h16l-8 9zM12 12v9M8 21h8"/></svg>
-          <small>Bars &amp; Coffee</small>
-          <div><strong>Drink</strong><div class="sub">Cocktails, wine, rooftops &amp; coffee</div>
-          <span class="arrow">Explore <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+          <small data-i18n="door_drink_small">Bars &amp; Coffee</small>
+          <div><strong data-i18n="door_drink">Drink</strong><div class="sub" data-i18n="door_drink_sub">Cocktails, wine, rooftops &amp; coffee</div>
+          <span class="arrow"><span data-i18n="explore">Explore</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
         </button>
       </div>
     </div>
   </div>
 </header>
 
-<div class="ticker-wrap" aria-hidden="true"><div class="ticker"><div class="track"><span>Handmade pasta <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Martinis <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Rooftop sunsets <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Omakase <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Espresso <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Tacos &amp; mezcal <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Natural wine <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Jazz cellars <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Steak frites <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Late nights <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Handmade pasta <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Martinis <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Rooftop sunsets <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Omakase <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Espresso <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Tacos &amp; mezcal <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Natural wine <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Jazz cellars <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Steak frites <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Late nights <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span></div></div></div>
+<div class="ticker-wrap" aria-hidden="true"><div class="ticker"><div class="track" id="tickerTrack"><span>Handmade pasta <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Martinis <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Rooftop sunsets <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Omakase <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Espresso <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Tacos &amp; mezcal <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Natural wine <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Jazz cellars <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Steak frites <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Late nights <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Handmade pasta <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Martinis <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Rooftop sunsets <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Omakase <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Espresso <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Tacos &amp; mezcal <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Natural wine <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Jazz cellars <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Steak frites <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Late nights <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span></div></div></div>
 
 <main>
   <div class="wrap">
     <section id="picks">
       <div class="section-head">
-        <h2 class="serif">Not sure where to start?</h2>
-        <p>Pick a mood and we'll narrow the list for you.</p>
+        <h2 class="serif" data-i18n="picks_title">Not sure where to start?</h2>
+        <p data-i18n="picks_sub">Pick a mood and we'll narrow the list for you.</p>
       </div>
       <div class="picks" id="picksGrid"></div>
     </section>
@@ -330,22 +337,22 @@ footer h5{background:linear-gradient(90deg,var(--gold),var(--pink));-webkit-back
     <div class="wrap">
       <div class="bar-row">
         <div class="seg" role="group" aria-label="Show">
-          <button data-mode="all" aria-pressed="true">All</button>
-          <button data-mode="eat" aria-pressed="false">Eat</button>
-          <button data-mode="drink" aria-pressed="false">Drink</button>
-          <button data-mode="saved" aria-pressed="false">Saved</button>
+          <button data-mode="all" data-i18n="mode_all" aria-pressed="true">All</button>
+          <button data-mode="eat" data-i18n="mode_eat" aria-pressed="false">Eat</button>
+          <button data-mode="drink" data-i18n="mode_drink" aria-pressed="false">Drink</button>
+          <button data-mode="saved" data-i18n="mode_saved" aria-pressed="false">Saved</button>
         </div>
         <label class="search">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-          <input id="q" type="search" placeholder="Search a name, cuisine or street…" aria-label="Search">
+          <input id="q" type="search" data-i18n-ph="search_ph" placeholder="Search a name, cuisine or street…" aria-label="Search">
         </label>
         <div class="price-group" role="group" aria-label="Price">
           <button data-price="1">$</button><button data-price="2">$$</button><button data-price="3">$$$</button><button data-price="4">$$$$</button>
         </div>
         <select class="sort" id="sort" aria-label="Sort">
-          <option value="walk">Closest first</option>
-          <option value="name">A to Z</option>
-          <option value="price">Price</option>
+          <option value="walk" data-i18n="sort_walk">Closest first</option>
+          <option value="name" data-i18n="sort_name">A to Z</option>
+          <option value="price" data-i18n="sort_price">Price</option>
         </select>
       </div>
       <div class="chips" id="chips" role="group" aria-label="Category"></div>
@@ -354,7 +361,7 @@ footer h5{background:linear-gradient(90deg,var(--gold),var(--pink));-webkit-back
 
   <div class="wrap">
     <section id="list">
-      <div class="results-meta"><span id="count"></span><button id="reset" hidden>Clear filters</button></div>
+      <div class="results-meta"><span id="count"></span><button id="reset" hidden data-i18n="clear">Clear filters</button></div>
       <div id="results"></div>
     </section>
   </div>
@@ -364,23 +371,24 @@ footer h5{background:linear-gradient(90deg,var(--gold),var(--pink));-webkit-back
   <div class="wrap">
     <div class="f-grid">
       <div>
-        <h5>Want a personal<br>recommendation?</h5>
-        <p style="margin-top:14px;max-width:420px">Tell me what kind of night you have in mind, and I will point you somewhere that suits it.</p>
+        <h5 data-i18n-html="foot_h">Want a personal<br>recommendation?</h5>
+        <p style="margin-top:14px;max-width:420px" data-i18n="foot_p">Tell me what kind of night you have in mind, and I will point you somewhere that suits it.</p>
       </div>
       <div class="legend">
-        <div><span class="pill" style="background:rgba(243,234,217,.08)">$</span> Under $20 per person</div>
-        <div><span class="pill" style="background:rgba(243,234,217,.08)">$$</span> Casual, moderate</div>
-        <div><span class="pill" style="background:rgba(243,234,217,.08)">$$$</span> Special night out</div>
-        <div><span class="pill" style="background:rgba(243,234,217,.08)">$$$$</span> Splurge</div>
-        <div><span class="pill tag-extra">Local pick</span> Added to round out drinks, rooftops &amp; coffee</div>
+        <div><span class="pill" style="background:rgba(243,234,217,.08)">$</span> <span data-i18n="leg1">Under $20 per person</span></div>
+        <div><span class="pill" style="background:rgba(243,234,217,.08)">$$</span> <span data-i18n="leg2">Casual, moderate</span></div>
+        <div><span class="pill" style="background:rgba(243,234,217,.08)">$$$</span> <span data-i18n="leg3">Special night out</span></div>
+        <div><span class="pill" style="background:rgba(243,234,217,.08)">$$$$</span> <span data-i18n="leg4">Splurge</span></div>
+        <div><span class="pill tag-extra">Local pick</span> <span data-i18n="leg5">Added to round out drinks, rooftops &amp; coffee</span></div>
       </div>
     </div>
-    <p class="fine">Walk times are approximate from West 8th Street and Fifth Avenue. Hours, menus and seasonal rooftops change, so please check with the venue before heading out.</p>
+    <p class="fine" data-i18n="fine">Walk times are approximate from West 8th Street and Fifth Avenue. Hours, menus and seasonal rooftops change, so please check with the venue before heading out.</p>
   </div>
 </footer>
 
-<button class="to-top" id="toTop" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
+<button class="to-top" id="toTop" aria-label="Back to top" data-i18n-aria="backtop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
 
+<script src="i18n.js"></script>
 <script>
 /* ===================== DATA ===================== */
 // g = group (eat|drink), c = category id, p = price 1-4, w = walk minutes, x = concierge addition
@@ -492,6 +500,15 @@ const store = {
 };
 const state = {mode:"all",cat:null,pick:null,prices:new Set(),q:"",sort:"walk",saved:new Set(store.get("corner-saved",[]))};
 
+const SUPPORTED=LANGS.map(l=>l[0]);
+let LANG=(()=>{const saved=store.get("corner-lang",null);if(saved&&SUPPORTED.includes(saved))return saved;
+  const nav=(navigator.language||"en").slice(0,2).toLowerCase();return SUPPORTED.includes(nav)?nav:"en"})();
+const L=()=>I18N[LANG]||{};
+function t(k,n){const v=(L().ui&&L().ui[k])||I18N.en.ui[k]||k;return n===undefined?v:v.replace("{n}",n)}
+const catLabel=c=>(L().cats&&L().cats[c])||CATS[c].label;
+const kindT=k=>(L().kinds&&L().kinds[k])||k;
+const descT=p=>(L().desc&&L().desc[p.n])||p.d;
+const pickT=p=>(L().picks&&L().picks[p.id])||[p.title,p.desc];
 const $ = s=>document.querySelector(s);
 const esc = s=>s.replace(/[&<>"]/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]));
 const ICON = {
@@ -500,10 +517,10 @@ const ICON = {
   heartO:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 20s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.6-7 10-7 10z"/></svg>',
   arrow:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>'
 };
-const dirUrl = p=>"https://www.google.com/maps/dir/?api=1&travelmode=walking&destination="+encodeURIComponent(p.n+", "+p.a+", New York, NY");
+const dirUrl = p=>"https://www.google.com/maps/dir/?api=1&travelmode=walking&destination="+encodeURIComponent(p.n+", "+p.a+", New York, NY")+"&hl="+LANG;
 const priceHtml = n=>"<b>"+"$".repeat(n)+"</b><i>"+"$".repeat(4-n)+"</i>";
-const walkTxt = w=>w>20?"Short cab":w+" min walk";
-const findUrl = p=>"https://www.google.com/search?q="+encodeURIComponent(p.n+" "+p.a+" New York");
+const walkTxt = w=>w>20?t("cab"):t("walk",w);
+const findUrl = p=>"https://www.google.com/search?q="+encodeURIComponent(p.n+" "+p.a+" New York")+"&hl="+LANG;
 // Photo files live in images/ and are named from the place name, e.g. "L'Artusi" -> images/lartusi.jpg
 const slug = s=>s.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/['’]/g,"").replace(/&/g,"and").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
 ICON.pin='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>';
@@ -561,7 +578,7 @@ function filtered(){
     if(state.cat&&!inCat(p,state.cat))return false;
     if(pick&&!pick.fn(p))return false;
     if(state.prices.size&&!state.prices.has(p.p))return false;
-    if(q&&!(p.n+" "+p.k+" "+p.a+" "+CATS[p.c].label+" "+p.d).toLowerCase().includes(q))return false;
+    if(q&&!(p.n+" "+p.k+" "+kindT(p.k)+" "+p.a+" "+CATS[p.c].label+" "+catLabel(p.c)+" "+p.d+" "+descT(p)).toLowerCase().includes(q))return false;
     return true;
   });
 }
@@ -575,12 +592,12 @@ function sorter(a,b){
 function renderStats(){
   const eat=PLACES.filter(p=>CATS[p.c].g==="eat").length, drink=PLACES.length-eat;
   const cuisines=Object.values(CATS).filter(c=>c.g==="eat").length;
-  $("#stats").innerHTML=`<div><b>${eat}</b><span>Restaurants</span></div><div><b>${drink}</b><span>Bars &amp; cafés</span></div><div><b>${cuisines}</b><span>Cuisines</span></div>`;
+  $("#stats").innerHTML=`<div><b>${eat}</b><span>${t("stat_rest")}</span></div><div><b>${drink}</b><span>${t("stat_bars")}</span></div><div><b>${cuisines}</b><span>${t("stat_cuis")}</span></div>`;
 }
 function renderPicks(){
   $("#picksGrid").innerHTML=PICKS.map((p,i)=>`<button class="pick${state.pick===p.id?" active":""}" style="--g1:${PICK_COLORS[i][0]};--g2:${PICK_COLORS[i][1]}" data-pick="${p.id}" aria-pressed="${state.pick===p.id}">
     <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${p.icon}</svg></div>
-    <h3>${p.title}</h3><p>${p.desc}</p></button>`).join("");
+    <h3>${esc(pickT(p)[0])}</h3><p>${esc(pickT(p)[1])}</p></button>`).join("");
 }
 function renderChips(){
   const pool=base();
@@ -589,9 +606,9 @@ function renderChips(){
     if(state.mode==="drink")return CATS[c].g==="drink";
     return true;
   });
-  const html=[`<button class="chip" data-cat="" aria-pressed="${!state.cat}">Everything<span class="n">${pool.length}</span></button>`]
+  const html=[`<button class="chip" data-cat="" aria-pressed="${!state.cat}">${esc(t("everything"))}<span class="n">${pool.length}</span></button>`]
     .concat(ids.map(c=>{const n=pool.filter(p=>inCat(p,c)).length;if(!n)return"";
-      return `<button class="chip" data-cat="${c}" aria-pressed="${state.cat===c}">${CATS[c].label}<span class="n">${n}</span></button>`}));
+      return `<button class="chip" data-cat="${c}" aria-pressed="${state.cat===c}">${esc(catLabel(c))}<span class="n">${n}</span></button>`}));
   $("#chips").innerHTML=html.join("");
 }
 function card(p,i){
@@ -599,38 +616,38 @@ function card(p,i){
   const initial=p.n.replace(/^The\s+/,"").charAt(0);
   const web=WEB[p.n];
   const webLink=web
-    ?`<a class="go" href="${web}" target="_blank" rel="noopener">Website ${ICON.arrow}</a>`
-    :`<a class="go" href="${findUrl(p)}" target="_blank" rel="noopener">Find online ${ICON.arrow}</a>`;
+    ?`<a class="go" href="${web}" target="_blank" rel="noopener">${t("website")} ${ICON.arrow}</a>`
+    :`<a class="go" href="${findUrl(p)}" target="_blank" rel="noopener">${t("find")} ${ICON.arrow}</a>`;
   const webRow=web?`<div>${ICON.globe}<span>${esc(web.replace(/^https?:\/\/(www\.)?/,"").replace(/\/$/,""))}</span></div>`:"";
   return `<article class="card" style="--accent:${cat.color};--accent2:${cat.c2};animation-delay:${Math.min(i,12)*30}ms">
     <div class="photo">
-      <div class="ph" aria-hidden="true">${ART[p.c]}<small>${esc(p.k)}</small></div>
+      <div class="ph" aria-hidden="true">${ART[p.c]}<small>${esc(kindT(p.k))}</small></div>
       <img src="${p.img||"images/"+slug(p.n)+".jpg"}" alt="${esc(p.n)}" loading="lazy" onerror="this.remove()">
-      <div class="badges"><span class="pill">${ICON.walk}${walkTxt(p.w)}</span><span class="pill price" aria-label="Price level ${p.p} of 4">${priceHtml(p.p)}</span></div>
-      <button class="save" data-save="${esc(p.n)}" aria-pressed="${saved}" aria-label="${saved?"Remove from":"Save to"} my list">${saved?ICON.heart:ICON.heartO}</button>
+      <div class="badges"><span class="pill">${ICON.walk}${walkTxt(p.w)}</span><span class="pill price" aria-label="${t("price_aria",p.p)}">${priceHtml(p.p)}</span></div>
+      <button class="save" data-save="${esc(p.n)}" aria-pressed="${saved}" aria-label="${saved?t("unsave"):t("save")}">${saved?ICON.heart:ICON.heartO}</button>
     </div>
     <div class="body">
-      <div class="kind">${esc(p.k)}</div><h4>${esc(p.n)}</h4>
-      <p class="blurb">${esc(p.d)}</p>
-      ${p.x?'<div class="meta"><span class="pill tag-extra">Local pick</span></div>':""}
+      <div class="kind">${esc(kindT(p.k))}</div><h4>${esc(p.n)}</h4>
+      <p class="blurb">${esc(descT(p))}</p>
+      ${p.x?'<div class="meta"><span class="pill tag-extra">'+t("localpick")+'</span></div>':""}
       <div class="info">
         <div>${ICON.pin}<span>${esc(p.a)}, New York, NY</span></div>
         ${webRow}
       </div>
-      <div class="actions">${webLink}<a class="go primary" href="${dirUrl(p)}" target="_blank" rel="noopener">Directions ${ICON.arrow}</a></div>
+      <div class="actions">${webLink}<a class="go primary" href="${dirUrl(p)}" target="_blank" rel="noopener">${t("directions")} ${ICON.arrow}</a></div>
     </div>
   </article>`;
 }
 function renderResults(){
   const list=filtered().sort(sorter);
   const total=list.length;
-  $("#count").textContent=total+(total===1?" place":" places");
+  $("#count").textContent=t(total===1?"count1":"countN",total);
   const active=state.cat||state.pick||state.prices.size||state.q||state.mode!=="all";
   $("#reset").hidden=!active;
   if(!total){
     $("#results").innerHTML=state.mode==="saved"&&!state.saved.size
-      ?`<div class="empty"><h3>Your list is empty</h3><p>Tap the heart on any place to save it here for later.</p></div>`
-      :`<div class="empty"><h3>Nothing matches just yet</h3><p>Try a different filter or clear your search.</p></div>`;
+      ?`<div class="empty"><h3>${t("empty_saved_h")}</h3><p>${t("empty_saved_p")}</p></div>`
+      :`<div class="empty"><h3>${t("empty_h")}</h3><p>${t("empty_p")}</p></div>`;
     return;
   }
   // group by category in a stable order; flat list when a single category is chosen
@@ -644,7 +661,7 @@ function renderResults(){
   list.forEach(p=>{const key=keyOf(p);(groups[key]=groups[key]||[]).push(p)});
   let i=0;
   $("#results").innerHTML=order.filter(k=>groups[k]).map(k=>`<div class="group">
-      <div class="group-title"><h3>${CATS[k].label}</h3><span class="line"></span><span class="count">${groups[k].length}</span></div>
+      <div class="group-title"><h3>${esc(catLabel(k))}</h3><span class="line"></span><span class="count">${groups[k].length}</span></div>
       <div class="grid">${groups[k].map(p=>card(p,i++)).join("")}</div></div>`).join("");
 }
 function render(){renderPicks();renderChips();renderResults();
@@ -676,7 +693,7 @@ toTop.addEventListener("click",()=>scrollTo({top:0,behavior:"smooth"}));
 // theme toggle
 const root=document.documentElement,themeBtn=$("#themeBtn");
 function isDark(){const t=root.dataset.theme;return t?t==="dark":matchMedia("(prefers-color-scheme: dark)").matches}
-function syncTheme(){themeBtn.textContent=isDark()?"Light":"Dark"}
+function syncTheme(){themeBtn.textContent=isDark()?t("theme_light"):t("theme_dark")}
 const savedTheme=store.get("corner-theme",null);if(savedTheme)root.dataset.theme=savedTheme;
 themeBtn.addEventListener("click",()=>{root.dataset.theme=isDark()?"light":"dark";store.set("corner-theme",root.dataset.theme);syncTheme()});
 syncTheme();
@@ -743,7 +760,33 @@ function onScroll(){
     document.documentElement.style.setProperty("--p",Math.min(1,scrollY/max).toFixed(3));ticking=false});
 }
 addEventListener("scroll",onScroll,{passive:true});addEventListener("resize",onScroll);onScroll();
-renderStats();render();
+/* ===================== LANGUAGE ===================== */
+const STAR='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg>';
+const langSel=$("#lang");
+langSel.innerHTML=LANGS.map(([c,n])=>`<option value="${c}">${n}</option>`).join("")+'<option value="__other"></option>';
+function applyLang(){
+  document.documentElement.lang=LANG;
+  document.querySelectorAll("[data-i18n]").forEach(el=>el.textContent=t(el.dataset.i18n));
+  document.querySelectorAll("[data-i18n-html]").forEach(el=>el.innerHTML=t(el.dataset.i18nHtml));
+  document.querySelectorAll("[data-i18n-ph]").forEach(el=>el.placeholder=t(el.dataset.i18nPh));
+  document.querySelectorAll("[data-i18n-aria]").forEach(el=>el.setAttribute("aria-label",t(el.dataset.i18nAria)));
+  const row=(L().ticker||I18N.en.ticker).map(w=>`<span>${esc(w)} ${STAR}</span>`).join("");
+  $("#tickerTrack").innerHTML=row+row;
+  langSel.value=LANG;langSel.setAttribute("aria-label",t("lang_label"));
+  langSel.querySelector('[value="__other"]').textContent=t("other");
+  syncTheme();renderStats();render();
+}
+langSel.addEventListener("change",()=>{
+  if(langSel.value==="__other"){
+    // Any other language: open this page through Google Translate
+    const nav=(navigator.language||"en").split("-")[0];
+    const target=SUPPORTED.includes(nav)?"ko":nav;
+    open("https://translate.google.com/translate?sl=en&tl="+encodeURIComponent(target)+"&u="+encodeURIComponent(location.href),"_blank","noopener");
+    langSel.value=LANG;return;
+  }
+  LANG=langSel.value;store.set("corner-lang",LANG);applyLang();
+});
+applyLang();
 </script>
 </body>
 </html>
