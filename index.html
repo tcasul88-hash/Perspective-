@@ -296,7 +296,8 @@ footer h5{background:linear-gradient(90deg,var(--gold),var(--pink));-webkit-back
 .amounts .custom{display:inline-flex;align-items:center;gap:2px;padding:0 14px}
 .amounts .custom input{width:64px;background:none;border:0;outline:none;font:inherit;color:inherit;padding:11px 0}
 .amounts .custom input::placeholder{color:currentColor;opacity:.75}
-.pay{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:22px}
+.pay{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:22px;max-width:520px;margin-left:auto;margin-right:auto}
+.amounts[hidden],.tip-label[hidden]{display:none}
 .pay a,.pay button{display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 16px;border-radius:16px;font-weight:600;font-size:15px;text-decoration:none;color:#fff;background:var(--b);box-shadow:0 10px 24px -12px rgba(0,0,0,.6);transition:transform .2s}
 .pay a:hover,.pay button:hover{transform:translateY(-2px)}
 .pay small{font-weight:500;opacity:.85}
@@ -310,13 +311,14 @@ footer h5{background:linear-gradient(90deg,var(--gold),var(--pink));-webkit-back
 .zbox{position:relative;width:100%;max-width:340px;background:#fff;color:#1d1a16;border-radius:24px;padding:26px 22px 22px;text-align:center;box-shadow:0 30px 70px -20px rgba(0,0,0,.7);animation:rise .3s both}
 .zbrand{font-weight:700;font-size:22px;color:#6D1ED4;letter-spacing:-.01em}
 .zbox h3{font-size:16px;font-weight:600;margin-top:4px}
-.zbox img{width:100%;max-width:260px;margin:14px auto 6px;display:block;border-radius:12px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.zbox img{width:100%;max-width:280px;margin:6px auto 4px;display:block;border-radius:12px}
 .zname{font-weight:600;font-size:17px;letter-spacing:.02em}
 .zhandle{font-size:14px;color:#6a6157}
 .zbox p{font-size:13.5px;color:#6a6157;margin-top:8px}
 .zclose{position:absolute;top:10px;right:12px;width:34px;height:34px;border-radius:50%;font-size:24px;line-height:1;color:#6a6157}
 .zclose:hover{background:#f1ece4}
-@media (max-width:640px){.tip-card{padding:28px 18px 22px;border-radius:22px}.pay{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.tip-card{padding:28px 18px 22px;border-radius:22px}.pay{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
@@ -410,7 +412,7 @@ footer h5{background:linear-gradient(90deg,var(--gold),var(--pink));-webkit-back
         <h2 data-i18n="tip_title">Enjoyed the picks?</h2>
         <p data-i18n="tip_sub">If this guide helped you find a great spot, you can leave a tip to say thanks.</p>
       </div>
-      <div class="tip-label" data-i18n="tip_amount">Choose an amount</div>
+      <div class="tip-label" id="tipLabel" data-i18n="tip_amount">Choose an amount</div>
       <div class="amounts" id="amounts" role="group">
         <button data-amt="5">$5</button><button data-amt="10" aria-pressed="true">$10</button><button data-amt="20">$20</button>
         <label class="custom"><span>$</span><input id="tipCustom" inputmode="decimal" autocomplete="off" data-i18n-ph="tip_custom" placeholder="Other" aria-label="Custom amount"></label>
@@ -443,10 +445,8 @@ footer h5{background:linear-gradient(90deg,var(--gold),var(--pink));-webkit-back
 <div class="zmodal" id="zelleModal" hidden role="dialog" aria-modal="true" aria-labelledby="zelleTitle">
   <div class="zbox">
     <button class="zclose" id="zelleClose" aria-label="Close">×</button>
-    <div class="zbrand">Zelle</div>
-    <h3 id="zelleTitle" data-i18n="tip_scan_h">Scan in your banking app</h3>
-    <img id="zelleImg" alt="Zelle QR code">
-    <div class="zname" id="zelleName"></div>
+    <h3 id="zelleTitle" class="sr" data-i18n="tip_scan_h">Scan in your banking app</h3>
+    <img id="zelleImg" alt="Zelle QR code for Timothy Casul">
     <div class="zhandle" id="zelleHandle"></div>
     <p data-i18n="tip_scan_p">Open your bank's app, choose Send with Zelle, and scan this code.</p>
   </div>
@@ -850,6 +850,9 @@ function renderTip(){
   const on=PAYS.filter(m=>TIPS[m.k]||(m.k==="zelle"&&zelleQROk));
   $("#tip").hidden=!on.length;$("#tipFab").hidden=!on.length;
   if(!on.length)return;
+  // amounts only matter for apps that accept a preset amount
+  const hasAmt=on.some(m=>["venmo","cashapp","paypal"].includes(m.k));
+  $("#amounts").hidden=!hasAmt;$("#tipLabel").hidden=!hasAmt;
   $("#payBtns").innerHTML=on.map(m=>m.k==="zelle"
     ?`<button type="button" style="--b:${m.b}" data-zelle>Zelle <small>${esc(zelleQROk?t("tip_scan"):t("tip_copy"))}</small></button>`
     :`<a style="--b:${m.b}" href="${esc(m.url(tipAmt))}" target="_blank" rel="noopener">${m.label?m.label+` <small>$${tipAmt}</small>`:esc(t("tip_card"))}</a>`).join("");
@@ -877,7 +880,7 @@ $("#zelleClose").addEventListener("click",closeZelle);
 $("#zelleModal").addEventListener("click",e=>{if(e.target.id==="zelleModal")closeZelle()});
 addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("#zelleModal").hidden)closeZelle()});
 if(TIPS.zelleQR){const img=new Image();img.onload=()=>{zelleQROk=true;$("#zelleImg").src=TIPS.zelleQR;
-  $("#zelleName").textContent=TIPS.zelleName;$("#zelleHandle").textContent=TIPS.zelle;renderTip()};img.src=TIPS.zelleQR}
+  $("#zelleHandle").textContent=TIPS.zelle;renderTip()};img.src=TIPS.zelleQR}
 const tipFab=$("#tipFab");
 addEventListener("scroll",()=>{const r=$("#tip").getBoundingClientRect();tipFab.classList.toggle("show",scrollY>700&&r.top>innerHeight)},{passive:true});
 tipFab.addEventListener("click",()=>$("#tip").scrollIntoView({behavior:"smooth",block:"center"}));
