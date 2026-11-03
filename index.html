@@ -305,6 +305,17 @@ footer h5{background:linear-gradient(90deg,var(--gold),var(--pink));-webkit-back
   background:linear-gradient(135deg,var(--pink),var(--violet));box-shadow:0 12px 30px -10px rgba(0,0,0,.6);opacity:0;transform:translateY(10px);pointer-events:none;transition:all .3s}
 .tip-fab.show{opacity:1;transform:none;pointer-events:auto}
 .tip-fab svg{width:16px;height:16px}
+.zmodal{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:16px;background:rgba(6,4,20,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.zmodal[hidden]{display:none}
+.zbox{position:relative;width:100%;max-width:340px;background:#fff;color:#1d1a16;border-radius:24px;padding:26px 22px 22px;text-align:center;box-shadow:0 30px 70px -20px rgba(0,0,0,.7);animation:rise .3s both}
+.zbrand{font-weight:700;font-size:22px;color:#6D1ED4;letter-spacing:-.01em}
+.zbox h3{font-size:16px;font-weight:600;margin-top:4px}
+.zbox img{width:100%;max-width:260px;margin:14px auto 6px;display:block;border-radius:12px}
+.zname{font-weight:600;font-size:17px;letter-spacing:.02em}
+.zhandle{font-size:14px;color:#6a6157}
+.zbox p{font-size:13.5px;color:#6a6157;margin-top:8px}
+.zclose{position:absolute;top:10px;right:12px;width:34px;height:34px;border-radius:50%;font-size:24px;line-height:1;color:#6a6157}
+.zclose:hover{background:#f1ece4}
 @media (max-width:640px){.tip-card{padding:28px 18px 22px;border-radius:22px}.pay{grid-template-columns:1fr 1fr}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
@@ -429,6 +440,17 @@ footer h5{background:linear-gradient(90deg,var(--gold),var(--pink));-webkit-back
   </div>
 </footer>
 
+<div class="zmodal" id="zelleModal" hidden role="dialog" aria-modal="true" aria-labelledby="zelleTitle">
+  <div class="zbox">
+    <button class="zclose" id="zelleClose" aria-label="Close">×</button>
+    <div class="zbrand">Zelle</div>
+    <h3 id="zelleTitle" data-i18n="tip_scan_h">Scan in your banking app</h3>
+    <img id="zelleImg" alt="Zelle QR code">
+    <div class="zname" id="zelleName"></div>
+    <div class="zhandle" id="zelleHandle"></div>
+    <p data-i18n="tip_scan_p">Open your bank's app, choose Send with Zelle, and scan this code.</p>
+  </div>
+</div>
 <button class="tip-fab" id="tipFab" hidden><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 20s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.6-7 10-7 10z"/></svg><span data-i18n="tip_btn">Tip</span></button>
 <button class="to-top" id="toTop" aria-label="Back to top" data-i18n-aria="backtop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
 
@@ -812,9 +834,11 @@ const TIPS = {
   cashapp: "",   // Cash App $cashtag, without $   e.g. "janedoe"
   paypal:  "",   // PayPal.me name                 e.g. "janedoe"
   zelle:   "",   // Phone or email used with Zelle e.g. "jane@example.com"
+  zelleQR: "images/zelle-qr.png", // Your Zelle QR code image. The button turns on once this file exists.
+  zelleName: "Timothy Casul",     // Name guests will see on Zelle, so they know it is you
   card:    ""    // A Stripe or Square payment link for cards / Apple Pay, e.g. "https://buy.stripe.com/..."
 };
-let tipAmt=10;
+let tipAmt=10,zelleQROk=false;
 const PAYS=[
   {k:"venmo",label:"Venmo",b:"#008CFF",url:a=>`https://venmo.com/${encodeURIComponent(TIPS.venmo)}?txn=pay&amount=${a}&note=${encodeURIComponent(t("tip_note"))}`},
   {k:"cashapp",label:"Cash App",b:"#00C244",url:a=>`https://cash.app/$${encodeURIComponent(TIPS.cashapp)}/${a}`},
@@ -823,11 +847,11 @@ const PAYS=[
   {k:"zelle",label:"Zelle",b:"#6D1ED4"}
 ];
 function renderTip(){
-  const on=PAYS.filter(m=>TIPS[m.k]);
+  const on=PAYS.filter(m=>TIPS[m.k]||(m.k==="zelle"&&zelleQROk));
   $("#tip").hidden=!on.length;$("#tipFab").hidden=!on.length;
   if(!on.length)return;
   $("#payBtns").innerHTML=on.map(m=>m.k==="zelle"
-    ?`<button type="button" style="--b:${m.b}" data-zelle>Zelle <small>${esc(t("tip_copy"))}</small></button>`
+    ?`<button type="button" style="--b:${m.b}" data-zelle>Zelle <small>${esc(zelleQROk?t("tip_scan"):t("tip_copy"))}</small></button>`
     :`<a style="--b:${m.b}" href="${esc(m.url(tipAmt))}" target="_blank" rel="noopener">${m.label?m.label+` <small>$${tipAmt}</small>`:esc(t("tip_card"))}</a>`).join("");
 }
 function setAmt(a,fromCustom){
@@ -841,9 +865,19 @@ $("#amounts").addEventListener("click",e=>{const b=e.target.closest("button[data
 $("#tipCustom").addEventListener("input",e=>{const v=parseFloat(e.target.value.replace(/[^0-9.]/g,""));if(v>0)setAmt(v,true)});
 $("#payBtns").addEventListener("click",async e=>{
   if(!e.target.closest("[data-zelle]"))return;
+  if(zelleQROk){openZelle();return}
   try{await navigator.clipboard.writeText(TIPS.zelle);$("#tipMsg").textContent=t("tip_copied")+" "+TIPS.zelle}
   catch(err){$("#tipMsg").textContent="Zelle: "+TIPS.zelle}
 });
+function openZelle(){
+  $("#zelleModal").hidden=false;document.body.style.overflow="hidden";$("#zelleClose").focus();
+}
+function closeZelle(){$("#zelleModal").hidden=true;document.body.style.overflow=""}
+$("#zelleClose").addEventListener("click",closeZelle);
+$("#zelleModal").addEventListener("click",e=>{if(e.target.id==="zelleModal")closeZelle()});
+addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("#zelleModal").hidden)closeZelle()});
+if(TIPS.zelleQR){const img=new Image();img.onload=()=>{zelleQROk=true;$("#zelleImg").src=TIPS.zelleQR;
+  $("#zelleName").textContent=TIPS.zelleName;$("#zelleHandle").textContent=TIPS.zelle;renderTip()};img.src=TIPS.zelleQR}
 const tipFab=$("#tipFab");
 addEventListener("scroll",()=>{const r=$("#tip").getBoundingClientRect();tipFab.classList.toggle("show",scrollY>700&&r.top>innerHeight)},{passive:true});
 tipFab.addEventListener("click",()=>$("#tip").scrollIntoView({behavior:"smooth",block:"center"}));
