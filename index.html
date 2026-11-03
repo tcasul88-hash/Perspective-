@@ -607,6 +607,11 @@ const slug = s=>s.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(
 ICON.pin='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>';
 ICON.globe='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg>';
 
+// Your own photos, by place name. Cards without a photo show their illustration.
+// Example: "Babbo":"images/babbo.jpg"
+const PHOTOS = {
+};
+
 // Official websites. Places not listed here get a "Find online" search link instead.
 const WEB = {
   "Waverly Inn":"https://www.waverlynyc.com",
@@ -702,7 +707,7 @@ function card(p,i){
   return `<article class="card" style="--accent:${cat.color};--accent2:${cat.c2};animation-delay:${Math.min(i,12)*30}ms">
     <div class="photo">
       <div class="ph" aria-hidden="true">${ART[p.c]}<small>${esc(kindT(p.k))}</small></div>
-      <img src="${p.img||"images/"+slug(p.n)+".jpg"}" alt="${esc(p.n)}" loading="lazy" onerror="this.remove()">
+      ${PHOTOS[p.n]?`<img src="${esc(PHOTOS[p.n])}" alt="${esc(p.n)}" loading="lazy" onerror="this.remove()">`:""}
       <div class="badges"><span class="pill">${ICON.walk}${walkTxt(p.w)}</span><span class="pill price" aria-label="${t("price_aria",p.p)}">${priceHtml(p.p)}</span></div>
       <button class="save" data-save="${esc(p.n)}" aria-pressed="${saved}" aria-label="${saved?t("unsave"):t("save")}">${saved?ICON.heart:ICON.heartO}</button>
     </div>
