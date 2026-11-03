@@ -279,6 +279,58 @@ footer h5{background:linear-gradient(90deg,var(--gold),var(--pink));-webkit-back
 .lang select:hover,.lang select:focus{border-color:var(--gold);outline:none}
 .lang select option{color:#111;background:#fff}
 @media (max-width:640px){.hero-stats{flex-wrap:nowrap;gap:14px}.hero-stats div{flex:1;min-width:0;padding-left:10px}.hero-stats span{font-size:10.5px;letter-spacing:.08em;display:block;line-height:1.3;margin-top:4px}.topbar{gap:10px}.topbar .mark{font-size:11px;letter-spacing:.1em}.lang select{max-width:122px;text-overflow:ellipsis}}
+/* plan your night */
+.plan-cta{grid-column:1/-1;display:flex;align-items:center;gap:14px;text-align:left;padding:16px 20px;border-radius:var(--radius);color:#1a0f2e;
+  background:linear-gradient(100deg,var(--gold),var(--orange) 55%,var(--pink));box-shadow:0 18px 44px -16px rgba(0,0,0,.55);transition:transform .3s}
+.plan-cta:hover{transform:translateY(-3px)}
+.plan-cta>svg:first-child{width:26px;height:26px;flex-shrink:0}
+.plan-cta strong{display:block;font-family:"Cormorant Garamond",serif;font-size:30px;font-weight:600;line-height:1}
+.plan-cta small{display:block;font-size:13px;opacity:.8;margin-top:3px}
+.plan-cta .arr{width:20px;height:20px;margin-left:auto;flex-shrink:0}
+.plan{position:relative;z-index:1}
+.plan-eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.plan-card{background:var(--card);color:var(--ink);border-radius:26px;padding:22px;box-shadow:0 30px 70px -30px rgba(0,0,0,.7)}
+.plan-controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.pdur{display:inline-flex;background:var(--bg-2);border-radius:999px;padding:4px}
+.pdur button{padding:9px 18px;border-radius:999px;font-weight:600;font-size:14px;color:var(--ink-soft)}
+.pdur button[aria-pressed="true"]{background:linear-gradient(90deg,var(--pink),var(--orange));color:#fff}
+.pvibes{display:flex;gap:8px;flex-wrap:wrap}
+.pvibes button{padding:8px 14px;border-radius:999px;border:1px solid var(--rule);font-size:14px;background:var(--card)}
+.pvibes button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.pstart{display:inline-flex;align-items:center;gap:8px;margin-left:auto;font-size:13px;color:var(--ink-soft)}
+.pstart select{font:inherit;font-size:14px;padding:8px 12px;border-radius:999px;border:1px solid var(--rule);background:var(--card);color:var(--ink)}
+.psum{margin:18px 0 6px;font-size:14px;color:var(--ink-soft)}
+.psum b{font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:600;color:var(--ink);margin-right:8px}
+.timeline{list-style:none;margin-top:8px}
+.tstop{display:grid;grid-template-columns:74px 44px 1fr;gap:0 12px;align-items:start}
+.ttime{font-weight:600;font-size:14px;padding-top:12px;text-align:right;white-space:nowrap}
+.tdot{position:relative;display:flex;flex-direction:column;align-items:center;height:100%}
+.tdot i{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;background:var(--c);box-shadow:0 8px 18px -8px var(--c);flex-shrink:0}
+.tdot i svg{width:20px;height:20px}
+.tdot::after{content:"";flex:1;width:2px;margin:4px 0;background:repeating-linear-gradient(180deg,var(--rule) 0 5px,transparent 5px 10px)}
+.tstop:last-child .tdot::after{display:none}
+.tbody{padding:6px 0 18px}
+.ttype{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--c)}
+.tbody h4{font-family:"Cormorant Garamond",serif;font-size:25px;font-weight:600;line-height:1.1;margin-top:2px}
+.tbody p{font-size:14.5px;color:var(--ink-soft);margin-top:4px}
+.tmeta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px;font-size:13px;color:var(--ink-soft)}
+.tmeta a{font-weight:600;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.twalk{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:12.5px;color:var(--ink-soft);background:var(--bg-2);padding:4px 10px;border-radius:999px}
+.twalk svg{width:13px;height:13px}
+.pacts{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.pacts .go{padding:11px 18px;font-size:14px}
+.pnote{margin-top:14px;font-size:13px;color:var(--ink-soft)}
+.pmsg{color:#2f7a3d;font-weight:600}
+@media (max-width:640px){
+  .plan-cta strong{font-size:25px}
+  .plan-card{padding:18px 14px;border-radius:22px}
+  .pstart{margin-left:0}
+  .tstop{grid-template-columns:58px 36px 1fr;gap:0 10px}
+  .ttime{font-size:12.5px;padding-top:9px}
+  .tdot i{width:36px;height:36px}.tdot i svg{width:17px;height:17px}
+  .tbody h4{font-size:22px}
+  .pacts .go{flex:1;justify-content:center}
+}
 /* tips */
 .tip{position:relative;z-index:1;margin-top:80px}
 .tip-card{max-width:720px;margin:0 auto;border-radius:28px;padding:34px 30px 30px;text-align:center;color:#fff;
@@ -365,6 +417,7 @@ footer h5{background:linear-gradient(90deg,var(--gold),var(--pink));-webkit-back
           <div><strong data-i18n="door_drink">Drink</strong><div class="sub" data-i18n="door_drink_sub">Cocktails, wine, rooftops &amp; coffee</div>
           <span class="arrow"><span data-i18n="explore">Explore</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
         </button>
+        <button class="plan-cta" data-goplan><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg><span><strong data-i18n="plan_cta">Plan my night</strong><small data-i18n="plan_cta_sub">Ready-made 3- or 6-hour routes</small></span><svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </div>
     </div>
   </div>
@@ -373,6 +426,31 @@ footer h5{background:linear-gradient(90deg,var(--gold),var(--pink));-webkit-back
 <div class="ticker-wrap" aria-hidden="true"><div class="ticker"><div class="track" id="tickerTrack"><span>Handmade pasta <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Martinis <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Rooftop sunsets <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Omakase <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Espresso <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Tacos &amp; mezcal <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Natural wine <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Jazz cellars <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Steak frites <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Late nights <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Handmade pasta <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Martinis <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Rooftop sunsets <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Omakase <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Espresso <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Tacos &amp; mezcal <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Natural wine <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Jazz cellars <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Steak frites <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Late nights <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span></div></div></div>
 
 <main>
+  <section id="plan" class="plan">
+    <div class="wrap">
+      <div class="section-head">
+        <div><div class="plan-eyebrow" data-i18n="plan_eyebrow">New · Plan your night</div><h2 class="serif" data-i18n="plan_title">Plan your night</h2></div>
+        <p data-i18n="plan_sub">Choose how much time you have and the mood.</p>
+      </div>
+      <div class="plan-card">
+        <div class="plan-controls">
+          <div class="pdur" role="group" aria-label="Length">
+            <button data-dur="3" aria-pressed="true" data-i18n="plan_h3">3 hours</button><button data-dur="6" aria-pressed="false" data-i18n="plan_h6">6 hours</button>
+          </div>
+          <div class="pvibes" id="planVibes" role="group" aria-label="Mood"></div>
+          <label class="pstart"><span data-i18n="plan_start">Start at</span><select id="planStart"></select></label>
+        </div>
+        <div class="psum" id="planSummary"></div>
+        <ol class="timeline" id="planList"></ol>
+        <div class="pacts">
+          <a class="go primary" id="planRoute" target="_blank" rel="noopener"><span data-i18n="plan_route">Open full route in Maps</span></a>
+          <button class="go" id="planSave" type="button" data-i18n="plan_save">Save these spots</button>
+        </div>
+        <p class="pnote"><span data-i18n="plan_note">Book dinner and shows ahead.</span> <span id="planMsg" class="pmsg" role="status"></span></p>
+      </div>
+    </div>
+  </section>
+
   <div class="wrap">
     <section id="picks">
       <div class="section-head">
@@ -471,6 +549,7 @@ footer h5{background:linear-gradient(90deg,var(--gold),var(--pink));-webkit-back
 <button class="to-top" id="toTop" aria-label="Back to top" data-i18n-aria="backtop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
 
 <script src="i18n.js"></script>
+<script src="plan.js"></script>
 <script>
 /* ===================== DATA ===================== */
 // g = group (eat|drink), c = category id, p = price 1-4, w = walk minutes, x = concierge addition
@@ -585,7 +664,7 @@ const SUPPORTED=LANGS.map(l=>l[0]);
 let LANG=(()=>{const saved=store.get("corner-lang",null);if(saved&&SUPPORTED.includes(saved))return saved;
   const nav=(navigator.language||"en").slice(0,2).toLowerCase();return SUPPORTED.includes(nav)?nav:"en"})();
 const L=()=>I18N[LANG]||{};
-function t(k,n){const v=(L().ui&&L().ui[k])||I18N.en.ui[k]||k;return n===undefined?v:v.replace("{n}",n)}
+function t(k,n){const P=(typeof PLAN_TXT!=="undefined")?(PLAN_TXT[LANG]||PLAN_TXT.en).ui:{};const v=(L().ui&&L().ui[k])||P[k]||(PLAN_TXT&&PLAN_TXT.en.ui[k])||I18N.en.ui[k]||k;return n===undefined?v:v.replace("{n}",n)}
 const catLabel=c=>(L().cats&&L().cats[c])||CATS[c].label;
 const kindT=k=>(L().kinds&&L().kinds[k])||k;
 const descT=p=>(L().desc&&L().desc[p.n])||p.d;
@@ -911,6 +990,66 @@ const tipFab=$("#tipFab");
 addEventListener("scroll",()=>{const r=$("#tip").getBoundingClientRect();tipFab.classList.toggle("show",scrollY>700&&r.top>innerHeight)},{passive:true});
 tipFab.addEventListener("click",()=>$("#tip").scrollIntoView({behavior:"smooth",block:"center"}));
 
+/* ===================== PLAN YOUR NIGHT ===================== */
+const STOP_STYLE={
+  walk:{c:"#14a89a",i:'<circle cx="13" cy="4" r="2"/><path d="M10 22l2-7 3 3v6M8 12l2-4 4 1 3 3M10 8l-2 6"/>'},
+  lunch:{c:"#ff8a3d",i:'<path d="M7 2v20M4 2v6a3 3 0 006 0V2M17 2c-2 0-3 3-3 7s1 5 3 5v8"/>'},
+  coffee:{c:"#b06a3b",i:'<path d="M4 9h13v5a5 5 0 01-5 5H9a5 5 0 01-5-5zM17 10h1.5a2.5 2.5 0 010 5H17M8 3v3M12 3v3"/>'},
+  dinner:{c:"#ff3d7f",i:'<path d="M7 2v20M4 2v6a3 3 0 006 0V2M17 2c-2 0-3 3-3 7s1 5 3 5v8"/>'},
+  drinks:{c:"#4361ee",i:'<path d="M5 4h14l-7 8zM12 12v8M8 20h8"/>'},
+  show:{c:"#e09a00",i:'<path d="M12 2a3 3 0 00-3 3v6a3 3 0 006 0V5a3 3 0 00-3-3zM19 11a7 7 0 01-14 0M12 18v4M8 22h8"/>'},
+  nightcap:{c:"#9d4edd",i:'<path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z"/>'}
+};
+const plan={vibe:"classic",dur:3,start:null};
+const PT=()=>PLAN_TXT[LANG]||PLAN_TXT.en;
+function pt(k,n){const v=(PT().ui[k])||PLAN_TXT.en.ui[k]||k;return n===undefined?v:v.replace("{n}",n)}
+const spotOf=name=>{const v=PLACES.find(x=>x.n===name);return v?{n:v.n,a:v.a,web:WEB[v.n],venue:v}:{n:name,...PLAN_SPOTS[name]}};
+const toMin=hm=>{const [h,m]=hm.split(":").map(Number);return h*60+m};
+function clock(min){const d=new Date(2000,0,1,0,0);d.setMinutes(min);
+  try{return new Intl.DateTimeFormat(LANG,{hour:"numeric",minute:"2-digit"}).format(d)}catch(e){return d.toTimeString().slice(0,5)}}
+const mapQ=s=>encodeURIComponent(s.n+", "+s.a+", New York, NY");
+function renderPlan(){
+  const cfg=PLANS[plan.vibe][plan.dur],key=plan.vibe+plan.dur,notes=(PT().notes[key])||PLAN_TXT.en.notes[key];
+  if(plan.start===null)plan.start=toMin(cfg.start);
+  // controls
+  document.querySelectorAll(".pdur button").forEach(b=>b.setAttribute("aria-pressed",+b.dataset.dur===plan.dur));
+  $("#planVibes").innerHTML=Object.keys(PLANS).map(v=>`<button data-vibe="${v}" aria-pressed="${v===plan.vibe}">${esc((PT().vibes[v])||PLAN_TXT.en.vibes[v])}</button>`).join("");
+  let opts="";for(let m=9*60;m<=22*60;m+=30)opts+=`<option value="${m}"${m===plan.start?" selected":""}>${clock(m)}</option>`;
+  $("#planStart").innerHTML=opts;
+  // timeline
+  let cur=plan.start;const stops=cfg.stops.map(s=>spotOf(s[1]));
+  $("#planList").innerHTML=cfg.stops.map(([type,name,dur,go],i)=>{
+    const sp=stops[i],st=STOP_STYLE[type],at=cur;cur+=dur+go;
+    const dir="https://www.google.com/maps/dir/?api=1&travelmode=walking&destination="+mapQ(sp)+"&hl="+LANG;
+    return `<li class="tstop" style="--c:${st.c}">
+      <div class="ttime">${clock(at)}</div>
+      <div class="tdot"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${st.i}</svg></i></div>
+      <div class="tbody">
+        <div class="ttype">${esc(pt("st_"+type))} · ${esc(pt("plan_mins",dur))}</div>
+        <h4>${esc(sp.n)}</h4>
+        <p>${esc(notes[i])}</p>
+        <div class="tmeta">${sp.a!==sp.n?`<span>${esc(sp.a)}</span>·`:""}<a href="${dir}" target="_blank" rel="noopener">${esc(t("directions"))}</a>${sp.web?`·<a href="${esc(sp.web)}" target="_blank" rel="noopener">${esc(t("website"))}</a>`:""}</div>
+        ${go?`<div class="twalk">${ICON.walk}${esc(pt("plan_walkto",go))}</div>`:""}
+      </div></li>`;}).join("");
+  const end=cur;
+  $("#planSummary").innerHTML=`<b>${clock(plan.start)} – ${clock(Math.round(end/5)*5)}</b>${esc(pt("plan_stops",cfg.stops.length))}`;
+  // whole route in Google Maps
+  const q=stops.map(mapQ);
+  $("#planRoute").href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin="+q[0]+"&destination="+q[q.length-1]+(q.length>2?"&waypoints="+q.slice(1,-1).join("%7C"):"")+"&hl="+LANG;
+  $("#planMsg").textContent="";
+}
+$("#plan").addEventListener("click",e=>{
+  const d=e.target.closest("[data-dur]"),v=e.target.closest("[data-vibe]");
+  if(d){plan.dur=+d.dataset.dur;plan.start=null;renderPlan()}
+  else if(v){plan.vibe=v.dataset.vibe;plan.start=null;renderPlan()}
+});
+$("#planStart").addEventListener("change",e=>{plan.start=+e.target.value;renderPlan()});
+$("#planSave").addEventListener("click",()=>{
+  PLANS[plan.vibe][plan.dur].stops.forEach(s=>{if(PLACES.some(x=>x.n===s[1]))state.saved.add(s[1])});
+  store.set("corner-saved",[...state.saved]);render();$("#planMsg").textContent=pt("plan_saved");
+});
+document.querySelector("[data-goplan]").addEventListener("click",()=>$("#plan").scrollIntoView({behavior:"smooth",block:"start"}));
+
 /* ===================== LANGUAGE ===================== */
 const STAR='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg>';
 const langSel=$("#lang");
@@ -925,7 +1064,7 @@ function applyLang(){
   $("#tickerTrack").innerHTML=row+row;
   langSel.value=LANG;langSel.setAttribute("aria-label",t("lang_label"));
   langSel.querySelector('[value="__other"]').textContent=t("other");
-  syncTheme();renderStats();render();renderTip();
+  syncTheme();renderStats();render();renderTip();renderPlan();
 }
 langSel.addEventListener("change",()=>{
   if(langSel.value==="__other"){
