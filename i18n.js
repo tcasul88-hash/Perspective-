@@ -53,7 +53,6 @@ es:{ui:{
  ticker:["Pasta artesanal","Martinis","Atardeceres en azoteas","Omakase","Espresso","Tacos y mezcal","Vino natural","Sótanos de jazz","Steak frites","Noches largas"],
  desc:{
   "Waverly Inn":"Un clásico del West Village, exclusivo y a la luz de las velas, con un salón jardín y una comida reconfortante famosamente indulgente.",
-  "Quality Eats":"Ambiente de asador moderno a un precio más amable. Animado, divertido e ideal para grupos.",
   "American Bar":"Un salón luminoso y fresco para platos americanos clásicos y un martini excelente.",
   "White Oak Tavern":"Una acogedora taberna de barrio para hamburguesas, brunch y una cerveza en la barra.",
   "Babbo":"Una trattoria emblemática del Village, célebre por su pasta hecha a mano. Reserva con antelación.",
@@ -136,7 +135,6 @@ fr:{ui:{
  ticker:["Pâtes maison","Martinis","Couchers de soleil sur les toits","Omakase","Espresso","Tacos et mezcal","Vin nature","Caves de jazz","Steak frites","Nuits blanches"],
  desc:{
   "Waverly Inn":"Un classique feutré du West Village, éclairé à la bougie, avec une salle-jardin et une cuisine réconfortante délicieusement généreuse.",
-  "Quality Eats":"L'énergie d'un steakhouse moderne à prix plus doux. Animé, festif et idéal en groupe.",
   "American Bar":"Une salle lumineuse et aérée pour des classiques américains et un excellent martini.",
   "White Oak Tavern":"Une taverne de quartier chaleureuse pour burgers, brunch et une bière au comptoir.",
   "Babbo":"Une trattoria emblématique du Village, réputée pour ses pâtes faites main. Réservez à l'avance.",
@@ -219,7 +217,6 @@ it:{ui:{
  ticker:["Pasta fatta a mano","Martini","Tramonti in terrazza","Omakase","Espresso","Tacos e mezcal","Vino naturale","Cantine jazz","Steak frites","Notti lunghe"],
  desc:{
   "Waverly Inn":"Un classico esclusivo del West Village a lume di candela, con una sala giardino e un comfort food deliziosamente generoso.",
-  "Quality Eats":"L'energia di una steakhouse moderna a prezzi più amichevoli. Vivace, divertente e perfetta per i gruppi.",
   "American Bar":"Una sala luminosa e ariosa per piatti americani classici e un ottimo martini.",
   "White Oak Tavern":"Un'accogliente taverna di quartiere per burger, brunch e una birra al bancone.",
   "Babbo":"Una storica trattoria del Village, celebre per la pasta fatta a mano. Prenota in anticipo.",
@@ -302,7 +299,6 @@ de:{ui:{
  ticker:["Handgemachte Pasta","Martinis","Sonnenuntergänge auf dem Dach","Omakase","Espresso","Tacos & Mezcal","Naturwein","Jazzkeller","Steak frites","Lange Nächte"],
  desc:{
   "Waverly Inn":"Ein exklusiver, kerzenbeleuchteter Klassiker im West Village mit Gartenraum und herrlich üppigem Comfort Food.",
-  "Quality Eats":"Moderne Steakhaus-Atmosphäre zu freundlicheren Preisen. Lebhaft, unterhaltsam und ideal für Gruppen.",
   "American Bar":"Ein heller, luftiger Raum für klassische amerikanische Gerichte und einen hervorragenden Martini.",
   "White Oak Tavern":"Eine gemütliche Nachbarschaftstaverne für Burger, Brunch und ein Bier an der Bar.",
   "Babbo":"Eine legendäre Trattoria im Village, berühmt für ihre handgemachte Pasta. Unbedingt reservieren.",
@@ -385,7 +381,6 @@ pt:{ui:{
  ticker:["Massa artesanal","Martínis","Pôr do sol no rooftop","Omakase","Espresso","Tacos e mezcal","Vinho natural","Porões de jazz","Steak frites","Noites longas"],
  desc:{
   "Waverly Inn":"Um clássico exclusivo do West Village à luz de velas, com salão-jardim e uma comida reconfortante famosa por ser indulgente.",
-  "Quality Eats":"Clima de steakhouse moderna a um preço mais amigável. Animado, divertido e ótimo para grupos.",
   "American Bar":"Um salão claro e arejado para pratos americanos clássicos e um martíni excelente.",
   "White Oak Tavern":"Uma taverna de bairro aconchegante para hambúrgueres, brunch e um chope no balcão.",
   "Babbo":"Uma trattoria icônica do Village, famosa pelas massas feitas à mão. Reserve com antecedência.",
@@ -468,7 +463,6 @@ zh:{ui:{
  ticker:["手工意面","马天尼","屋顶日落","Omakase","意式浓缩","塔可与梅斯卡尔","自然酒","爵士酒窖","牛排薯条","不眠之夜"],
  desc:{
   "Waverly Inn":"西村经典，烛光摇曳、氛围私密，设有花园厅，舒心美食以丰盛著称。",
-  "Quality Eats":"现代牛排馆的活力，价格却更亲民。热闹有趣，非常适合聚会。",
   "American Bar":"明亮通透的空间，供应经典美式菜肴和一杯出色的马天尼。",
   "White Oak Tavern":"温馨的街坊小酒馆，适合吃汉堡、早午餐，或在吧台喝一杯啤酒。",
   "Babbo":"格林威治村的地标级意式餐馆，以手工意面闻名。请提前预订。",
@@ -551,7 +545,6 @@ ja:{ui:{
  ticker:["手打ちパスタ","マティーニ","屋上のサンセット","おまかせ","エスプレッソ","タコス＆メスカル","自然派ワイン","ジャズセラー","ステーキフリット","眠らない夜"],
  desc:{
   "Waverly Inn":"キャンドルが灯る、会員制クラブのような雰囲気のウエストビレッジの名店。ガーデンルームと贅沢なコンフォートフードで知られます。",
-  "Quality Eats":"モダンなステーキハウスの活気を、より手頃な価格で。にぎやかで楽しく、グループにも最適。",
   "American Bar":"明るく開放的な空間で、定番のアメリカ料理と絶品マティーニを。",
   "White Oak Tavern":"バーガーやブランチ、カウンターでのビールが楽しめる居心地のよい街の酒場。",
   "Babbo":"手打ちパスタで名高い、ビレッジを代表するトラットリア。予約がおすすめ。",

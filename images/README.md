@@ -8,7 +8,6 @@ Tips: landscape JPG, about 1200 x 750 pixels, under 300 KB. Use photos you have 
 | Venue | Filename |
 |---|---|
 | Waverly Inn | `waverly-inn.jpg` |
-| Quality Eats | `quality-eats.jpg` |
 | American Bar | `american-bar.jpg` |
 | White Oak Tavern | `white-oak-tavern.jpg` |
 | Babbo | `babbo.jpg` |
