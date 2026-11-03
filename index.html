@@ -316,6 +316,16 @@ footer h5{background:linear-gradient(90deg,var(--gold),var(--pink));-webkit-back
 .zname{font-weight:600;font-size:17px;letter-spacing:.02em}
 .zhandle{font-size:14px;color:#6a6157}
 .zbox p{font-size:13.5px;color:#6a6157;margin-top:8px}
+.zbox{max-height:calc(100vh - 32px);overflow-y:auto}
+.zor{margin-top:14px;padding-top:12px;border-top:1px dashed #e4dccd;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#6a6157}
+.zacts{display:grid;gap:8px;margin-top:10px}
+.zbtn{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 14px;border-radius:14px;font-weight:600;font-size:15px;text-decoration:none;color:#6D1ED4;background:#f3ecfd;border:1px solid #e2d4fa}
+.zbtn:hover{background:#eadffc}
+.zbtn.primary{background:#6D1ED4;color:#fff;border-color:#6D1ED4}
+.zbtn small{font-weight:500;opacity:.75}
+.zbtn[hidden]{display:none}
+.zmsg{min-height:18px;margin-top:8px;font-size:13px;color:#2f7a3d!important}
+@media (max-width:640px){.zbox img{max-width:210px}}
 .zclose{position:absolute;top:10px;right:12px;width:34px;height:34px;border-radius:50%;font-size:24px;line-height:1;color:#6a6157}
 .zclose:hover{background:#f1ece4}
 @media (max-width:640px){.tip-card{padding:28px 18px 22px;border-radius:22px}.pay{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}}
@@ -447,8 +457,14 @@ footer h5{background:linear-gradient(90deg,var(--gold),var(--pink));-webkit-back
     <button class="zclose" id="zelleClose" aria-label="Close">×</button>
     <h3 id="zelleTitle" class="sr" data-i18n="tip_scan_h">Scan in your banking app</h3>
     <img id="zelleImg" alt="Zelle QR code for Timothy Casul">
-    <div class="zhandle" id="zelleHandle"></div>
     <p data-i18n="tip_scan_p">Open your bank's app, choose Send with Zelle, and scan this code.</p>
+    <div class="zor" data-i18n="tip_or">Using this phone? Try one of these instead:</div>
+    <div class="zacts">
+      <a class="zbtn primary" id="zelleOpen" target="_blank" rel="noopener"><span data-i18n="tip_open">Open in Zelle</span></a>
+      <button class="zbtn" id="zelleCopy" type="button"><span data-i18n="tip_copynum">Copy phone number</span> <small id="zelleMask"></small></button>
+      <a class="zbtn" id="zelleSave" download="zelle-qr.png"><span data-i18n="tip_save">Save QR code</span></a>
+    </div>
+    <p class="zmsg" id="zelleMsg" role="status"></p>
   </div>
 </div>
 <button class="tip-fab" id="tipFab" hidden><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 20s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.6-7 10-7 10z"/></svg><span data-i18n="tip_btn">Tip</span></button>
@@ -833,7 +849,8 @@ const TIPS = {
   venmo:   "",   // Venmo username, without @      e.g. "Jane-Doe-12"
   cashapp: "",   // Cash App $cashtag, without $   e.g. "janedoe"
   paypal:  "",   // PayPal.me name                 e.g. "janedoe"
-  zelle:   "",   // Phone or email used with Zelle e.g. "jane@example.com"
+  zelle:   "9174854510",   // Phone or email used with Zelle (guests can copy it)
+  zelleLink: "https://enroll.zellepay.com/qr-codes?data=eyJuYW1lIjoiVElNT1RIWSIsInRva2VuIjoiOTE3NDg1NDUxMCJ9", // Link inside the Zelle QR code (lets guests tap instead of scan)
   zelleQR: "images/zelle-qr.png", // Your Zelle QR code image. The button turns on once this file exists.
   zelleName: "Timothy Casul",     // Name guests will see on Zelle, so they know it is you
   card:    ""    // A Stripe or Square payment link for cards / Apple Pay, e.g. "https://buy.stripe.com/..."
@@ -875,12 +892,18 @@ $("#payBtns").addEventListener("click",async e=>{
 function openZelle(){
   $("#zelleModal").hidden=false;document.body.style.overflow="hidden";$("#zelleClose").focus();
 }
-function closeZelle(){$("#zelleModal").hidden=true;document.body.style.overflow=""}
+function closeZelle(){$("#zelleMsg").textContent="";$("#zelleModal").hidden=true;document.body.style.overflow=""}
 $("#zelleClose").addEventListener("click",closeZelle);
 $("#zelleModal").addEventListener("click",e=>{if(e.target.id==="zelleModal")closeZelle()});
 addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("#zelleModal").hidden)closeZelle()});
-if(TIPS.zelleQR){const img=new Image();img.onload=()=>{zelleQROk=true;$("#zelleImg").src=TIPS.zelleQR;
-  $("#zelleHandle").textContent=TIPS.zelle;renderTip()};img.src=TIPS.zelleQR}
+$("#zelleCopy").addEventListener("click",async()=>{
+  try{await navigator.clipboard.writeText(TIPS.zelle);$("#zelleMsg").textContent=t("tip_copied2")}
+  catch(err){$("#zelleMsg").textContent=TIPS.zelle}
+});
+if(TIPS.zelleLink)$("#zelleOpen").href=TIPS.zelleLink;else $("#zelleOpen").hidden=true;
+if(TIPS.zelle){const d=TIPS.zelle.replace(/\D/g,"");$("#zelleMask").textContent=TIPS.zelle.includes("@")?"":"•••-"+d.slice(-4)}else $("#zelleCopy").hidden=true;
+if(TIPS.zelleQR){const img=new Image();img.onload=()=>{zelleQROk=true;$("#zelleImg").src=TIPS.zelleQR;$("#zelleSave").href=TIPS.zelleQR;
+  renderTip()};img.src=TIPS.zelleQR}
 const tipFab=$("#tipFab");
 addEventListener("scroll",()=>{const r=$("#tip").getBoundingClientRect();tipFab.classList.toggle("show",scrollY>700&&r.top>innerHeight)},{passive:true});
 tipFab.addEventListener("click",()=>$("#tip").scrollIntoView({behavior:"smooth",block:"center"}));
