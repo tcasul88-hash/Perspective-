@@ -299,6 +299,16 @@ footer h5{background:linear-gradient(90deg,var(--gold),var(--pink));-webkit-back
 .pvibes button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .pstart{display:inline-flex;align-items:center;gap:8px;margin-left:auto;font-size:13px;color:var(--ink-soft)}
 .pstart select{font:inherit;font-size:14px;padding:8px 12px;border-radius:999px;border:1px solid var(--rule);background:var(--card);color:var(--ink)}
+.popts-label{margin-top:18px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
+.popts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px}
+.popts button{display:flex;gap:10px;align-items:flex-start;text-align:left;padding:12px 14px;border-radius:16px;border:1.5px solid var(--rule);background:var(--card);transition:all .2s}
+.popts button:hover{border-color:var(--orange)}
+.popts button[aria-pressed="true"]{border-color:var(--pink);background:color-mix(in srgb,var(--pink) 8%,var(--card));box-shadow:0 10px 24px -14px var(--pink)}
+.onum{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;flex-shrink:0;font-weight:700;font-size:13px;background:var(--bg-2);color:var(--ink-soft)}
+.popts button[aria-pressed="true"] .onum{background:linear-gradient(135deg,var(--pink),var(--orange));color:#fff}
+.otxt strong{display:block;font-family:"Cormorant Garamond",serif;font-size:20px;font-weight:600;line-height:1.1}
+.otxt small{display:block;margin-top:4px;font-size:12px;color:var(--ink-soft);line-height:1.35}
+@media (max-width:640px){.popts{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:8px -14px 0;padding:2px 14px 4px;scrollbar-width:none}.popts::-webkit-scrollbar{display:none}.popts button{flex:0 0 78%;scroll-snap-align:start}}
 .psum{margin:18px 0 6px;font-size:14px;color:var(--ink-soft)}
 .psum b{font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:600;color:var(--ink);margin-right:8px}
 .timeline{list-style:none;margin-top:8px}
@@ -440,6 +450,8 @@ footer h5{background:linear-gradient(90deg,var(--gold),var(--pink));-webkit-back
           <div class="pvibes" id="planVibes" role="group" aria-label="Mood"></div>
           <label class="pstart"><span data-i18n="plan_start">Start at</span><select id="planStart"></select></label>
         </div>
+        <div class="popts-label" data-i18n="plan_pick">Pick a route</div>
+        <div class="popts" id="planOpts" role="group"></div>
         <div class="psum" id="planSummary"></div>
         <ol class="timeline" id="planList"></ol>
         <div class="pacts">
@@ -1000,7 +1012,7 @@ const STOP_STYLE={
   show:{c:"#e09a00",i:'<path d="M12 2a3 3 0 00-3 3v6a3 3 0 006 0V5a3 3 0 00-3-3zM19 11a7 7 0 01-14 0M12 18v4M8 22h8"/>'},
   nightcap:{c:"#9d4edd",i:'<path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z"/>'}
 };
-const plan={vibe:"classic",dur:3,start:null};
+const plan={vibe:"classic",dur:3,opt:0,start:null};
 const PT=()=>PLAN_TXT[LANG]||PLAN_TXT.en;
 function pt(k,n){const v=(PT().ui[k])||PLAN_TXT.en.ui[k]||k;return n===undefined?v:v.replace("{n}",n)}
 const spotOf=name=>{const v=PLACES.find(x=>x.n===name);return v?{n:v.n,a:v.a,web:WEB[v.n],venue:v}:{n:name,...PLAN_SPOTS[name]}};
@@ -1009,11 +1021,15 @@ function clock(min){const d=new Date(2000,0,1,0,0);d.setMinutes(min);
   try{return new Intl.DateTimeFormat(LANG,{hour:"numeric",minute:"2-digit"}).format(d)}catch(e){return d.toTimeString().slice(0,5)}}
 const mapQ=s=>encodeURIComponent(s.n+", "+s.a+", New York, NY");
 function renderPlan(){
-  const cfg=PLANS[plan.vibe][plan.dur],key=plan.vibe+plan.dur,notes=(PT().notes[key])||PLAN_TXT.en.notes[key];
+  const SUF=["","b","c"],list=PLANS[plan.vibe][plan.dur],cfg=list[plan.opt],key=plan.vibe+plan.dur+SUF[plan.opt],notes=(PT().notes[key])||PLAN_TXT.en.notes[key];
+  const title=k=>(PT().titles&&PT().titles[k])||PLAN_TXT.en.titles[k];
   if(plan.start===null)plan.start=toMin(cfg.start);
   // controls
   document.querySelectorAll(".pdur button").forEach(b=>b.setAttribute("aria-pressed",+b.dataset.dur===plan.dur));
   $("#planVibes").innerHTML=Object.keys(PLANS).map(v=>`<button data-vibe="${v}" aria-pressed="${v===plan.vibe}">${esc((PT().vibes[v])||PLAN_TXT.en.vibes[v])}</button>`).join("");
+  $("#planOpts").innerHTML=list.map((r,i)=>{const k=plan.vibe+plan.dur+SUF[i];
+    const hi=r.stops.filter(s=>s[0]!=="walk").map(s=>s[1]).join(" · ");
+    return `<button data-opt="${i}" aria-pressed="${i===plan.opt}"><span class="onum">${i+1}</span><span class="otxt"><strong>${esc(title(k))}</strong><small>${esc(hi)}</small></span></button>`}).join("");
   let opts="";for(let m=9*60;m<=22*60;m+=30)opts+=`<option value="${m}"${m===plan.start?" selected":""}>${clock(m)}</option>`;
   $("#planStart").innerHTML=opts;
   // timeline
@@ -1039,13 +1055,14 @@ function renderPlan(){
   $("#planMsg").textContent="";
 }
 $("#plan").addEventListener("click",e=>{
-  const d=e.target.closest("[data-dur]"),v=e.target.closest("[data-vibe]");
-  if(d){plan.dur=+d.dataset.dur;plan.start=null;renderPlan()}
-  else if(v){plan.vibe=v.dataset.vibe;plan.start=null;renderPlan()}
+  const d=e.target.closest("[data-dur]"),v=e.target.closest("[data-vibe]"),o=e.target.closest("[data-opt]");
+  if(d){plan.dur=+d.dataset.dur;plan.opt=0;plan.start=null;renderPlan()}
+  else if(v){plan.vibe=v.dataset.vibe;plan.opt=0;plan.start=null;renderPlan()}
+  else if(o){plan.opt=+o.dataset.opt;plan.start=null;renderPlan()}
 });
 $("#planStart").addEventListener("change",e=>{plan.start=+e.target.value;renderPlan()});
 $("#planSave").addEventListener("click",()=>{
-  PLANS[plan.vibe][plan.dur].stops.forEach(s=>{if(PLACES.some(x=>x.n===s[1]))state.saved.add(s[1])});
+  PLANS[plan.vibe][plan.dur][plan.opt].stops.forEach(s=>{if(PLACES.some(x=>x.n===s[1]))state.saved.add(s[1])});
   store.set("corner-saved",[...state.saved]);render();$("#planMsg").textContent=pt("plan_saved");
 });
 document.querySelector("[data-goplan]").addEventListener("click",()=>$("#plan").scrollIntoView({behavior:"smooth",block:"start"}));
