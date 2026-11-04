@@ -1076,13 +1076,13 @@ function showTab(name,scroll){
   const plan=name==="plan";
   $("#plan").hidden=!plan;$("#view-guide").hidden=plan;
   document.querySelectorAll("#tabs [data-tab]").forEach(b=>b.setAttribute("aria-selected",b.dataset.tab===name));
-  try{history.replaceState(null,"",plan?"#plan":location.pathname+location.search)}catch(e){}
   if(scroll)$("#tabs").scrollIntoView({behavior:"smooth",block:"start"});
   onScroll();
 }
 $("#tabs").addEventListener("click",e=>{const b=e.target.closest("[data-tab]");if(b)showTab(b.dataset.tab,false)});
 document.querySelector("[data-goplan]").addEventListener("click",()=>showTab("plan",true));
-if(location.hash==="#plan")showTab("plan",false);
+// The planner only opens when a guest clicks; clear any old #plan left in the address
+if(location.hash){try{history.replaceState(null,"",location.pathname+location.search)}catch(e){}}
 
 /* ===================== LANGUAGE ===================== */
 const STAR='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg>';
