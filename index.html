@@ -702,7 +702,8 @@ ICON.globe='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-wi
 // Example: "Babbo":"images/babbo.jpg"
 // For tall photos, add a focus point to choose what stays in frame: {src:"images/x.jpg", pos:"50% 60%"}
 const PHOTOS = {
-  "Analogue": {src:"images/analogue.jpg", pos:"50% 46%"}
+  "Analogue": {src:"images/analogue.jpg", pos:"50% 46%"},
+  "Members Only West Village": {src:"images/members-only.jpg", pos:"50% 33%"}
 };
 const photoOf=n=>{const v=PHOTOS[n];return !v?null:typeof v==="string"?{src:v,pos:"50% 50%"}:v};
 
