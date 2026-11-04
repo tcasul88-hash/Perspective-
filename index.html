@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Around the Corner · Greenwich Village Guide</title>
+<meta name="description" content="A guide to the best places to eat and drink in Greenwich Village: restaurants by cuisine, cocktail bars, wine bars, rooftops and coffee.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f1e8; --bg-2:#efe7d9; --card:#fffdf9;
+  --ink:#1d1a16; --ink-soft:#6a6157; --rule:rgba(29,26,22,.12);
+  --night:#14201b; --night-2:#1d2b25; --cream:#f3ead9;
+  --brass:#b0874a; --brass-soft:#d8b77e;
+  --c-eat:#9b3d24; --c-drink:#2f4b5c;
+  --shadow:0 1px 2px rgba(20,16,10,.05),0 8px 24px -12px rgba(20,16,10,.18);
+  --radius:18px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#121815; --bg-2:#18201c; --card:#1b2420;
+    --ink:#efe8db; --ink-soft:#a59c8f; --rule:rgba(239,232,219,.12);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px -14px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121815; --bg-2:#18201c; --card:#1b2420;
+  --ink:#efe8db; --ink-soft:#a59c8f; --rule:rgba(239,232,219,.12);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px -14px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:"DM Sans",system-ui,sans-serif;font-size:16px;line-height:1.55;overflow-x:hidden}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.serif{font-family:"Cormorant Garamond",Georgia,serif}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;background:var(--night);color:var(--cream);overflow:hidden;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;
+  background:
+    radial-gradient(900px 500px at 85% -10%,rgba(216,183,126,.28),transparent 60%),
+    radial-gradient(700px 500px at -10% 110%,rgba(155,61,36,.35),transparent 60%),
+    linear-gradient(180deg,#14201b,#101814)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.07;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:22px 0;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-soft)}
+.topbar .mark{display:flex;align-items:center;gap:10px}
+.topbar .mark svg{width:22px;height:22px}
+.theme-btn{border:1px solid rgba(243,234,217,.25);border-radius:999px;padding:7px 12px;font-size:12px;letter-spacing:.1em;color:var(--cream)}
+.theme-btn:hover{border-color:var(--brass-soft)}
+.hero-body{padding:56px 0 64px;display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:end}
+.eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--brass-soft);margin-bottom:18px}
+.hero h1{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;font-size:clamp(52px,9vw,112px);line-height:.92;letter-spacing:-.01em}
+.hero h1 em{font-style:italic;color:var(--brass-soft)}
+.hero p.lede{margin-top:22px;max-width:520px;font-size:18px;color:rgba(243,234,217,.78)}
+.hero-stats{display:flex;gap:28px;margin-top:30px;flex-wrap:wrap}
+.hero-stats div{border-left:1px solid rgba(216,183,126,.4);padding-left:14px}
+.hero-stats b{display:block;font-family:"Cormorant Garamond",serif;font-size:34px;font-weight:500;line-height:1;color:var(--cream)}
+.hero-stats span{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(243,234,217,.6)}
+.doors{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.door{position:relative;text-align:left;border-radius:var(--radius);padding:22px 20px 20px;min-height:200px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+.door:hover{transform:translateY(-4px);box-shadow:0 20px 40px -18px rgba(0,0,0,.6)}
+.door.eat{background:linear-gradient(160deg,#b4502f,#7d2f1a)}
+.door.drink{background:linear-gradient(160deg,#3b6074,#1f3442)}
+.door small{font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.8}
+.door strong{font-family:"Cormorant Garamond",serif;font-size:44px;font-weight:500;line-height:1}
+.door .sub{font-size:13px;opacity:.85;margin-top:6px}
+.door svg.deco{position:absolute;right:-14px;top:-10px;width:120px;height:120px;opacity:.18}
+.door .arrow{display:inline-flex;align-items:center;gap:6px;font-size:13px;margin-top:14px}
+
+/* ---------- PICKS ---------- */
+section{scroll-margin-top:150px}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin:64px 0 22px}
+.section-head h2{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:clamp(34px,5vw,48px);line-height:1}
+.section-head p{color:var(--ink-soft);font-size:15px;max-width:440px}
+.picks{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.pick{background:var(--card);border:1px solid var(--rule);border-radius:var(--radius);padding:20px;text-align:left;box-shadow:var(--shadow);transition:transform .3s,border-color .3s}
+.pick:hover{transform:translateY(-3px);border-color:var(--brass)}
+.pick .ico{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--bg-2);color:var(--brass);margin-bottom:16px}
+.pick .ico svg{width:20px;height:20px}
+.pick h3{font-family:"Cormorant Garamond",serif;font-size:25px;font-weight:600;line-height:1.1}
+.pick p{font-size:14px;color:var(--ink-soft);margin-top:6px}
+.pick.active{border-color:var(--brass);outline:2px solid var(--brass);outline-offset:-2px}
+
+/* ---------- FILTER BAR ---------- */
+.bar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--rule);margin-top:56px}
+.bar-row{display:flex;gap:12px;align-items:center;padding:12px 0}
+.seg{display:inline-flex;background:var(--bg-2);border-radius:999px;padding:4px;flex-shrink:0}
+.seg button{padding:8px 16px;border-radius:999px;font-size:14px;font-weight:500;color:var(--ink-soft);transition:background .2s,color .2s}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.search{flex:1;min-width:0;position:relative}
+.search input{width:100%;font:inherit;font-size:15px;padding:10px 14px 10px 38px;border-radius:999px;border:1px solid var(--rule);background:var(--card);color:var(--ink);outline:none}
+.search input:focus{border-color:var(--brass)}
+.search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--ink-soft)}
+.sort{font:inherit;font-size:14px;padding:9px 12px;border-radius:999px;border:1px solid var(--rule);background:var(--card);color:var(--ink)}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:0 0 12px;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 92%,transparent)}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex-shrink:0;padding:7px 14px;border-radius:999px;border:1px solid var(--rule);font-size:13.5px;background:var(--card);white-space:nowrap;transition:all .2s}
+.chip:hover{border-color:var(--brass)}
+.chip[aria-pressed="true"]{background:var(--brass);border-color:var(--brass);color:#fff}
+.chip .n{opacity:.6;margin-left:4px;font-size:12px}
+.price-group{display:inline-flex;gap:4px;flex-shrink:0}
+.price-group button{padding:7px 10px;border-radius:999px;border:1px solid var(--rule);font-size:13px;background:var(--card)}
+.price-group button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+/* ---------- RESULTS ---------- */
+.results-meta{display:flex;justify-content:space-between;align-items:center;margin:28px 0 6px;color:var(--ink-soft);font-size:14px}
+.results-meta button{text-decoration:underline;text-underline-offset:3px}
+.group{margin-top:34px}
+.group-title{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.group-title h3{font-family:"Cormorant Garamond",serif;font-size:32px;font-weight:500;line-height:1}
+.group-title .line{flex:1;height:1px;background:var(--rule)}
+.group-title .count{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{position:relative;background:var(--card);border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s;animation:rise .5s both}
+.card:hover{transform:translateY(-3px)}
+.photo{position:relative;aspect-ratio:16/10;overflow:hidden;background:linear-gradient(150deg,var(--accent,var(--brass)),color-mix(in srgb,var(--accent,var(--brass)) 40%,#0b0b0b))}
+.photo::before{content:"";position:absolute;inset:0;opacity:.18;background:repeating-linear-gradient(135deg,rgba(255,255,255,.35) 0 1px,transparent 1px 14px)}
+.photo .ph{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:18px 20px;color:#fff}
+.photo .ph .mono{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:92px;line-height:.75;opacity:.92}
+.photo .ph small{margin-top:10px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.75}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.card:hover .photo img{transform:scale(1.05)}
+.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),transparent 35%);pointer-events:none}
+.badges{position:absolute;left:12px;top:12px;z-index:2;display:flex;gap:6px}
+.badges .pill{background:rgba(15,15,15,.55);color:#fff;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.badges .price b{color:#fff}.badges .price i{opacity:.35}
+.photo .save{position:absolute;top:10px;right:10px;z-index:2;background:rgba(255,255,255,.92);color:#1d1a16;border:0}
+.body{padding:18px 20px 18px;display:flex;flex-direction:column;flex:1}
+.info{margin-top:14px;padding-top:14px;border-top:1px dashed var(--rule);display:grid;gap:7px;font-size:13.5px;color:var(--ink-soft)}
+.info div{display:flex;gap:8px;align-items:flex-start}
+.info svg{width:15px;height:15px;flex-shrink:0;margin-top:2px;color:var(--accent,var(--brass))}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.actions .go{justify-content:center}
+.go.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.go.primary:hover{background:var(--brass);border-color:var(--brass);color:#fff}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.card-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.kind{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent,var(--brass));font-weight:600}
+.card h4{font-family:"Cormorant Garamond",serif;font-size:27px;font-weight:600;line-height:1.08;margin-top:6px}
+.save{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--rule);flex-shrink:0;transition:all .2s}
+.save svg{width:17px;height:17px}
+.save:hover{border-color:var(--c-eat)}
+.save[aria-pressed="true"]{background:var(--c-eat);border-color:var(--c-eat);color:#fff}
+.blurb{font-size:14.5px;color:var(--ink-soft);margin-top:10px;flex:1}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;padding:4px 10px;border-radius:999px;background:var(--bg-2)}
+.pill svg{width:13px;height:13px}
+.price b{color:var(--ink)} .price i{font-style:normal;opacity:.28}
+.tag-extra{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--brass);border:1px solid var(--brass);background:transparent}
+.addr{font-size:13px;color:var(--ink-soft);margin-top:12px;padding-top:12px;border-top:1px dashed var(--rule);display:flex;justify-content:space-between;align-items:center;gap:10px}
+.go{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;text-decoration:none;color:var(--ink);padding:7px 12px;border-radius:999px;border:1px solid var(--rule);white-space:nowrap;transition:all .2s}
+.go:hover{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.go svg{width:14px;height:14px}
+.empty{text-align:center;padding:70px 20px;color:var(--ink-soft)}
+.empty h3{font-family:"Cormorant Garamond",serif;font-size:32px;color:var(--ink);font-weight:500}
+
+/* ---------- FOOTER ---------- */
+footer{margin-top:90px;background:var(--night);color:rgba(243,234,217,.75);padding:56px 0 40px;font-size:14px}
+footer .f-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:40px}
+footer h5{font-family:"Cormorant Garamond",serif;font-size:34px;font-weight:500;color:var(--cream);line-height:1.05}
+footer .legend{display:grid;gap:8px}
+footer .legend div{display:flex;gap:10px;align-items:center}
+footer .fine{margin-top:40px;padding-top:20px;border-top:1px solid rgba(243,234,217,.12);font-size:12.5px;color:rgba(243,234,217,.5)}
+
+.to-top{position:fixed;right:18px;bottom:18px;z-index:60;width:46px;height:46px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;box-shadow:var(--shadow);opacity:0;pointer-events:none;transform:translateY(10px);transition:all .3s}
+.to-top.show{opacity:1;pointer-events:auto;transform:none}
+.to-top svg{width:18px;height:18px}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:980px){
+  .hero-body{grid-template-columns:1fr;gap:36px;padding-top:30px}
+  .picks{grid-template-columns:repeat(2,1fr)}
+  .grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:640px){
+  .wrap{padding:0 16px}
+  .hero-body{padding-bottom:44px}
+  .door{min-height:160px;padding:18px 16px}
+  .door strong{font-size:36px}
+  .picks{grid-template-columns:1fr 1fr;gap:10px}
+  .pick{padding:16px}.pick h3{font-size:21px}.pick p{display:none}
+  .grid{grid-template-columns:1fr}
+  .bar-row{flex-wrap:wrap}
+  .search{order:3;flex-basis:100%}
+  .seg button{padding:7px 12px;font-size:13px}
+  .sort{margin-left:auto}
+  footer .f-grid{grid-template-columns:1fr}
+  .section-head{flex-direction:column;align-items:flex-start;gap:8px}
+}
+
+/* ================= NIGHT CITY THEME ================= */
+:root{--sky-text:#fff6ec;--sky-soft:rgba(255,246,236,.74);--pink:#ff3d7f;--orange:#ff8a3d;--gold:#ffc94d;--violet:#7b2ff7;--cyan:#22d3ee;--p:0}
+body{background:#0d0a26}
+.sky{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.sky .dusk,.sky .night{position:absolute;inset:0}
+.sky .dusk{background:linear-gradient(180deg,#24185a 0%,#6b2a8f 28%,#d23f80 52%,#ff7d5a 72%,#ffbf66 100%)}
+.sky .night{background:linear-gradient(180deg,#04051a 0%,#0c1140 42%,#2a1a5e 78%,#5b2a7c 100%);opacity:var(--p)}
+.stars{position:absolute;inset:0 0 40% 0;opacity:calc(.15 + var(--p)*.85)}
+.stars i{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;animation:twinkle 3.5s ease-in-out infinite}
+@keyframes twinkle{50%{opacity:.15}}
+.orb{position:absolute;right:11%;top:calc(34% - var(--p)*22%);width:74px;height:74px;border-radius:50%;
+  background:radial-gradient(circle at 36% 34%,#fffbe8,#ffe3a0 55%,#ffb35c);box-shadow:0 0 70px 26px rgba(255,190,120,.38)}
+.city{position:fixed;left:0;right:0;bottom:0;height:48vh;min-height:280px;z-index:0;pointer-events:none}
+.city svg{position:absolute;left:-5%;width:110%;bottom:0;height:100%}
+.city .far{transform:translate3d(calc(var(--p) * -1.2%),calc((1 - var(--p)) * 18px),0)}
+.city .mid{transform:translate3d(calc(var(--p) * -2.4%),calc((1 - var(--p)) * 34px),0)}
+.city .near{transform:translate3d(calc(var(--p) * -4%),calc((1 - var(--p)) * 56px),0)}
+.win{fill:#ffd36e}.win.tw{animation:winblink 6s steps(1) infinite}
+@keyframes winblink{0%,100%{opacity:1}50%{opacity:.12}}
+.hero,main,footer,.ticker{position:relative;z-index:1}
+.bar{z-index:50}
+.hero{background:transparent}
+.hero::before{background:linear-gradient(90deg,rgba(10,7,32,.6),rgba(10,7,32,.15) 60%,rgba(10,7,32,0))}
+.topbar,.eyebrow{color:var(--gold)}
+.hero h1 em{background:linear-gradient(90deg,var(--gold),var(--orange),var(--pink),var(--gold));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 8s linear infinite;padding-right:.06em}
+@keyframes shine{to{background-position:300% 0}}
+.hero p.lede{color:rgba(255,246,236,.9)}
+.door{box-shadow:0 18px 44px -16px rgba(0,0,0,.55)}
+.door.eat{background:linear-gradient(150deg,#ff9a3d,#ff3d7f 58%,#b5179e)}
+.door.drink{background:linear-gradient(150deg,#22d3ee,#4361ee 55%,#7b2ff7)}
+.door svg.deco{opacity:.28}
+/* ticker */
+.ticker-wrap{position:relative;z-index:1;overflow:hidden;padding:14px 0}
+.ticker{overflow:hidden;color:#1a0f2e;padding:12px 0;margin:6px -12px 0;transform:rotate(-1.4deg);
+  background:linear-gradient(90deg,#ff3d7f,#ff8a3d,#ffc94d,#22d3ee,#7b2ff7,#ff3d7f);background-size:200% 100%;animation:shine 16s linear infinite;box-shadow:0 10px 30px -10px rgba(0,0,0,.5)}
+.ticker .track{display:flex;width:max-content;animation:scrollx 45s linear infinite}
+.ticker span{display:inline-flex;align-items:center;gap:14px;padding-right:14px;font-family:"Cormorant Garamond",serif;font-size:25px;font-style:italic;font-weight:600;white-space:nowrap}
+.ticker svg{width:16px;height:16px}
+@keyframes scrollx{to{transform:translateX(-50%)}}
+/* text that sits on the sky */
+.section-head h2,.group-title h3{color:var(--sky-text)}
+.section-head p,.results-meta,.group-title .count{color:var(--sky-soft)}
+.group-title .line{background:linear-gradient(90deg,rgba(255,246,236,.35),transparent)}
+.results-meta button,.empty,.empty h3{color:var(--sky-text)}
+/* mood picks */
+.pick{background:linear-gradient(150deg,var(--g1),var(--g2));border:0;color:#fff;box-shadow:0 14px 30px -14px rgba(0,0,0,.55)}
+.pick p{color:rgba(255,255,255,.88)}
+.pick .ico{background:rgba(255,255,255,.22);color:#fff}
+.pick:hover{transform:translateY(-4px) scale(1.02)}
+.pick.active{outline:3px solid #fff;outline-offset:3px}
+/* filter bar */
+.bar{background:rgba(13,10,38,.74);border-bottom:1px solid rgba(255,255,255,.1)}
+.seg{background:rgba(255,255,255,.1)}
+.seg button{color:var(--sky-soft)}
+.seg button[aria-pressed="true"]{background:linear-gradient(90deg,var(--pink),var(--orange));color:#fff}
+.search input,.sort,.price-group button,.chip{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);color:var(--sky-text)}
+.search input::placeholder{color:var(--sky-soft)}.search svg{color:var(--sky-soft)}
+.sort option{color:#111}
+.chip:hover{border-color:var(--gold)}
+.chip[aria-pressed="true"]{background:var(--pink);border-color:var(--pink)}
+.price-group button[aria-pressed="true"]{background:var(--gold);color:#1a0f2e;border-color:var(--gold)}
+/* cards */
+.card{border:0}
+.card:hover{box-shadow:0 24px 50px -22px var(--accent)}
+.photo{background:linear-gradient(140deg,var(--accent),var(--accent2,#1a0f2e))}
+.photo::before{opacity:.12}
+.photo .art{position:absolute;right:5%;bottom:6%;width:50%;max-width:190px;color:#fff;filter:drop-shadow(0 8px 16px rgba(0,0,0,.25));transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.card:hover .photo .art{transform:rotate(-5deg) scale(1.06)}
+.photo .ph small{font-size:12px;opacity:.95;font-weight:600}
+.kind{color:color-mix(in srgb,var(--accent) 70%,#000)}
+:root[data-theme="dark"] .kind{color:color-mix(in srgb,var(--accent) 65%,#fff)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .kind{color:color-mix(in srgb,var(--accent) 65%,#fff)}}
+.tag-extra{color:var(--pink);border-color:var(--pink)}
+footer{margin-top:40px;padding-top:150px;background:linear-gradient(180deg,rgba(8,6,26,0),rgba(8,6,26,.45) 40%,rgba(8,6,26,.72))}
+footer p,footer .legend{text-shadow:0 1px 8px rgba(0,0,0,.8)}
+footer h5{background:linear-gradient(90deg,var(--gold),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.to-top{background:linear-gradient(135deg,var(--pink),var(--orange));color:#fff}
+@media (max-width:640px){.orb{width:50px;height:50px;right:7%;top:calc(13% - var(--p)*6%)}.ticker span{font-size:21px}}
+
+.top-actions{display:flex;gap:8px;align-items:center}
+.lang{position:relative;display:inline-flex;align-items:center}
+.lang svg{position:absolute;left:11px;width:15px;height:15px;color:var(--gold);pointer-events:none}
+.lang select{appearance:none;-webkit-appearance:none;font:inherit;font-size:12px;letter-spacing:.06em;color:var(--cream);background:rgba(255,255,255,.06);border:1px solid rgba(243,234,217,.25);border-radius:999px;padding:7px 14px 7px 32px;cursor:pointer}
+.lang select:hover,.lang select:focus{border-color:var(--gold);outline:none}
+.lang select option{color:#111;background:#fff}
+@media (max-width:640px){.hero-stats{flex-wrap:nowrap;gap:14px}.hero-stats div{flex:1;min-width:0;padding-left:10px}.hero-stats span{font-size:10.5px;letter-spacing:.08em;display:block;line-height:1.3;margin-top:4px}.topbar{gap:10px}.topbar .mark{font-size:11px;letter-spacing:.1em}.lang select{max-width:122px;text-overflow:ellipsis}}
+/* Washington Square photo background */
+.photo-bg{position:absolute;inset:0;background:url("images/washington-square-bg.jpg?v=2") 45% 35%/cover no-repeat}
+.photo-bg::after{content:"";position:absolute;inset:0;opacity:var(--c,1);
+  background:linear-gradient(180deg,rgba(13,10,38,.3),rgba(13,10,38,.08) 45%,rgba(13,10,38,.5)),
+             linear-gradient(180deg,rgba(8,6,26,0),rgba(8,6,26,.95));
+  background-size:100% 100%,100% 100%}
+.photo-bg::before{content:"";position:absolute;inset:0;z-index:1;background:#0b0822;opacity:min(.72, calc(var(--p) * 2.2))}
+.sky .stars{z-index:2;opacity:calc(var(--p) * .9)}
+.orb{display:none}
+.city{opacity:clamp(0, calc(var(--p) * 2.6 - .45), 1);transition:opacity .2s}
+@media (max-width:640px){.hero::before{background:linear-gradient(180deg,rgba(10,7,32,.62),rgba(10,7,32,.42) 60%,rgba(10,7,32,.2))}}
+.cover{position:relative;z-index:1;height:100vh;height:100svh}
+.cover-cue{position:absolute;left:50%;bottom:22px;width:42px;height:42px;margin-left:-21px;border-radius:50%;display:grid;place-items:center;
+  color:rgba(255,255,255,.85);background:rgba(0,0,0,.18);opacity:calc(1 - var(--c,0) * 3);animation:cue 2.4s ease-in-out infinite}
+.cover-cue svg{width:22px;height:22px}
+@keyframes cue{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+.tip-fab,.to-top{visibility:hidden}.tip-fab.show,.to-top.show{visibility:visible}
+.tabs{display:flex;gap:6px;width:max-content;max-width:100%;margin:34px auto 0;padding:6px;border-radius:999px;background:rgba(13,10,38,.6);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.tabs button{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;font-weight:600;font-size:15px;color:var(--sky-soft);transition:all .2s}
+.tabs button svg{width:17px;height:17px}
+.tabs button:hover{color:var(--sky-text)}
+.tabs button[aria-selected="true"]{background:linear-gradient(90deg,var(--pink),var(--orange));color:#fff;box-shadow:0 10px 24px -12px var(--pink)}
+.tabs button[data-tab="plan"][aria-selected="false"] svg{color:var(--gold)}
+.plan[hidden],#view-guide[hidden]{display:none}
+.plan{scroll-margin-top:20px}
+@media (max-width:640px){.tabs{width:100%}.tabs button{flex:1;justify-content:center;padding:11px 10px;font-size:14px}}
+/* plan your night */
+.plan-cta{grid-column:1/-1;display:flex;align-items:center;gap:14px;text-align:left;padding:16px 20px;border-radius:var(--radius);color:#1a0f2e;
+  background:linear-gradient(100deg,var(--gold),var(--orange) 55%,var(--pink));box-shadow:0 18px 44px -16px rgba(0,0,0,.55);transition:transform .3s}
+.plan-cta:hover{transform:translateY(-3px)}
+.plan-cta>svg:first-child{width:26px;height:26px;flex-shrink:0}
+.plan-cta strong{display:block;font-family:"Cormorant Garamond",serif;font-size:30px;font-weight:600;line-height:1}
+.plan-cta small{display:block;font-size:13px;opacity:.8;margin-top:3px}
+.plan-cta .arr{width:20px;height:20px;margin-left:auto;flex-shrink:0}
+.plan{position:relative;z-index:1}
+.plan-eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.plan-card{background:var(--card);color:var(--ink);border-radius:26px;padding:22px;box-shadow:0 30px 70px -30px rgba(0,0,0,.7)}
+.plan-controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.pdur{display:inline-flex;background:var(--bg-2);border-radius:999px;padding:4px}
+.pdur button{padding:9px 18px;border-radius:999px;font-weight:600;font-size:14px;color:var(--ink-soft)}
+.pdur button[aria-pressed="true"]{background:linear-gradient(90deg,var(--pink),var(--orange));color:#fff}
+.pvibes{display:flex;gap:8px;flex-wrap:wrap}
+.pvibes button{padding:8px 14px;border-radius:999px;border:1px solid var(--rule);font-size:14px;background:var(--card)}
+.pvibes button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.pstart{display:inline-flex;align-items:center;gap:8px;margin-left:auto;font-size:13px;color:var(--ink-soft)}
+.pstart select{font:inherit;font-size:14px;padding:8px 12px;border-radius:999px;border:1px solid var(--rule);background:var(--card);color:var(--ink)}
+.popts-label{margin-top:18px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
+.popts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px}
+.popts button{display:flex;gap:10px;align-items:flex-start;text-align:left;padding:12px 14px;border-radius:16px;border:1.5px solid var(--rule);background:var(--card);transition:all .2s}
+.popts button:hover{border-color:var(--orange)}
+.popts button[aria-pressed="true"]{border-color:var(--pink);background:color-mix(in srgb,var(--pink) 8%,var(--card));box-shadow:0 10px 24px -14px var(--pink)}
+.onum{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;flex-shrink:0;font-weight:700;font-size:13px;background:var(--bg-2);color:var(--ink-soft)}
+.popts button[aria-pressed="true"] .onum{background:linear-gradient(135deg,var(--pink),var(--orange));color:#fff}
+.otxt strong{display:block;font-family:"Cormorant Garamond",serif;font-size:20px;font-weight:600;line-height:1.1}
+.otxt small{display:block;margin-top:4px;font-size:12px;color:var(--ink-soft);line-height:1.35}
+@media (max-width:640px){.popts{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:8px -14px 0;padding:2px 14px 4px;scrollbar-width:none}.popts::-webkit-scrollbar{display:none}.popts button{flex:0 0 78%;scroll-snap-align:start}}
+.psum{margin:18px 0 6px;font-size:14px;color:var(--ink-soft)}
+.psum b{font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:600;color:var(--ink);margin-right:8px}
+.timeline{list-style:none;margin-top:8px}
+.tstop{display:grid;grid-template-columns:74px 44px 1fr;gap:0 12px;align-items:start}
+.ttime{font-weight:600;font-size:14px;padding-top:12px;text-align:right;white-space:nowrap}
+.tdot{position:relative;display:flex;flex-direction:column;align-items:center;height:100%}
+.tdot i{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;background:var(--c);box-shadow:0 8px 18px -8px var(--c);flex-shrink:0}
+.tdot i svg{width:20px;height:20px}
+.tdot::after{content:"";flex:1;width:2px;margin:4px 0;background:repeating-linear-gradient(180deg,var(--rule) 0 5px,transparent 5px 10px)}
+.tstop:last-child .tdot::after{display:none}
+.tbody{padding:6px 0 18px}
+.ttype{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--c)}
+.tbody h4{font-family:"Cormorant Garamond",serif;font-size:25px;font-weight:600;line-height:1.1;margin-top:2px}
+.tbody p{font-size:14.5px;color:var(--ink-soft);margin-top:4px}
+.tmeta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px;font-size:13px;color:var(--ink-soft)}
+.tmeta a{font-weight:600;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.twalk{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:12.5px;color:var(--ink-soft);background:var(--bg-2);padding:4px 10px;border-radius:999px}
+.twalk svg{width:13px;height:13px}
+.pacts{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.pacts .go{padding:11px 18px;font-size:14px}
+.pnote{margin-top:14px;font-size:13px;color:var(--ink-soft)}
+.pmsg{color:#2f7a3d;font-weight:600}
+@media (max-width:640px){
+  .plan-cta strong{font-size:25px}
+  .plan-card{padding:18px 14px;border-radius:22px}
+  .pstart{margin-left:0}
+  .tstop{grid-template-columns:58px 36px 1fr;gap:0 10px}
+  .ttime{font-size:12.5px;padding-top:9px}
+  .tdot i{width:36px;height:36px}.tdot i svg{width:17px;height:17px}
+  .tbody h4{font-size:22px}
+  .pacts .go{flex:1;justify-content:center}
+}
+/* tips */
+.tip{position:relative;z-index:1;margin-top:80px}
+.tip-card{max-width:720px;margin:0 auto;border-radius:28px;padding:34px 30px 30px;text-align:center;color:#fff;
+  background:linear-gradient(135deg,rgba(255,61,127,.92),rgba(123,47,247,.92) 55%,rgba(34,211,238,.9));box-shadow:0 30px 70px -30px rgba(0,0,0,.7)}
+.tip-ico{width:58px;height:58px;margin:0 auto 14px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.2);animation:beat 2.4s ease-in-out infinite}
+.tip-ico svg{width:28px;height:28px}
+@keyframes beat{0%,100%{transform:scale(1)}12%{transform:scale(1.12)}24%{transform:scale(1)}}
+.tip-head h2{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:clamp(34px,5vw,46px);line-height:1}
+.tip-head p{margin:10px auto 0;max-width:470px;color:rgba(255,255,255,.9);font-size:15.5px}
+.tip-label{margin-top:24px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;opacity:.85}
+.amounts{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:12px}
+.amounts button,.amounts .custom{min-width:76px;padding:11px 16px;border-radius:999px;font-weight:600;font-size:16px;background:rgba(255,255,255,.16);border:1.5px solid rgba(255,255,255,.45);color:#fff;transition:all .2s}
+.amounts button:hover{background:rgba(255,255,255,.28)}
+.amounts button[aria-pressed="true"],.amounts .custom.on{background:#fff;color:#4a1a8a;border-color:#fff}
+.amounts .custom{display:inline-flex;align-items:center;gap:2px;padding:0 14px}
+.amounts .custom input{width:64px;background:none;border:0;outline:none;font:inherit;color:inherit;padding:11px 0}
+.amounts .custom input::placeholder{color:currentColor;opacity:.75}
+.pay{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:22px;max-width:520px;margin-left:auto;margin-right:auto}
+.amounts[hidden],.tip-label[hidden]{display:none}
+.pay a,.pay button{display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 16px;border-radius:16px;font-weight:600;font-size:15px;text-decoration:none;color:#fff;background:var(--b);box-shadow:0 10px 24px -12px rgba(0,0,0,.6);transition:transform .2s}
+.pay a:hover,.pay button:hover{transform:translateY(-2px)}
+.pay small{font-weight:500;opacity:.85}
+.tip-msg{min-height:22px;margin-top:14px;font-size:14px;color:#fff}
+.tip-fab{position:fixed;left:18px;bottom:18px;z-index:60;display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:999px;font-weight:600;color:#fff;
+  background:linear-gradient(135deg,var(--pink),var(--violet));box-shadow:0 12px 30px -10px rgba(0,0,0,.6);opacity:0;transform:translateY(10px);pointer-events:none;transition:all .3s}
+.tip-fab.show{opacity:1;transform:none;pointer-events:auto}
+.tip-fab svg{width:16px;height:16px}
+.zmodal{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:16px;background:rgba(6,4,20,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.zmodal[hidden]{display:none}
+.zbox{position:relative;width:100%;max-width:340px;background:#fff;color:#1d1a16;border-radius:24px;padding:26px 22px 22px;text-align:center;box-shadow:0 30px 70px -20px rgba(0,0,0,.7);animation:rise .3s both}
+.zbrand{font-weight:700;font-size:22px;color:#6D1ED4;letter-spacing:-.01em}
+.zbox h3{font-size:16px;font-weight:600;margin-top:4px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.zbox img{width:100%;max-width:280px;margin:6px auto 4px;display:block;border-radius:12px}
+.zname{font-weight:600;font-size:17px;letter-spacing:.02em}
+.zhandle{font-size:14px;color:#6a6157}
+.zbox p{font-size:13.5px;color:#6a6157;margin-top:8px}
+.zbox{max-height:calc(100vh - 32px);overflow-y:auto}
+.zor{margin-top:14px;padding-top:12px;border-top:1px dashed #e4dccd;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#6a6157}
+.zacts{display:grid;gap:8px;margin-top:10px}
+.zbtn{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 14px;border-radius:14px;font-weight:600;font-size:15px;text-decoration:none;color:#6D1ED4;background:#f3ecfd;border:1px solid #e2d4fa}
+.zbtn:hover{background:#eadffc}
+.zbtn.primary{background:#6D1ED4;color:#fff;border-color:#6D1ED4}
+.zbtn small{font-weight:500;opacity:.75}
+.zbtn[hidden]{display:none}
+.zmsg{min-height:18px;margin-top:8px;font-size:13px;color:#2f7a3d!important}
+@media (max-width:640px){.zbox img{max-width:210px}}
+.zclose{position:absolute;top:10px;right:12px;width:34px;height:34px;border-radius:50%;font-size:24px;line-height:1;color:#6a6157}
+.zclose:hover{background:#f1ece4}
+@media (max-width:640px){.tip-card{padding:28px 18px 22px;border-radius:22px}.pay{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="sky" aria-hidden="true"><div class="photo-bg"></div></div>
+
+<section class="cover" aria-label="Washington Square Arch at night">
+  <button class="cover-cue" id="coverCue" aria-label="Scroll to the guide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
+</section>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="topbar">
+      <div class="mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>
+        Greenwich Village · NYC
+      </div>
+      <div class="top-actions"><label class="lang"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg><select id="lang" aria-label="Language"></select></label><button class="theme-btn" id="themeBtn" aria-label="Toggle light or dark theme">Dark</button></div>
+    </div>
+    <div class="hero-body">
+      <div>
+        <div class="eyebrow" data-i18n="eyebrow">A local guide · Eat &amp; drink</div>
+        <h1>Around<br>the <em>Corner</em></h1>
+        <p class="lede" data-i18n="lede">Favorite tables, bars, rooftops and coffee counters, all within an easy stroll of Washington Square. Filter by mood, cuisine or distance, and tap for walking directions.</p>
+        <div class="hero-stats" id="stats"></div>
+      </div>
+      <div class="doors">
+        <button class="door eat" data-door="eat">
+          <svg class="deco" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1"><path d="M7 2v20M4 2v6a3 3 0 006 0V2M17 2c-2 0-3 3-3 7s1 5 3 5v8"/></svg>
+          <small data-i18n="door_eat_small">Restaurants</small>
+          <div><strong data-i18n="door_eat">Eat</strong><div class="sub" data-i18n="door_eat_sub">Italian, French, sushi, tacos, steak &amp; more</div>
+          <span class="arrow"><span data-i18n="explore">Explore</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </button>
+        <button class="door drink" data-door="drink">
+          <svg class="deco" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1"><path d="M4 3h16l-8 9zM12 12v9M8 21h8"/></svg>
+          <small data-i18n="door_drink_small">Bars &amp; Coffee</small>
+          <div><strong data-i18n="door_drink">Drink</strong><div class="sub" data-i18n="door_drink_sub">Cocktails, wine, rooftops &amp; coffee</div>
+          <span class="arrow"><span data-i18n="explore">Explore</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </button>
+        <button class="plan-cta" data-goplan><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg><span><strong data-i18n="plan_cta">Plan my night</strong><small data-i18n="plan_cta_sub">Ready-made 3- or 6-hour routes</small></span><svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="ticker-wrap" aria-hidden="true"><div class="ticker"><div class="track" id="tickerTrack"><span>Handmade pasta <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Martinis <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Rooftop sunsets <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Omakase <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Espresso <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Tacos &amp; mezcal <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Natural wine <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Jazz cellars <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Steak frites <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Late nights <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Handmade pasta <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Martinis <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Rooftop sunsets <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Omakase <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Espresso <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Tacos &amp; mezcal <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Natural wine <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Jazz cellars <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Steak frites <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Late nights <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span></div></div></div>
+
+<main>
+  <div class="wrap"><nav class="tabs" id="tabs" role="tablist" aria-label="Sections">
+    <button role="tab" id="tab-guide" data-tab="guide" aria-selected="true" aria-controls="view-guide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 2v20M4 2v6a3 3 0 006 0V2M17 2c-2 0-3 3-3 7s1 5 3 5v8"/></svg><span data-i18n="tab_guide">Explore the guide</span></button>
+    <button role="tab" id="tab-plan" data-tab="plan" aria-selected="false" aria-controls="plan"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg><span data-i18n="tab_plan">Plan your night</span></button>
+  </nav></div>
+
+  <section id="plan" class="plan" role="tabpanel" aria-labelledby="tab-plan" hidden>
+    <div class="wrap">
+      <div class="section-head">
+        <div><div class="plan-eyebrow" data-i18n="plan_eyebrow">New · Plan your night</div><h2 class="serif" data-i18n="plan_title">Plan your night</h2></div>
+        <p data-i18n="plan_sub">Choose how much time you have and the mood.</p>
+      </div>
+      <div class="plan-card">
+        <div class="plan-controls">
+          <div class="pdur" role="group" aria-label="Length">
+            <button data-dur="3" aria-pressed="true" data-i18n="plan_h3">3 hours</button><button data-dur="6" aria-pressed="false" data-i18n="plan_h6">6 hours</button>
+          </div>
+          <div class="pvibes" id="planVibes" role="group" aria-label="Mood"></div>
+          <label class="pstart"><span data-i18n="plan_start">Start at</span><select id="planStart"></select></label>
+        </div>
+        <div class="popts-label" data-i18n="plan_pick">Pick a route</div>
+        <div class="popts" id="planOpts" role="group"></div>
+        <div class="psum" id="planSummary"></div>
+        <ol class="timeline" id="planList"></ol>
+        <div class="pacts">
+          <a class="go primary" id="planRoute" target="_blank" rel="noopener"><span data-i18n="plan_route">Open full route in Maps</span></a>
+          <button class="go" id="planSave" type="button" data-i18n="plan_save">Save these spots</button>
+        </div>
+        <p class="pnote"><span data-i18n="plan_note">Book dinner and shows ahead.</span> <span id="planMsg" class="pmsg" role="status"></span></p>
+      </div>
+    </div>
+  </section>
+
+  <div id="view-guide" role="tabpanel" aria-labelledby="tab-guide">
+  <div class="wrap">
+    <section id="picks">
+      <div class="section-head">
+        <h2 class="serif" data-i18n="picks_title">Not sure where to start?</h2>
+        <p data-i18n="picks_sub">Pick a mood and we'll narrow the list for you.</p>
+      </div>
+      <div class="picks" id="picksGrid"></div>
+    </section>
+  </div>
+
+  <div class="bar" id="bar">
+    <div class="wrap">
+      <div class="bar-row">
+        <div class="seg" role="group" aria-label="Show">
+          <button data-mode="all" data-i18n="mode_all" aria-pressed="true">All</button>
+          <button data-mode="eat" data-i18n="mode_eat" aria-pressed="false">Eat</button>
+          <button data-mode="drink" data-i18n="mode_drink" aria-pressed="false">Drink</button>
+          <button data-mode="saved" data-i18n="mode_saved" aria-pressed="false">Saved</button>
+        </div>
+        <label class="search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+          <input id="q" type="search" data-i18n-ph="search_ph" placeholder="Search a name, cuisine or street…" aria-label="Search">
+        </label>
+        <div class="price-group" role="group" aria-label="Price">
+          <button data-price="1">$</button><button data-price="2">$$</button><button data-price="3">$$$</button><button data-price="4">$$$$</button>
+        </div>
+        <select class="sort" id="sort" aria-label="Sort">
+          <option value="walk" data-i18n="sort_walk">Closest first</option>
+          <option value="name" data-i18n="sort_name">A to Z</option>
+          <option value="price" data-i18n="sort_price">Price</option>
+        </select>
+      </div>
+      <div class="chips" id="chips" role="group" aria-label="Category"></div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section id="list">
+      <div class="results-meta"><span id="count"></span><button id="reset" hidden data-i18n="clear">Clear filters</button></div>
+      <div id="results"></div>
+    </section>
+  </div>
+  </div>
+  <section class="tip" id="tip" hidden>
+    <div class="wrap"><div class="tip-card">
+      <div class="tip-head">
+        <div class="tip-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 20s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.6-7 10-7 10z"/></svg></div>
+        <h2 data-i18n="tip_title">Enjoyed the picks?</h2>
+        <p data-i18n="tip_sub">If this guide helped you find a great spot, you can leave a tip to say thanks.</p>
+      </div>
+      <div class="tip-label" id="tipLabel" data-i18n="tip_amount">Choose an amount</div>
+      <div class="amounts" id="amounts" role="group">
+        <button data-amt="5">$5</button><button data-amt="10" aria-pressed="true">$10</button><button data-amt="20">$20</button>
+        <label class="custom"><span>$</span><input id="tipCustom" inputmode="decimal" autocomplete="off" data-i18n-ph="tip_custom" placeholder="Other" aria-label="Custom amount"></label>
+      </div>
+      <div class="pay" id="payBtns"></div>
+      <p class="tip-msg" id="tipMsg" role="status"></p>
+    </div></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <h5 data-i18n-html="foot_h">Want a personal<br>recommendation?</h5>
+        <p style="margin-top:14px;max-width:420px" data-i18n="foot_p">Tell me what kind of night you have in mind, and I will point you somewhere that suits it.</p>
+      </div>
+      <div class="legend">
+        <div><span class="pill" style="background:rgba(243,234,217,.08)">$</span> <span data-i18n="leg1">Under $20 per person</span></div>
+        <div><span class="pill" style="background:rgba(243,234,217,.08)">$$</span> <span data-i18n="leg2">Casual, moderate</span></div>
+        <div><span class="pill" style="background:rgba(243,234,217,.08)">$$$</span> <span data-i18n="leg3">Special night out</span></div>
+        <div><span class="pill" style="background:rgba(243,234,217,.08)">$$$$</span> <span data-i18n="leg4">Splurge</span></div>
+        <div><span class="pill tag-extra">Local pick</span> <span data-i18n="leg5">Added to round out drinks, rooftops &amp; coffee</span></div>
+      </div>
+    </div>
+    <p class="fine" data-i18n="fine">Walk times are approximate from West 8th Street and Fifth Avenue. Hours, menus and seasonal rooftops change, so please check with the venue before heading out.</p>
+  </div>
+</footer>
+
+<div class="zmodal" id="zelleModal" hidden role="dialog" aria-modal="true" aria-labelledby="zelleTitle">
+  <div class="zbox">
+    <button class="zclose" id="zelleClose" aria-label="Close">×</button>
+    <h3 id="zelleTitle" class="sr" data-i18n="tip_scan_h">Scan in your banking app</h3>
+    <img id="zelleImg" alt="Zelle QR code for Timothy Casul">
+    <p data-i18n="tip_scan_p">Open your bank's app, choose Send with Zelle, and scan this code.</p>
+    <div class="zor" data-i18n="tip_or">Using this phone? Try one of these instead:</div>
+    <div class="zacts">
+      <a class="zbtn primary" id="zelleOpen" target="_blank" rel="noopener"><span data-i18n="tip_open">Open in Zelle</span></a>
+      <button class="zbtn" id="zelleCopy" type="button"><span data-i18n="tip_copynum">Copy phone number</span> <small id="zelleMask"></small></button>
+      <a class="zbtn" id="zelleSave" download="zelle-qr.png"><span data-i18n="tip_save">Save QR code</span></a>
+    </div>
+    <p class="zmsg" id="zelleMsg" role="status"></p>
+  </div>
+</div>
+<button class="tip-fab" id="tipFab" hidden><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 20s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.6-7 10-7 10z"/></svg><span data-i18n="tip_btn">Tip</span></button>
+<button class="to-top" id="toTop" aria-label="Back to top" data-i18n-aria="backtop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
+
+<script src="i18n.js"></script>
+<script src="plan.js"></script>
+<script>
+/* ===================== DATA ===================== */
+// g = group (eat|drink), c = category id, p = price 1-4, w = walk minutes, x = concierge addition
+const CATS = {
+  american:{label:"American",g:"eat",color:"#ff5a5f",c2:"#b5179e"},
+  italian:{label:"Italian",g:"eat",color:"#ff8a3d",c2:"#e63946"},
+  french:{label:"French",g:"eat",color:"#c45bff",c2:"#4361ee"},
+  asian:{label:"Japanese & Asian",g:"eat",color:"#ff3d7f",c2:"#7b2ff7"},
+  mexican:{label:"Mexican & Latin",g:"eat",color:"#ffb000",c2:"#ff3d7f"},
+  spanish:{label:"Spanish",g:"eat",color:"#ff5e3a",c2:"#ffb000"},
+  global:{label:"Global",g:"eat",color:"#2ec4b6",c2:"#4361ee"},
+  steak:{label:"Steakhouse",g:"eat",color:"#e63946",c2:"#5c0b2b"},
+  fine:{label:"Fine Dining",g:"eat",color:"#d9a441",c2:"#4a2a7a"},
+  cocktails:{label:"Cocktails",g:"drink",color:"#4361ee",c2:"#22d3ee"},
+  wine:{label:"Wine",g:"drink",color:"#9d4edd",c2:"#ff3d7f"},
+  rooftop:{label:"Rooftops",g:"drink",color:"#00b4d8",c2:"#7b2ff7"},
+  coffee:{label:"Coffee",g:"drink",color:"#c47a45",c2:"#4a2412"}
+};
+
+const PLACES = [
+  // American
+  {n:"Waverly Inn",c:"american",k:"American",a:"16 Bank St",p:4,w:10,d:"A clubby, candlelit West Village classic with a garden room and famously indulgent comfort food.",t:["date"]},
+  {n:"American Bar",c:"american",k:"Classic American",a:"33 Greenwich Ave",p:2,w:5,d:"A bright, breezy room for classic American plates and an excellent martini.",t:["drinks"],also:["cocktails"]},
+  {n:"White Oak Tavern",c:"american",k:"American",a:"21 Waverly Pl",p:2,w:5,d:"A cozy neighborhood tavern for burgers, brunch and a pint by the bar.",t:["casual"]},
+  // Italian
+  {n:"Babbo",c:"italian",k:"Italian",a:"110 Waverly Pl",p:4,w:3,d:"A landmark Village trattoria celebrated for its handmade pastas. Reserve ahead.",t:["date","book"]},
+  {n:"Dante NYC",c:"italian",k:"Italian · Cocktail bar",a:"79-81 MacDougal St",p:3,w:8,d:"A century-old café reborn as one of the world's great bars. Order a Negroni.",t:["drinks"],also:["cocktails"]},
+  {n:"Carbone",c:"italian",k:"Italian",a:"181 Thompson St",p:3,w:8,d:"Glamorous, old-school red-sauce theater. The spicy rigatoni is the move. Book well ahead.",t:["date","book"]},
+  {n:"Via Carota",c:"italian",k:"Italian",a:"51 Grove St",p:3,w:9,d:"A rustic, deeply beloved Italian. Arrive early and expect a wait. It is worth it.",t:["date"]},
+  {n:"L'Artusi",c:"italian",k:"Italian",a:"228 W 10th St",p:3,w:11,d:"Sleek and buzzy, with a serious wine list. Save room for the olive oil cake.",t:["date"],also:["wine"]},
+  {n:"La Lanterna di Vittorio",c:"italian",k:"Italian",a:"129 MacDougal St",p:2,w:7,d:"Candlelit café with a fireplace, a garden, and live jazz most nights.",t:["date","casual"]},
+  {n:"Osteria 57",c:"italian",k:"Italian",a:"453 6th Ave",p:2,w:6,d:"An intimate Italian osteria with a warm neighborhood feel, now on Sixth Avenue.",t:["date"]},
+  {n:"Rosemary's",c:"italian",k:"Italian",a:"18 Greenwich Ave",p:2,w:5,d:"Airy, light-filled Italian with seasonal small plates and pastas.",t:["casual","groups"]},
+  {n:"Olio e Più",c:"italian",k:"Italian",a:"3 Greenwich Ave",p:2,w:4,d:"Neapolitan pizza and a sunny sidewalk café that feels like a trip to Italy.",t:["casual"]},
+  {n:"One Fifth",c:"italian",k:"Italian",a:"1 Fifth Ave",p:2,w:1,d:"Polished Italian practically on the doorstep, at the foot of Fifth Avenue.",t:["casual","near"]},
+  // French
+  {n:"Minetta Tavern",c:"french",k:"French",a:"113 MacDougal St",p:3,w:6,d:"A storied 1937 tavern turned bistro. The Black Label burger is legendary.",t:["date","book"]},
+  {n:"Boucherie West Village",c:"french",k:"French",a:"99 7th Ave S",p:3,w:8,d:"A Parisian-style brasserie for steak frites, oysters and absinthe.",t:["groups"]},
+  {n:"Claudette",c:"french",k:"French",a:"24 5th Ave",p:3,w:2,d:"A charming Provence-inspired bistro, airy and sunny, just up the block.",t:["date","near"]},
+  {n:"Amélie Wine Bar & Bistro",c:"french",k:"French · Wine bar",a:"22 W 8th St",p:2,w:1,d:"A cozy French wine bar with small plates, right next door.",t:["casual","near","drinks"],also:["wine"]},
+  {n:"Le Baratin",c:"french",k:"French",a:"26 Greenwich Ave",p:2,w:5,d:"An easygoing French bistro for a relaxed dinner.",t:["casual"]},
+  // Japanese & Asian
+  {n:"Kazumi Omakase",c:"asian",k:"Sushi",a:"31 W 8th St",p:2,w:2,d:"An intimate sushi counter serving a chef's choice omakase, steps off Fifth Avenue.",t:["date","near","book"]},
+  {n:"Omakase Room by Maaser",c:"asian",k:"Japanese",a:"321 Bleecker St",p:2,w:9,d:"A small omakase counter with a personal, chef-led experience.",t:["date","book"]},
+  {n:"Blue Ribbon Sushi",c:"asian",k:"Japanese",a:"119 Sullivan St",p:2,w:13,d:"A downtown sushi institution, known for pristine fish and late hours.",t:["casual"]},
+  {n:"Rasa",c:"asian",k:"Malaysian",a:"25 W 8th St",p:2,w:1,d:"Modern Malaysian cooking with bold flavors, right on 8th Street.",t:["casual","near"]},
+  // Mexican & Latin
+  {n:"La Contenta Oeste",c:"mexican",k:"Mexican",a:"78 W 11th St",p:2,w:6,d:"Mexican cooking with a mezcal-forward bar and creative cocktails.",t:["casual","drinks"]},
+  {n:"Tacombi",c:"mexican",k:"Mexican",a:"255 Bleecker St",p:2,w:9,d:"Lively, colorful taqueria. Great for a quick, casual bite.",t:["casual","groups"]},
+  {n:"La Lotería",c:"mexican",k:"Mexican",a:"29 7th Ave S",p:2,w:11,d:"Festive Mexican spot with tacos, margaritas and a fun crowd.",t:["casual","groups"]},
+  {n:"Baby Brasa",c:"mexican",k:"Peruvian",a:"173 7th Ave S",p:3,w:7,d:"Peruvian rotisserie chicken, ceviche and pisco in a bright, upbeat room.",t:["groups"]},
+  // Spanish
+  {n:"Casa Mono",c:"spanish",k:"Spanish",a:"52 Irving Pl",p:3,w:15,d:"A tiny, beloved tapas bar near Gramercy with a deep Spanish wine list.",t:["date"],also:["wine"]},
+  {n:"Sevilla",c:"spanish",k:"Spanish",a:"62 Charles St",p:2,w:9,d:"Old-school Spanish since 1941. Order the paella and a pitcher of sangria.",t:["groups","casual"]},
+  {n:"Boqueria SoHo",c:"spanish",k:"Spanish",a:"171 Spring St",p:2,w:14,d:"Barcelona-style tapas and sangria, great for sharing.",t:["groups"]},
+  // Global
+  {n:"Claud",c:"global",k:"European",a:"90 E 10th St",p:3,w:10,d:"Refined European cooking in a wine-bar setting, from an acclaimed team.",t:["date"],also:["wine"]},
+  {n:"Semma",c:"global",k:"Indian",a:"60 Greenwich Ave",p:2,w:7,d:"Celebrated South Indian cooking with real heat and depth. Book ahead.",t:["book"]},
+  {n:"Shmoné",c:"global",k:"Israeli",a:"61 W 8th St",p:3,w:2,d:"Vibrant, vegetable-forward Israeli small plates just down the street.",t:["date","near"]},
+  // Steak
+  {n:"Strip House",c:"steak",k:"Steakhouse",a:"13 E 12th St",p:3,w:6,d:"Moody red-velvet steakhouse. Do not skip the 24-layer chocolate cake.",t:["date","groups"]},
+  {n:"4 Charles Prime Rib",c:"steak",k:"Steakhouse",a:"4 Charles St",p:3,w:6,d:"A dark, intimate prime rib den and one of downtown's toughest reservations.",t:["date","book"]},
+  {n:"STK Downtown",c:"steak",k:"Steakhouse",a:"26 Little W 12th St",p:3,w:16,d:"A sceney Meatpacking District steakhouse with a lounge feel.",t:["groups"]},
+  // Fine dining
+  {n:"Frevo",c:"fine",k:"Fine Dining",a:"48 W 8th St",p:4,w:2,d:"A hidden tasting-menu counter, entered through an art gallery door.",t:["date","near","book"]},
+  {n:"One if by Land, Two if by Sea",c:"fine",k:"Fine Dining American",a:"17 Barrow St",p:4,w:8,d:"Candlelight, a piano and fireplaces. Known as one of the city's most romantic rooms.",t:["date","book"]},
+  {n:"The Musket Room",c:"fine",k:"International",a:"265 Elizabeth St",p:4,w:17,d:"Elegant, internationally inspired tasting menus in Nolita.",t:["date","book"]},
+  // Cocktails
+  {n:"Members Only West Village",c:"cocktails",k:"Cocktail bar",a:"53 W 8th St",p:2,w:1,d:"A stylish neighborhood cocktail bar a minute from the door.",t:["drinks","near"]},
+  {n:"Analogue",c:"cocktails",k:"Cocktail bar",a:"19 W 8th St",p:3,w:1,d:"Low lights, vinyl records and beautifully made cocktails.",t:["drinks","near","date"]},
+  {n:"Mace",c:"cocktails",k:"Cocktail bar",a:"35 W 8th St",p:2,w:1,d:"Inventive, spice-driven cocktails from a world-renowned bar team.",t:["drinks","near"]},
+  {n:"Employees Only",c:"cocktails",k:"Cocktail bar",a:"510 Hudson St",p:3,w:13,d:"Legendary speakeasy-style bar with white-jacketed bartenders and a late kitchen.",t:["drinks"],x:1},
+  {n:"Little Branch",c:"cocktails",k:"Speakeasy",a:"22 7th Ave S",p:2,w:10,d:"A subterranean speakeasy with live jazz and bespoke classics.",t:["drinks","date"],x:1},
+  {n:"Katana Kitten",c:"cocktails",k:"Japanese highball bar",a:"531 Hudson St",p:2,w:13,d:"Playful Japanese-American bar famed for highballs and fun vibes.",t:["drinks","groups"],x:1},
+  {n:"Bar Pisellino",c:"cocktails",k:"Aperitivo bar",a:"52 Grove St",p:2,w:9,d:"A jewel-box Italian bar for spritzes, espresso and people-watching.",t:["drinks","date"],x:1},
+  // Wine
+  {n:"Vin Sur Vingt",c:"wine",k:"Wine bar",a:"192 7th Ave S",p:2,w:8,d:"A snug, candlelit French wine bar with a great by-the-glass list.",t:["drinks","date"]},
+  {n:"Buvette",c:"wine",k:"Wine bar · Gastrothèque",a:"42 Grove St",p:2,w:9,d:"A tiny, romantic French café and wine bar, lovely from breakfast to midnight.",t:["drinks","date"],x:1},
+  {n:"Aria Wine Bar",c:"wine",k:"Wine bar",a:"117 Perry St",p:2,w:13,d:"Rustic Italian wine bar with cicchetti and an approachable list.",t:["drinks","casual"],x:1},
+  // Rooftops
+  {n:"Le Bain at The Standard",c:"rooftop",k:"Rooftop bar",a:"848 Washington St",p:3,w:18,d:"Penthouse lounge above the High Line with sweeping Hudson views.",t:["drinks","groups"],x:1},
+  {n:"Bar Hugo",c:"rooftop",k:"Rooftop bar",a:"525 Greenwich St",p:3,w:20,d:"Hotel rooftop with skyline views and a relaxed sunset crowd.",t:["drinks","date"],x:1},
+  {n:"230 Fifth Rooftop",c:"rooftop",k:"Rooftop bar",a:"1150 Broadway",p:2,w:20,d:"A huge rooftop with Empire State Building views and heated igloos in winter.",t:["drinks","groups"],x:1},
+  {n:"The Crown",c:"rooftop",k:"Rooftop bar",a:"50 Bowery",p:3,w:25,d:"A chic rooftop atop Hotel 50 Bowery. A quick cab ride away.",t:["drinks","date"],x:1},
+  // Coffee
+  {n:"Stumptown Coffee",c:"coffee",k:"Coffee",a:"30 W 8th St",p:1,w:1,d:"Expertly pulled espresso and cold brew right on our block.",t:["near","morning"],x:1},
+  {n:"Joe Coffee",c:"coffee",k:"Coffee",a:"141 Waverly Pl",p:1,w:5,d:"A beloved New York roaster in a sweet Village corner shop.",t:["morning"],x:1},
+  {n:"Third Rail Coffee",c:"coffee",k:"Coffee",a:"240 Sullivan St",p:1,w:6,d:"A tiny, serious espresso bar loved by locals.",t:["morning"],x:1},
+  {n:"Caffe Reggio",c:"coffee",k:"Historic café",a:"119 MacDougal St",p:1,w:6,d:"Open since 1927 and said to have served America's first cappuccino.",t:["morning","casual"],x:1},
+  {n:"Partners Coffee",c:"coffee",k:"Coffee",a:"44 Charles St",p:1,w:9,d:"Bright Brooklyn-roasted coffee and good pastries in the West Village.",t:["morning"],x:1}
+];
+
+const PICKS = [
+  {id:"near",title:"Steps away",desc:"Two minutes or less from 8th Street and Fifth.",icon:'<path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>',fn:p=>p.w<=2},
+  {id:"date",title:"Date night",desc:"Candlelight, romance and great wine.",icon:'<path d="M12 20s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.6-7 10-7 10z"/>',fn:p=>p.t.includes("date")},
+  {id:"morning",title:"Morning coffee",desc:"The best cup nearby.",icon:'<path d="M4 9h13v5a5 5 0 01-5 5H9a5 5 0 01-5-5zM17 10h1.5a2.5 2.5 0 010 5H17M8 3v3M12 3v3"/>',fn:p=>p.c==="coffee"},
+  {id:"views",title:"Rooftop views",desc:"Drinks with a skyline.",icon:'<path d="M3 21h18M5 21V11l4-3v13M13 21V5l6 3v13"/>',fn:p=>p.c==="rooftop"},
+  {id:"drinks",title:"Cocktail hour",desc:"Bars worth the trip.",icon:'<path d="M5 4h14l-7 8zM12 12v8M8 20h8"/>',fn:p=>p.c==="cocktails"||(p.also||[]).includes("cocktails")},
+  {id:"wine",title:"A glass of wine",desc:"Wine bars and serious lists.",icon:'<path d="M8 3h8l-.5 6a3.5 3.5 0 01-7 0zM12 13v8M9 21h6"/>',fn:p=>p.c==="wine"||(p.also||[]).includes("wine")},
+  {id:"groups",title:"Fun with a group",desc:"Lively rooms and shareable food.",icon:'<circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20a6 6 0 0112 0M15 20a4.5 4.5 0 016-4"/>',fn:p=>p.t.includes("groups")},
+  {id:"book",title:"Worth booking",desc:"Special spots that fill up fast.",icon:'<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/>',fn:p=>p.t.includes("book")}
+];
+
+/* ===================== STATE ===================== */
+const store = {
+  get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},
+  set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+};
+const state = {mode:"all",cat:null,pick:null,prices:new Set(),q:"",sort:"walk",saved:new Set(store.get("corner-saved",[]))};
+
+const SUPPORTED=LANGS.map(l=>l[0]);
+let LANG=(()=>{const saved=store.get("corner-lang",null);if(saved&&SUPPORTED.includes(saved))return saved;
+  const nav=(navigator.language||"en").slice(0,2).toLowerCase();return SUPPORTED.includes(nav)?nav:"en"})();
+const L=()=>I18N[LANG]||{};
+function t(k,n){const P=(typeof PLAN_TXT!=="undefined")?(PLAN_TXT[LANG]||PLAN_TXT.en).ui:{};const v=(L().ui&&L().ui[k])||P[k]||(PLAN_TXT&&PLAN_TXT.en.ui[k])||I18N.en.ui[k]||k;return n===undefined?v:v.replace("{n}",n)}
+const catLabel=c=>(L().cats&&L().cats[c])||CATS[c].label;
+const kindT=k=>(L().kinds&&L().kinds[k])||k;
+const descT=p=>(L().desc&&L().desc[p.n])||p.d;
+const pickT=p=>(L().picks&&L().picks[p.id])||[p.title,p.desc];
+const $ = s=>document.querySelector(s);
+const esc = s=>s.replace(/[&<>"]/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]));
+const ICON = {
+  walk:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13" cy="4" r="2"/><path d="M10 22l2-7 3 3v6M8 12l2-4 4 1 3 3M10 8l-2 6"/></svg>',
+  heart:'<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5"><path d="M12 20s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.6-7 10-7 10z"/></svg>',
+  heartO:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 20s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.6-7 10-7 10z"/></svg>',
+  arrow:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>'
+};
+const dirUrl = p=>"https://www.google.com/maps/dir/?api=1&travelmode=walking&destination="+encodeURIComponent(p.n+", "+p.a+", New York, NY")+"&hl="+LANG;
+const priceHtml = n=>"<b>"+"$".repeat(n)+"</b><i>"+"$".repeat(4-n)+"</i>";
+const walkTxt = w=>w>20?t("cab"):t("walk",w);
+const findUrl = p=>"https://www.google.com/search?q="+encodeURIComponent(p.n+" "+p.a+" New York")+"&hl="+LANG;
+// Photo files live in images/ and are named from the place name, e.g. "L'Artusi" -> images/lartusi.jpg
+const slug = s=>s.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/['’]/g,"").replace(/&/g,"and").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+ICON.pin='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>';
+ICON.globe='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg>';
+
+// Your own photos, by place name. Cards without a photo show their illustration.
+// Example: "Babbo":"images/babbo.jpg"
+// For tall photos, add a focus point to choose what stays in frame: {src:"images/x.jpg", pos:"50% 60%"}
+const PHOTOS = {
+  "Analogue": {src:"images/analogue.jpg", pos:"50% 46%"},
+  "Members Only West Village": {src:"images/members-only.jpg", pos:"50% 33%"},
+  "American Bar": {src:"images/american-bar.jpg", pos:"50% 48%"}
+};
+const photoOf=n=>{const v=PHOTOS[n];return !v?null:typeof v==="string"?{src:v,pos:"50% 50%"}:v};
+
+// Official websites. Places not listed here get a "Find online" search link instead.
+const WEB = {
+  "Waverly Inn":"https://www.waverlynyc.com",
+  "White Oak Tavern":"https://www.whiteoakny.com",
+  "Babbo":"https://www.babbonyc.com",
+  "Dante NYC":"https://www.dante-nyc.com",
+  "Carbone":"https://www.carbonenewyork.com",
+  "Via Carota":"https://www.viacarota.com",
+  "L'Artusi":"https://www.lartusi.com",
+  "Rosemary's":"https://www.rosemarysnyc.com",
+  "Minetta Tavern":"https://www.minettatavernny.com",
+  "Blue Ribbon Sushi":"https://www.blueribbonsushi.com",
+  "Tacombi":"https://www.tacombi.com",
+  "Casa Mono":"https://www.casamononyc.com",
+  "Boqueria SoHo":"https://www.boquerianyc.com",
+  "Semma":"https://www.semma.nyc",
+  "Strip House":"https://www.striphouse.com",
+  "STK Downtown":"https://stksteakhouse.com",
+  "One if by Land, Two if by Sea":"https://www.oneifbyland.com",
+  "The Musket Room":"https://www.musketroom.com",
+  "Employees Only":"https://www.employeesonlynyc.com",
+  "Katana Kitten":"https://www.katanakitten.com",
+  "Bar Pisellino":"https://www.barpisellino.com",
+  "Buvette":"https://ilovebuvette.com",
+  "Le Bain at The Standard":"https://www.standardhotels.com",
+  "230 Fifth Rooftop":"https://www.230-fifth.com",
+  "The Crown":"https://www.hotel50bowery.com",
+  "Stumptown Coffee":"https://www.stumptowncoffee.com",
+  "Joe Coffee":"https://joecoffeecompany.com",
+  "Third Rail Coffee":"https://www.thirdrailcoffee.com",
+  "Caffe Reggio":"https://www.caffereggio.com",
+  "Partners Coffee":"https://www.partnerscoffee.com"
+};
+
+/* ===================== FILTERING ===================== */
+function inCat(p,c){return p.c===c||(p.also||[]).includes(c)}
+function base(){
+  return PLACES.filter(p=>{
+    if(state.mode==="saved"&&!state.saved.has(p.n))return false;
+    if(state.mode==="eat"&&CATS[p.c].g!=="eat")return false;
+    if(state.mode==="drink"&&CATS[p.c].g!=="drink"&&!(p.also||[]).some(a=>CATS[a].g==="drink"))return false;
+    return true;
+  });
+}
+function filtered(){
+  const q=state.q.trim().toLowerCase();
+  const pick=PICKS.find(x=>x.id===state.pick);
+  return base().filter(p=>{
+    if(state.cat&&!inCat(p,state.cat))return false;
+    if(pick&&!pick.fn(p))return false;
+    if(state.prices.size&&!state.prices.has(p.p))return false;
+    if(q&&!(p.n+" "+p.k+" "+kindT(p.k)+" "+p.a+" "+CATS[p.c].label+" "+catLabel(p.c)+" "+p.d+" "+descT(p)).toLowerCase().includes(q))return false;
+    return true;
+  });
+}
+function sorter(a,b){
+  if(state.sort==="name")return a.n.localeCompare(b.n);
+  if(state.sort==="price")return a.p-b.p||a.w-b.w;
+  return a.w-b.w||a.n.localeCompare(b.n);
+}
+
+/* ===================== RENDER ===================== */
+function renderStats(){
+  const eat=PLACES.filter(p=>CATS[p.c].g==="eat").length, drink=PLACES.length-eat;
+  const cuisines=Object.values(CATS).filter(c=>c.g==="eat").length;
+  $("#stats").innerHTML=`<div><b>${eat}</b><span>${t("stat_rest")}</span></div><div><b>${drink}</b><span>${t("stat_bars")}</span></div><div><b>${cuisines}</b><span>${t("stat_cuis")}</span></div>`;
+}
+function renderPicks(){
+  $("#picksGrid").innerHTML=PICKS.map((p,i)=>`<button class="pick${state.pick===p.id?" active":""}" style="--g1:${PICK_COLORS[i][0]};--g2:${PICK_COLORS[i][1]}" data-pick="${p.id}" aria-pressed="${state.pick===p.id}">
+    <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${p.icon}</svg></div>
+    <h3>${esc(pickT(p)[0])}</h3><p>${esc(pickT(p)[1])}</p></button>`).join("");
+}
+function renderChips(){
+  const pool=base();
+  const ids=Object.keys(CATS).filter(c=>{
+    if(state.mode==="eat")return CATS[c].g==="eat";
+    if(state.mode==="drink")return CATS[c].g==="drink";
+    return true;
+  });
+  const html=[`<button class="chip" data-cat="" aria-pressed="${!state.cat}">${esc(t("everything"))}<span class="n">${pool.length}</span></button>`]
+    .concat(ids.map(c=>{const n=pool.filter(p=>inCat(p,c)).length;if(!n)return"";
+      return `<button class="chip" data-cat="${c}" aria-pressed="${state.cat===c}">${esc(catLabel(c))}<span class="n">${n}</span></button>`}));
+  $("#chips").innerHTML=html.join("");
+}
+function card(p,i){
+  const cat=CATS[p.c],saved=state.saved.has(p.n);
+  const initial=p.n.replace(/^The\s+/,"").charAt(0);
+  const web=WEB[p.n];
+  const webLink=web
+    ?`<a class="go" href="${web}" target="_blank" rel="noopener">${t("website")} ${ICON.arrow}</a>`
+    :`<a class="go" href="${findUrl(p)}" target="_blank" rel="noopener">${t("find")} ${ICON.arrow}</a>`;
+  const webRow=web?`<div>${ICON.globe}<span>${esc(web.replace(/^https?:\/\/(www\.)?/,"").replace(/\/$/,""))}</span></div>`:"";
+  return `<article class="card" style="--accent:${cat.color};--accent2:${cat.c2};animation-delay:${Math.min(i,12)*30}ms">
+    <div class="photo">
+      <div class="ph" aria-hidden="true">${ART[p.c]}<small>${esc(kindT(p.k))}</small></div>
+      ${photoOf(p.n)?`<img src="${esc(photoOf(p.n).src)}" style="object-position:${esc(photoOf(p.n).pos)}" alt="${esc(p.n)}" loading="lazy" onerror="this.remove()">`:""}
+      <div class="badges"><span class="pill">${ICON.walk}${walkTxt(p.w)}</span><span class="pill price" aria-label="${t("price_aria",p.p)}">${priceHtml(p.p)}</span></div>
+      <button class="save" data-save="${esc(p.n)}" aria-pressed="${saved}" aria-label="${saved?t("unsave"):t("save")}">${saved?ICON.heart:ICON.heartO}</button>
+    </div>
+    <div class="body">
+      <div class="kind">${esc(kindT(p.k))}</div><h4>${esc(p.n)}</h4>
+      <p class="blurb">${esc(descT(p))}</p>
+      ${p.x?'<div class="meta"><span class="pill tag-extra">'+t("localpick")+'</span></div>':""}
+      <div class="info">
+        <div>${ICON.pin}<span>${esc(p.a)}, New York, NY</span></div>
+        ${webRow}
+      </div>
+      <div class="actions">${webLink}<a class="go primary" href="${dirUrl(p)}" target="_blank" rel="noopener">${t("directions")} ${ICON.arrow}</a></div>
+    </div>
+  </article>`;
+}
+function renderResults(){
+  const list=filtered().sort(sorter);
+  const total=list.length;
+  $("#count").textContent=t(total===1?"count1":"countN",total);
+  const active=state.cat||state.pick||state.prices.size||state.q||state.mode!=="all";
+  $("#reset").hidden=!active;
+  if(!total){
+    $("#results").innerHTML=state.mode==="saved"&&!state.saved.size
+      ?`<div class="empty"><h3>${t("empty_saved_h")}</h3><p>${t("empty_saved_p")}</p></div>`
+      :`<div class="empty"><h3>${t("empty_h")}</h3><p>${t("empty_p")}</p></div>`;
+    return;
+  }
+  // group by category in a stable order; flat list when a single category is chosen
+  const order=Object.keys(CATS);
+  const groups={};
+  const keyOf=p=>{
+    if(state.cat)return state.cat;
+    if(state.mode==="drink"&&CATS[p.c].g!=="drink")return (p.also||[]).find(a=>CATS[a].g==="drink")||p.c;
+    return p.c;
+  };
+  list.forEach(p=>{const key=keyOf(p);(groups[key]=groups[key]||[]).push(p)});
+  let i=0;
+  $("#results").innerHTML=order.filter(k=>groups[k]).map(k=>`<div class="group">
+      <div class="group-title"><h3>${esc(catLabel(k))}</h3><span class="line"></span><span class="count">${groups[k].length}</span></div>
+      <div class="grid">${groups[k].map(p=>card(p,i++)).join("")}</div></div>`).join("");
+}
+function render(){renderPicks();renderChips();renderResults();
+  document.querySelectorAll(".seg button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.mode===state.mode));
+  document.querySelectorAll(".price-group button").forEach(b=>b.setAttribute("aria-pressed",state.prices.has(+b.dataset.price)));
+}
+function jump(){const y=$("#bar").getBoundingClientRect().top+scrollY;scrollTo({top:y,behavior:"smooth"})}
+
+/* ===================== EVENTS ===================== */
+document.addEventListener("click",e=>{
+  const t=e.target.closest("button");if(!t)return;
+  if(t.dataset.door){showTab("guide",false);state.mode=t.dataset.door;state.cat=null;state.pick=null;render();jump();}
+  else if(t.dataset.mode){state.mode=t.dataset.mode;state.cat=null;render();}
+  else if(t.dataset.cat!==undefined){state.cat=t.dataset.cat||null;render();}
+  else if(t.dataset.pick){state.pick=state.pick===t.dataset.pick?null:t.dataset.pick;state.mode="all";state.cat=null;render();if(state.pick)jump();}
+  else if(t.dataset.price){const v=+t.dataset.price;state.prices.has(v)?state.prices.delete(v):state.prices.add(v);render();}
+  else if(t.dataset.save){const n=t.dataset.save;state.saved.has(n)?state.saved.delete(n):state.saved.add(n);store.set("corner-saved",[...state.saved]);render();}
+  else if(t.id==="reset"){Object.assign(state,{mode:"all",cat:null,pick:null,q:"",sort:state.sort});state.prices.clear();$("#q").value="";render();}
+});
+$("#q").addEventListener("input",e=>{state.q=e.target.value;renderResults();renderChips();
+  $("#reset").hidden=!(state.cat||state.pick||state.prices.size||state.q||state.mode!=="all")});
+$("#sort").addEventListener("change",e=>{state.sort=e.target.value;renderResults();});
+
+// back to top
+const toTop=$("#toTop");
+addEventListener("scroll",()=>toTop.classList.toggle("show",scrollY>innerHeight+500),{passive:true});
+toTop.addEventListener("click",()=>scrollTo({top:0,behavior:"smooth"}));
+
+// theme toggle
+const root=document.documentElement,themeBtn=$("#themeBtn");
+function isDark(){const t=root.dataset.theme;return t?t==="dark":matchMedia("(prefers-color-scheme: dark)").matches}
+function syncTheme(){themeBtn.textContent=isDark()?t("theme_light"):t("theme_dark")}
+const savedTheme=store.get("corner-theme",null);if(savedTheme)root.dataset.theme=savedTheme;
+themeBtn.addEventListener("click",()=>{root.dataset.theme=isDark()?"light":"dark";store.set("corner-theme",root.dataset.theme);syncTheme()});
+syncTheme();
+
+
+/* ===================== ILLUSTRATIONS ===================== */
+const PICK_COLORS=[["#ff8a3d","#ff3d7f"],["#ff3d7f","#9d4edd"],["#c47a45","#ff8a3d"],["#22d3ee","#7b2ff7"],["#4361ee","#22d3ee"],["#9d4edd","#ff3d7f"],["#ffb000","#ff5e3a"],["#2ec4b6","#4361ee"]];
+const art=d=>'<svg class="art" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">'+d+'</svg>';
+const ART={
+  american:art('<path d="M18 46Q50 8 82 46Z" fill="rgba(255,255,255,.18)"/><path d="M38 30l2-2M50 24l2-1M62 30l1-2M45 37l2-1M58 38l2-1"/><path d="M14 54q6-6 12 0t12 0 12 0 12 0 12 0 12 0"/><rect x="16" y="58" width="68" height="11" rx="5" fill="rgba(0,0,0,.18)"/><path d="M18 74h64q0 11-11 11H29q-11 0-11-11z" fill="rgba(255,255,255,.18)"/>'),
+  italian:art('<ellipse cx="44" cy="74" rx="34" ry="11" fill="rgba(255,255,255,.15)"/><path d="M22 70q22-16 44 0M27 63q17-12 34 0M32 56q12-8 24 0M37 50q7-4 14 0"/><circle cx="34" cy="64" r="3" fill="currentColor"/><circle cx="56" cy="60" r="3" fill="currentColor"/><path d="M78 12v18M84 12v18M90 12v18M78 30q6 7 12 0M84 34v54"/>'),
+  french:art('<path d="M10 64Q50 18 90 64Q76 58 66 66Q50 50 34 66Q24 58 10 64Z" fill="rgba(255,255,255,.18)"/><path d="M34 66Q40 44 50 36M66 66Q60 44 50 36M22 60q8-12 18-18M78 60q-8-12-18-18"/><path d="M30 84h40"/>'),
+  asian:art('<path d="M18 72q0-10 14-10h36q14 0 14 10q0 9-11 9H29q-11 0-11-9z" fill="rgba(255,255,255,.18)"/><path d="M16 62q32-24 68-4q-32 7-68 4z" fill="rgba(0,0,0,.15)"/><path d="M40 54l-4 8M52 51l-4 9M64 53l-4 8"/><path d="M20 30L88 14M22 39L90 25"/>'),
+  mexican:art('<path d="M12 74A38 38 0 0 1 88 74Z" fill="rgba(255,255,255,.18)"/><path d="M20 58q6-9 12 0q6-9 12 0q6-9 12 0q6-9 12 0q6-9 12 0"/><circle cx="34" cy="50" r="3" fill="currentColor"/><circle cx="52" cy="46" r="3" fill="currentColor"/><circle cx="68" cy="50" r="3" fill="currentColor"/><path d="M76 20q8 4 6 14M68 16q8 2 8 10"/>'),
+  spanish:art('<ellipse cx="50" cy="60" rx="36" ry="18" fill="rgba(255,255,255,.16)"/><path d="M14 60H4M86 60h10"/><path d="M32 58q6-9 13 0M54 66q6-9 13 0"/><circle cx="40" cy="68" r="4"/><circle cx="62" cy="54" r="4"/><path d="M48 50a7 7 0 0 1 14 0z" fill="currentColor"/><path d="M30 20q4 6 0 12M44 16q4 6 0 12M58 20q4 6 0 12"/>'),
+  global:art('<circle cx="50" cy="50" r="32" fill="rgba(255,255,255,.12)"/><ellipse cx="50" cy="50" rx="14" ry="32"/><path d="M18 50h64M22 34h56M22 66h56"/><path d="M84 14l4 8M90 12l-4 10"/>'),
+  steak:art('<path d="M16 52q4-22 32-20q26 2 34 16q8 15-9 25q-21 12-42 4q-19-8-15-25z" fill="rgba(255,255,255,.18)"/><circle cx="60" cy="50" r="7"/><path d="M28 50q8-6 16 2M36 64q10-4 18 2"/><path d="M80 12l12 12-24 24"/>'),
+  fine:art('<path d="M16 68a34 34 0 0 1 68 0z" fill="rgba(255,255,255,.18)"/><path d="M8 74h84"/><circle cx="50" cy="30" r="4" fill="currentColor"/><path d="M28 54q6-14 18-18"/><path d="M84 12v10M79 17h10M14 20v8M10 24h8"/>'),
+  cocktails:art('<path d="M20 20h60L50 54Z" fill="rgba(255,255,255,.18)"/><path d="M26 28h48"/><path d="M50 54v26M36 82h28"/><circle cx="44" cy="36" r="5" fill="currentColor"/><path d="M36 14l14 28"/><path d="M80 34v8M76 38h8M18 52v6M15 55h6"/>'),
+  wine:art('<path d="M30 14h28q3 28-14 34q-17-6-14-34z" fill="rgba(255,255,255,.12)"/><path d="M31 28h26" /><path d="M32 30q12 6 24 0v-2H32z" fill="currentColor"/><path d="M44 48v30M32 80h24"/><path d="M74 34V18h8v16q7 5 7 13v35H67V47q0-8 7-13z" fill="rgba(255,255,255,.18)"/><path d="M67 58h22"/>'),
+  rooftop:art('<path d="M8 86V60h12V48h10v12h8V32l6-10 6 10v54M58 86V52h12v-8h10v42" fill="rgba(255,255,255,.14)"/><path d="M4 86h92"/><path d="M8 20q22 12 44 0t44 0"/><circle cx="19" cy="25" r="2" fill="currentColor"/><circle cx="41" cy="25" r="2" fill="currentColor"/><circle cx="63" cy="25" r="2" fill="currentColor"/><circle cx="85" cy="25" r="2" fill="currentColor"/><path d="M84 40a8 8 0 1 1-8-10a6 6 0 0 0 8 10z" fill="currentColor"/>'),
+  coffee:art('<path d="M20 44h50v16a25 25 0 0 1-50 0z" fill="rgba(255,255,255,.18)"/><path d="M70 48a10 10 0 0 1 0 19"/><path d="M12 88h66"/><path d="M34 16q-6 8 0 15M46 12q-6 8 0 15M58 16q-6 8 0 15"/><path d="M34 54q11 6 22 0"/>')
+};
+
+let ticking=false;
+function onScroll(){
+  if(ticking)return;ticking=true;
+  requestAnimationFrame(()=>{const max=Math.max(1,document.documentElement.scrollHeight-innerHeight);
+    document.documentElement.style.setProperty("--p",Math.min(1,scrollY/max).toFixed(3));document.documentElement.style.setProperty("--c",Math.min(1,scrollY/(innerHeight*.8)).toFixed(3));ticking=false});
+}
+addEventListener("scroll",onScroll,{passive:true});addEventListener("resize",onScroll);onScroll();
+/* ===================== TIPS ===================== */
+// Fill in your own details. Leave a method empty ("") to hide it.
+// The tip section stays hidden until at least one is filled in.
+const TIPS = {
+  venmo:   "",   // Venmo username, without @      e.g. "Jane-Doe-12"
+  cashapp: "",   // Cash App $cashtag, without $   e.g. "janedoe"
+  paypal:  "",   // PayPal.me name                 e.g. "janedoe"
+  zelle:   "9174854510",   // Phone or email used with Zelle (guests can copy it)
+  zelleLink: "https://enroll.zellepay.com/qr-codes?data=eyJuYW1lIjoiVElNT1RIWSIsInRva2VuIjoiOTE3NDg1NDUxMCJ9", // Link inside the Zelle QR code (lets guests tap instead of scan)
+  zelleQR: "images/zelle-qr.png", // Your Zelle QR code image. The button turns on once this file exists.
+  zelleName: "Timothy Casul",     // Name guests will see on Zelle, so they know it is you
+  card:    ""    // A Stripe or Square payment link for cards / Apple Pay, e.g. "https://buy.stripe.com/..."
+};
+let tipAmt=10,zelleQROk=false;
+const PAYS=[
+  {k:"venmo",label:"Venmo",b:"#008CFF",url:a=>`https://venmo.com/${encodeURIComponent(TIPS.venmo)}?txn=pay&amount=${a}&note=${encodeURIComponent(t("tip_note"))}`},
+  {k:"cashapp",label:"Cash App",b:"#00C244",url:a=>`https://cash.app/$${encodeURIComponent(TIPS.cashapp)}/${a}`},
+  {k:"paypal",label:"PayPal",b:"#003087",url:a=>`https://paypal.me/${encodeURIComponent(TIPS.paypal)}/${a}USD`},
+  {k:"card",label:"",b:"#1d1a16",url:()=>TIPS.card},
+  {k:"zelle",label:"Zelle",b:"#6D1ED4"}
+];
+function renderTip(){
+  const on=PAYS.filter(m=>TIPS[m.k]||(m.k==="zelle"&&zelleQROk));
+  $("#tip").hidden=!on.length;$("#tipFab").hidden=!on.length;
+  if(!on.length)return;
+  // amounts only matter for apps that accept a preset amount
+  const hasAmt=on.some(m=>["venmo","cashapp","paypal"].includes(m.k));
+  $("#amounts").hidden=!hasAmt;$("#tipLabel").hidden=!hasAmt;
+  $("#payBtns").innerHTML=on.map(m=>m.k==="zelle"
+    ?`<button type="button" style="--b:${m.b}" data-zelle>Zelle <small>${esc(zelleQROk?t("tip_scan"):t("tip_copy"))}</small></button>`
+    :`<a style="--b:${m.b}" href="${esc(m.url(tipAmt))}" target="_blank" rel="noopener">${m.label?m.label+` <small>$${tipAmt}</small>`:esc(t("tip_card"))}</a>`).join("");
+}
+function setAmt(a,fromCustom){
+  tipAmt=Math.max(1,Math.min(500,Math.round(a*100)/100||10));
+  document.querySelectorAll("#amounts button").forEach(b=>b.setAttribute("aria-pressed",!fromCustom&&+b.dataset.amt===tipAmt));
+  $("#amounts .custom").classList.toggle("on",!!fromCustom);
+  if(!fromCustom)$("#tipCustom").value="";
+  renderTip();
+}
+$("#amounts").addEventListener("click",e=>{const b=e.target.closest("button[data-amt]");if(b)setAmt(+b.dataset.amt)});
+$("#tipCustom").addEventListener("input",e=>{const v=parseFloat(e.target.value.replace(/[^0-9.]/g,""));if(v>0)setAmt(v,true)});
+$("#payBtns").addEventListener("click",async e=>{
+  if(!e.target.closest("[data-zelle]"))return;
+  if(zelleQROk){openZelle();return}
+  try{await navigator.clipboard.writeText(TIPS.zelle);$("#tipMsg").textContent=t("tip_copied")+" "+TIPS.zelle}
+  catch(err){$("#tipMsg").textContent="Zelle: "+TIPS.zelle}
+});
+function openZelle(){
+  $("#zelleModal").hidden=false;document.body.style.overflow="hidden";$("#zelleClose").focus();
+}
+function closeZelle(){$("#zelleMsg").textContent="";$("#zelleModal").hidden=true;document.body.style.overflow=""}
+$("#zelleClose").addEventListener("click",closeZelle);
+$("#zelleModal").addEventListener("click",e=>{if(e.target.id==="zelleModal")closeZelle()});
+addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("#zelleModal").hidden)closeZelle()});
+$("#zelleCopy").addEventListener("click",async()=>{
+  try{await navigator.clipboard.writeText(TIPS.zelle);$("#zelleMsg").textContent=t("tip_copied2")}
+  catch(err){$("#zelleMsg").textContent=TIPS.zelle}
+});
+if(TIPS.zelleLink)$("#zelleOpen").href=TIPS.zelleLink;else $("#zelleOpen").hidden=true;
+if(TIPS.zelle){const d=TIPS.zelle.replace(/\D/g,"");$("#zelleMask").textContent=TIPS.zelle.includes("@")?"":"•••-"+d.slice(-4)}else $("#zelleCopy").hidden=true;
+if(TIPS.zelleQR){const img=new Image();img.onload=()=>{zelleQROk=true;$("#zelleImg").src=TIPS.zelleQR;$("#zelleSave").href=TIPS.zelleQR;
+  renderTip()};img.src=TIPS.zelleQR}
+$("#coverCue").addEventListener("click",()=>document.querySelector(".hero").scrollIntoView({behavior:"smooth"}));
+const tipFab=$("#tipFab");
+addEventListener("scroll",()=>{const r=$("#tip").getBoundingClientRect();tipFab.classList.toggle("show",scrollY>innerHeight+300&&r.top>innerHeight)},{passive:true});
+tipFab.addEventListener("click",()=>$("#tip").scrollIntoView({behavior:"smooth",block:"center"}));
+
+/* ===================== PLAN YOUR NIGHT ===================== */
+const STOP_STYLE={
+  walk:{c:"#14a89a",i:'<circle cx="13" cy="4" r="2"/><path d="M10 22l2-7 3 3v6M8 12l2-4 4 1 3 3M10 8l-2 6"/>'},
+  lunch:{c:"#ff8a3d",i:'<path d="M7 2v20M4 2v6a3 3 0 006 0V2M17 2c-2 0-3 3-3 7s1 5 3 5v8"/>'},
+  coffee:{c:"#b06a3b",i:'<path d="M4 9h13v5a5 5 0 01-5 5H9a5 5 0 01-5-5zM17 10h1.5a2.5 2.5 0 010 5H17M8 3v3M12 3v3"/>'},
+  dinner:{c:"#ff3d7f",i:'<path d="M7 2v20M4 2v6a3 3 0 006 0V2M17 2c-2 0-3 3-3 7s1 5 3 5v8"/>'},
+  drinks:{c:"#4361ee",i:'<path d="M5 4h14l-7 8zM12 12v8M8 20h8"/>'},
+  show:{c:"#e09a00",i:'<path d="M12 2a3 3 0 00-3 3v6a3 3 0 006 0V5a3 3 0 00-3-3zM19 11a7 7 0 01-14 0M12 18v4M8 22h8"/>'},
+  nightcap:{c:"#9d4edd",i:'<path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z"/>'}
+};
+const plan={vibe:"classic",dur:3,opt:0,start:null};
+const PT=()=>PLAN_TXT[LANG]||PLAN_TXT.en;
+function pt(k,n){const v=(PT().ui[k])||PLAN_TXT.en.ui[k]||k;return n===undefined?v:v.replace("{n}",n)}
+const spotOf=name=>{const v=PLACES.find(x=>x.n===name);return v?{n:v.n,a:v.a,web:WEB[v.n],venue:v}:{n:name,...PLAN_SPOTS[name]}};
+const toMin=hm=>{const [h,m]=hm.split(":").map(Number);return h*60+m};
+function clock(min){const d=new Date(2000,0,1,0,0);d.setMinutes(min);
+  try{return new Intl.DateTimeFormat(LANG,{hour:"numeric",minute:"2-digit"}).format(d)}catch(e){return d.toTimeString().slice(0,5)}}
+const mapQ=s=>encodeURIComponent(s.n+", "+s.a+", New York, NY");
+function renderPlan(){
+  const SUF=["","b","c"],list=PLANS[plan.vibe][plan.dur],cfg=list[plan.opt],key=plan.vibe+plan.dur+SUF[plan.opt],notes=(PT().notes[key])||PLAN_TXT.en.notes[key];
+  const title=k=>(PT().titles&&PT().titles[k])||PLAN_TXT.en.titles[k];
+  if(plan.start===null)plan.start=toMin(cfg.start);
+  // controls
+  document.querySelectorAll(".pdur button").forEach(b=>b.setAttribute("aria-pressed",+b.dataset.dur===plan.dur));
+  $("#planVibes").innerHTML=Object.keys(PLANS).map(v=>`<button data-vibe="${v}" aria-pressed="${v===plan.vibe}">${esc((PT().vibes[v])||PLAN_TXT.en.vibes[v])}</button>`).join("");
+  $("#planOpts").innerHTML=list.map((r,i)=>{const k=plan.vibe+plan.dur+SUF[i];
+    const hi=r.stops.filter(s=>s[0]!=="walk").map(s=>s[1]).join(" · ");
+    return `<button data-opt="${i}" aria-pressed="${i===plan.opt}"><span class="onum">${i+1}</span><span class="otxt"><strong>${esc(title(k))}</strong><small>${esc(hi)}</small></span></button>`}).join("");
+  let opts="";for(let m=9*60;m<=22*60;m+=30)opts+=`<option value="${m}"${m===plan.start?" selected":""}>${clock(m)}</option>`;
+  $("#planStart").innerHTML=opts;
+  // timeline
+  let cur=plan.start;const stops=cfg.stops.map(s=>spotOf(s[1]));
+  $("#planList").innerHTML=cfg.stops.map(([type,name,dur,go],i)=>{
+    const sp=stops[i],st=STOP_STYLE[type],at=cur;cur+=dur+go;
+    const dir="https://www.google.com/maps/dir/?api=1&travelmode=walking&destination="+mapQ(sp)+"&hl="+LANG;
+    return `<li class="tstop" style="--c:${st.c}">
+      <div class="ttime">${clock(at)}</div>
+      <div class="tdot"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${st.i}</svg></i></div>
+      <div class="tbody">
+        <div class="ttype">${esc(pt("st_"+type))} · ${esc(pt("plan_mins",dur))}</div>
+        <h4>${esc(sp.n)}</h4>
+        <p>${esc(notes[i])}</p>
+        <div class="tmeta">${sp.a!==sp.n?`<span>${esc(sp.a)}</span>·`:""}<a href="${dir}" target="_blank" rel="noopener">${esc(t("directions"))}</a>${sp.web?`·<a href="${esc(sp.web)}" target="_blank" rel="noopener">${esc(t("website"))}</a>`:""}</div>
+        ${go?`<div class="twalk">${ICON.walk}${esc(pt("plan_walkto",go))}</div>`:""}
+      </div></li>`;}).join("");
+  const end=cur;
+  $("#planSummary").innerHTML=`<b>${clock(plan.start)} – ${clock(Math.round(end/5)*5)}</b>${esc(pt("plan_stops",cfg.stops.length))}`;
+  // whole route in Google Maps
+  const q=stops.map(mapQ);
+  $("#planRoute").href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin="+q[0]+"&destination="+q[q.length-1]+(q.length>2?"&waypoints="+q.slice(1,-1).join("%7C"):"")+"&hl="+LANG;
+  $("#planMsg").textContent="";
+}
+$("#plan").addEventListener("click",e=>{
+  const d=e.target.closest("[data-dur]"),v=e.target.closest("[data-vibe]"),o=e.target.closest("[data-opt]");
+  if(d){plan.dur=+d.dataset.dur;plan.opt=0;plan.start=null;renderPlan()}
+  else if(v){plan.vibe=v.dataset.vibe;plan.opt=0;plan.start=null;renderPlan()}
+  else if(o){plan.opt=+o.dataset.opt;plan.start=null;renderPlan()}
+});
+$("#planStart").addEventListener("change",e=>{plan.start=+e.target.value;renderPlan()});
+$("#planSave").addEventListener("click",()=>{
+  PLANS[plan.vibe][plan.dur][plan.opt].stops.forEach(s=>{if(PLACES.some(x=>x.n===s[1]))state.saved.add(s[1])});
+  store.set("corner-saved",[...state.saved]);render();$("#planMsg").textContent=pt("plan_saved");
+});
+function showTab(name,scroll){
+  const plan=name==="plan";
+  $("#plan").hidden=!plan;$("#view-guide").hidden=plan;
+  document.querySelectorAll("#tabs [data-tab]").forEach(b=>b.setAttribute("aria-selected",b.dataset.tab===name));
+  if(scroll)$("#tabs").scrollIntoView({behavior:"smooth",block:"start"});
+  onScroll();
+}
+$("#tabs").addEventListener("click",e=>{const b=e.target.closest("[data-tab]");if(b)showTab(b.dataset.tab,false)});
+document.querySelector("[data-goplan]").addEventListener("click",()=>showTab("plan",true));
+// The planner only opens when a guest clicks; clear any old #plan left in the address
+if(location.hash){try{history.replaceState(null,"",location.pathname+location.search)}catch(e){}}
+
+/* ===================== LANGUAGE ===================== */
+const STAR='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg>';
+const langSel=$("#lang");
+langSel.innerHTML=LANGS.map(([c,n])=>`<option value="${c}">${n}</option>`).join("")+'<option value="__other"></option>';
+function applyLang(){
+  document.documentElement.lang=LANG;
+  document.querySelectorAll("[data-i18n]").forEach(el=>el.textContent=t(el.dataset.i18n));
+  document.querySelectorAll("[data-i18n-html]").forEach(el=>el.innerHTML=t(el.dataset.i18nHtml));
+  document.querySelectorAll("[data-i18n-ph]").forEach(el=>el.placeholder=t(el.dataset.i18nPh));
+  document.querySelectorAll("[data-i18n-aria]").forEach(el=>el.setAttribute("aria-label",t(el.dataset.i18nAria)));
+  const row=(L().ticker||I18N.en.ticker).map(w=>`<span>${esc(w)} ${STAR}</span>`).join("");
+  $("#tickerTrack").innerHTML=row+row;
+  langSel.value=LANG;langSel.setAttribute("aria-label",t("lang_label"));
+  langSel.querySelector('[value="__other"]').textContent=t("other");
+  syncTheme();renderStats();render();renderTip();renderPlan();
+}
+langSel.addEventListener("change",()=>{
+  if(langSel.value==="__other"){
+    // Any other language: open this page through Google Translate
+    const nav=(navigator.language||"en").split("-")[0];
+    const target=SUPPORTED.includes(nav)?"ko":nav;
+    open("https://translate.google.com/translate?sl=en&tl="+encodeURIComponent(target)+"&u="+encodeURIComponent(location.href),"_blank","noopener");
+    langSel.value=LANG;return;
+  }
+  LANG=langSel.value;store.set("corner-lang",LANG);applyLang();
+});
+applyLang();
+</script>
+</body>
+</html>
