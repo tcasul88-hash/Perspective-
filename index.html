@@ -700,8 +700,11 @@ ICON.globe='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-wi
 
 // Your own photos, by place name. Cards without a photo show their illustration.
 // Example: "Babbo":"images/babbo.jpg"
+// For tall photos, add a focus point to choose what stays in frame: {src:"images/x.jpg", pos:"50% 60%"}
 const PHOTOS = {
+  "Analogue": {src:"images/analogue.jpg", pos:"50% 46%"}
 };
+const photoOf=n=>{const v=PHOTOS[n];return !v?null:typeof v==="string"?{src:v,pos:"50% 50%"}:v};
 
 // Official websites. Places not listed here get a "Find online" search link instead.
 const WEB = {
@@ -798,7 +801,7 @@ function card(p,i){
   return `<article class="card" style="--accent:${cat.color};--accent2:${cat.c2};animation-delay:${Math.min(i,12)*30}ms">
     <div class="photo">
       <div class="ph" aria-hidden="true">${ART[p.c]}<small>${esc(kindT(p.k))}</small></div>
-      ${PHOTOS[p.n]?`<img src="${esc(PHOTOS[p.n])}" alt="${esc(p.n)}" loading="lazy" onerror="this.remove()">`:""}
+      ${photoOf(p.n)?`<img src="${esc(photoOf(p.n).src)}" style="object-position:${esc(photoOf(p.n).pos)}" alt="${esc(p.n)}" loading="lazy" onerror="this.remove()">`:""}
       <div class="badges"><span class="pill">${ICON.walk}${walkTxt(p.w)}</span><span class="pill price" aria-label="${t("price_aria",p.p)}">${priceHtml(p.p)}</span></div>
       <button class="save" data-save="${esc(p.n)}" aria-pressed="${saved}" aria-label="${saved?t("unsave"):t("save")}">${saved?ICON.heart:ICON.heartO}</button>
     </div>
