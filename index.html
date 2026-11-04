@@ -296,6 +296,15 @@ footer h5{background:linear-gradient(90deg,var(--gold),var(--pink));-webkit-back
 .cover-cue svg{width:22px;height:22px}
 @keyframes cue{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
 .tip-fab,.to-top{visibility:hidden}.tip-fab.show,.to-top.show{visibility:visible}
+.tabs{display:flex;gap:6px;width:max-content;max-width:100%;margin:34px auto 0;padding:6px;border-radius:999px;background:rgba(13,10,38,.6);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.tabs button{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;font-weight:600;font-size:15px;color:var(--sky-soft);transition:all .2s}
+.tabs button svg{width:17px;height:17px}
+.tabs button:hover{color:var(--sky-text)}
+.tabs button[aria-selected="true"]{background:linear-gradient(90deg,var(--pink),var(--orange));color:#fff;box-shadow:0 10px 24px -12px var(--pink)}
+.tabs button[data-tab="plan"][aria-selected="false"] svg{color:var(--gold)}
+.plan[hidden],#view-guide[hidden]{display:none}
+.plan{scroll-margin-top:20px}
+@media (max-width:640px){.tabs{width:100%}.tabs button{flex:1;justify-content:center;padding:11px 10px;font-size:14px}}
 /* plan your night */
 .plan-cta{grid-column:1/-1;display:flex;align-items:center;gap:14px;text-align:left;padding:16px 20px;border-radius:var(--radius);color:#1a0f2e;
   background:linear-gradient(100deg,var(--gold),var(--orange) 55%,var(--pink));box-shadow:0 18px 44px -16px rgba(0,0,0,.55);transition:transform .3s}
@@ -412,8 +421,7 @@ footer h5{background:linear-gradient(90deg,var(--gold),var(--pink));-webkit-back
 </style>
 </head>
 <body>
-<div class="sky" aria-hidden="true"><div class="dusk"></div><div class="night"></div><div class="photo-bg"></div><div class="stars" id="stars"></div><div class="orb"></div></div>
-<div class="city" id="city" aria-hidden="true"></div>
+<div class="sky" aria-hidden="true"><div class="photo-bg"></div></div>
 
 <section class="cover" aria-label="Washington Square Arch at night">
   <button class="cover-cue" id="coverCue" aria-label="Scroll to the guide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
@@ -457,7 +465,12 @@ footer h5{background:linear-gradient(90deg,var(--gold),var(--pink));-webkit-back
 <div class="ticker-wrap" aria-hidden="true"><div class="ticker"><div class="track" id="tickerTrack"><span>Handmade pasta <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Martinis <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Rooftop sunsets <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Omakase <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Espresso <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Tacos &amp; mezcal <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Natural wine <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Jazz cellars <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Steak frites <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Late nights <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Handmade pasta <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Martinis <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Rooftop sunsets <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Omakase <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Espresso <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Tacos &amp; mezcal <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Natural wine <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Jazz cellars <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Steak frites <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span><span>Late nights <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg></span></div></div></div>
 
 <main>
-  <section id="plan" class="plan">
+  <div class="wrap"><nav class="tabs" id="tabs" role="tablist" aria-label="Sections">
+    <button role="tab" id="tab-guide" data-tab="guide" aria-selected="true" aria-controls="view-guide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 2v20M4 2v6a3 3 0 006 0V2M17 2c-2 0-3 3-3 7s1 5 3 5v8"/></svg><span data-i18n="tab_guide">Explore the guide</span></button>
+    <button role="tab" id="tab-plan" data-tab="plan" aria-selected="false" aria-controls="plan"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg><span data-i18n="tab_plan">Plan your night</span></button>
+  </nav></div>
+
+  <section id="plan" class="plan" role="tabpanel" aria-labelledby="tab-plan" hidden>
     <div class="wrap">
       <div class="section-head">
         <div><div class="plan-eyebrow" data-i18n="plan_eyebrow">New · Plan your night</div><h2 class="serif" data-i18n="plan_title">Plan your night</h2></div>
@@ -484,6 +497,7 @@ footer h5{background:linear-gradient(90deg,var(--gold),var(--pink));-webkit-back
     </div>
   </section>
 
+  <div id="view-guide" role="tabpanel" aria-labelledby="tab-guide">
   <div class="wrap">
     <section id="picks">
       <div class="section-head">
@@ -525,6 +539,7 @@ footer h5{background:linear-gradient(90deg,var(--gold),var(--pink));-webkit-back
       <div class="results-meta"><span id="count"></span><button id="reset" hidden data-i18n="clear">Clear filters</button></div>
       <div id="results"></div>
     </section>
+  </div>
   </div>
   <section class="tip" id="tip" hidden>
     <div class="wrap"><div class="tip-card">
@@ -875,7 +890,7 @@ function jump(){const y=$("#bar").getBoundingClientRect().top+scrollY;scrollTo({
 /* ===================== EVENTS ===================== */
 document.addEventListener("click",e=>{
   const t=e.target.closest("button");if(!t)return;
-  if(t.dataset.door){state.mode=t.dataset.door;state.cat=null;state.pick=null;render();jump();}
+  if(t.dataset.door){showTab("guide",false);state.mode=t.dataset.door;state.cat=null;state.pick=null;render();jump();}
   else if(t.dataset.mode){state.mode=t.dataset.mode;state.cat=null;render();}
   else if(t.dataset.cat!==undefined){state.cat=t.dataset.cat||null;render();}
   else if(t.dataset.pick){state.pick=state.pick===t.dataset.pick?null:t.dataset.pick;state.mode="all";state.cat=null;render();if(state.pick)jump();}
@@ -920,41 +935,6 @@ const ART={
   coffee:art('<path d="M20 44h50v16a25 25 0 0 1-50 0z" fill="rgba(255,255,255,.18)"/><path d="M70 48a10 10 0 0 1 0 19"/><path d="M12 88h66"/><path d="M34 16q-6 8 0 15M46 12q-6 8 0 15M58 16q-6 8 0 15"/><path d="M34 54q11 6 22 0"/>')
 };
 
-/* ===================== SKYLINE ===================== */
-function rng(seed){return()=>(seed=(seed*16807)%2147483647)/2147483647}
-function skylineLayer(cls,o){
-  const r=rng(o.seed),body=[],wins=[];let x=-30;
-  while(x<1630){
-    const w=o.wmin+r()*(o.wmax-o.wmin),h=o.hmin+r()*(o.hmax-o.hmin),y=400-h;
-    if(o.skip&&x+w>o.skip[0]&&x<o.skip[1]){x+=w+o.gap;continue}
-    body.push(`M${x.toFixed(0)} 400V${y.toFixed(0)}h${w.toFixed(0)}V400z`);
-    const roll=r();
-    if(roll<o.tower){const tx=x+w*.25;body.push(`M${tx+2} ${y}v-8h2v8zM${tx+12} ${y}v-8h2v8zM${tx} ${y-8}v-12h16v12zM${tx-1} ${y-20}l9-7 9 7z`)}
-    else if(roll<o.tower+.15){body.push(`M${(x+w/2-1).toFixed(0)} ${y}v-${(10+r()*22).toFixed(0)}h2V${y}z`)}
-    else if(roll<o.tower+.3){body.push(`M${x+4} ${y}v-10h${(w-8).toFixed(0)}v10z`)}
-    if(o.lit){for(let wy=y+10;wy<388;wy+=13)for(let wx=x+6;wx<x+w-7;wx+=10)if(r()<o.lit)
-      wins.push(`<rect class="win${r()<.12?" tw":""}" x="${wx.toFixed(0)}" y="${wy.toFixed(0)}" width="4" height="6" style="animation-delay:${(r()*6).toFixed(1)}s"/>`)}
-    x+=w+o.gap;
-  }
-  return `<svg class="${cls}" viewBox="0 0 1600 400" preserveAspectRatio="xMidYMax slice"><path fill="${o.fill}" d="${body.join("")}${o.extra||""}"/>${o.cut?`<path fill="${o.fill}" fill-rule="evenodd" d="${o.cut}"/>`:""}${o.decor||""}${wins.join("")}</svg>`;
-}
-function buildCity(){
-  const empire="M722 400V205h76V400zM732 205V165h56V205zM744 165V125h32V165zM753 125V98h14V125zM757 98V72h6V98zM759 72V22h2V72z";
-  const chrysler="M1004 400V178h48V400zM1006 178a22 22 0 0 1 44 0zM1012 162a16 16 0 0 1 32 0zM1017 147a11 11 0 0 1 22 0zM1021 135a7 7 0 0 1 14 0zM1026 130l2-78 2 78z";
-  const wtc="M330 400V330L352 112H396L418 330V400zM373 112V28h2V112z";
-  const slim="M590 400V96h20V400zM1240 400V140h26V400z";
-  const crown='<g fill="#ffd36e" opacity=".9"><path d="M1016 176l4-8 4 8zM1026 176l4-8 4 8zM1036 176l4-8 4 8zM1021 160l3-6 3 6zM1029 160l3-6 3 6zM1037 160l3-6 3 6zM1025 146l3-5 3 5zM1031 146l3-5 3 5z"/></g><circle cx="760" cy="22" r="3" fill="#ff5a5f"/><circle cx="374" cy="28" r="3" fill="#ff5a5f"/>';
-  const arch="M1150 400V262h128V400zM1180 400V330a34 34 0 0 1 68 0V400zM1142 262V248h144V262z";
-  const trees="M1100 400a24 22 0 0 1 48 0zM1118 400a30 30 0 0 1 2-44a22 22 0 0 1 30 10a20 20 0 0 1 4 34zM1282 400a26 26 0 0 1 4-40a22 22 0 0 1 34 8a20 20 0 0 1 2 32z";
-  document.getElementById("city").innerHTML=
-    skylineLayer("far",{seed:11,wmin:40,wmax:90,hmin:110,hmax:230,gap:2,tower:.05,fill:"rgba(70,36,120,.55)"})+
-    skylineLayer("mid",{seed:29,wmin:44,wmax:96,hmin:80,hmax:190,gap:4,tower:.12,lit:.12,fill:"#22174d",extra:empire+chrysler+wtc+slim,decor:crown})+
-    skylineLayer("near",{seed:53,wmin:50,wmax:120,hmin:40,hmax:120,gap:0,tower:.35,lit:.2,fill:"#0d0a26",skip:[1095,1335],extra:trees,cut:arch});
-  const stars=document.getElementById("stars"),r=rng(7);let h="";
-  for(let i=0;i<90;i++)h+=`<i style="left:${(r()*100).toFixed(2)}%;top:${(r()*100).toFixed(2)}%;animation-delay:${(r()*3.5).toFixed(2)}s;transform:scale(${(.5+r()*1.2).toFixed(2)})"></i>`;
-  stars.innerHTML=h;
-}
-buildCity();
 let ticking=false;
 function onScroll(){
   if(ticking)return;ticking=true;
@@ -1092,7 +1072,17 @@ $("#planSave").addEventListener("click",()=>{
   PLANS[plan.vibe][plan.dur][plan.opt].stops.forEach(s=>{if(PLACES.some(x=>x.n===s[1]))state.saved.add(s[1])});
   store.set("corner-saved",[...state.saved]);render();$("#planMsg").textContent=pt("plan_saved");
 });
-document.querySelector("[data-goplan]").addEventListener("click",()=>$("#plan").scrollIntoView({behavior:"smooth",block:"start"}));
+function showTab(name,scroll){
+  const plan=name==="plan";
+  $("#plan").hidden=!plan;$("#view-guide").hidden=plan;
+  document.querySelectorAll("#tabs [data-tab]").forEach(b=>b.setAttribute("aria-selected",b.dataset.tab===name));
+  try{history.replaceState(null,"",plan?"#plan":location.pathname+location.search)}catch(e){}
+  if(scroll)$("#tabs").scrollIntoView({behavior:"smooth",block:"start"});
+  onScroll();
+}
+$("#tabs").addEventListener("click",e=>{const b=e.target.closest("[data-tab]");if(b)showTab(b.dataset.tab,false)});
+document.querySelector("[data-goplan]").addEventListener("click",()=>showTab("plan",true));
+if(location.hash==="#plan")showTab("plan",false);
 
 /* ===================== LANGUAGE ===================== */
 const STAR='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6z"/></svg>';

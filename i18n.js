@@ -628,3 +628,11 @@ Object.assign(I18N.de.ui,{"tip_or": "Nur dieses Handy? Probiere stattdessen:", "
 Object.assign(I18N.pt.ui,{"tip_or": "Usando este celular? Tente uma destas opções:", "tip_open": "Abrir no Zelle", "tip_copynum": "Copiar número", "tip_save": "Salvar código QR", "tip_copied2": "Copiado! Abra o app do seu banco, escolha Zelle e cole o número."});
 Object.assign(I18N.zh.ui,{"tip_or": "只用这部手机？试试以下方式：", "tip_open": "在 Zelle 中打开", "tip_copynum": "复制手机号", "tip_save": "保存二维码", "tip_copied2": "已复制！打开银行 App，选择 Zelle 并粘贴号码。"});
 Object.assign(I18N.ja.ui,{"tip_or": "このスマホだけの場合は、こちらをお試しください：", "tip_open": "Zelle で開く", "tip_copynum": "電話番号をコピー", "tip_save": "QR コードを保存", "tip_copied2": "コピーしました！銀行アプリで Zelle を選び、番号を貼り付けてください。"});
+Object.assign(I18N.en.ui,{"tab_guide": "Explore the guide", "tab_plan": "Plan your night"});
+Object.assign(I18N.es.ui,{"tab_guide": "Explorar la guía", "tab_plan": "Planea tu noche"});
+Object.assign(I18N.fr.ui,{"tab_guide": "Explorer le guide", "tab_plan": "Planifiez votre soirée"});
+Object.assign(I18N.it.ui,{"tab_guide": "Esplora la guida", "tab_plan": "Organizza la serata"});
+Object.assign(I18N.de.ui,{"tab_guide": "Guide entdecken", "tab_plan": "Plane deinen Abend"});
+Object.assign(I18N.pt.ui,{"tab_guide": "Explorar o guia", "tab_plan": "Planeje sua noite"});
+Object.assign(I18N.zh.ui,{"tab_guide": "浏览指南", "tab_plan": "规划你的夜晚"});
+Object.assign(I18N.ja.ui,{"tab_guide": "ガイドを見る", "tab_plan": "夜のプラン"});
